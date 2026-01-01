@@ -5,11 +5,33 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <title>AffiliateHub Pro - Real Life Affiliate Marketing Game</title>
   <style>
+    :root {
+      --bg1: #667eea;
+      --bg2: #764ba2;
+      --accent1: #667eea;
+      --accent2: #764ba2;
+      --success1: #11998e;
+      --success2: #38ef7d;
+      --warn1: #ffda77;
+      --warn2: #ffe6a3;
+      --card: rgba(255,255,255,0.96);
+      --text: #222;
+      --muted: #666;
+      --border: rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 32px rgba(0,0,0,0.12);
+      --shadow-md: 0 8px 22px rgba(0,0,0,0.10);
+      --shadow-sm: 0 1px 8px rgba(0,0,0,0.10);
+      --radius-xl: 22px;
+      --radius-lg: 15px;
+      --radius-md: 11px;
+    }
     html { box-sizing: border-box; }
     *, *:before, *:after { box-sizing: inherit; }
     body {
       font-family:'Segoe UI',Arial,sans-serif;
-      background:linear-gradient(135deg,#667eea 0%, #764ba2 100%);
+      background:linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);
+      color: var(--text);
+      line-height: 1.35;
       margin:0;
       padding:0;
       min-height:100vh;
@@ -18,39 +40,44 @@
     .container {
       max-width:1400px;
       margin:0 auto;
-      padding:20px;
+      padding:clamp(10px, 2.2vw, 20px);
     }
     .header {
-      background:rgba(255,255,255,0.96);
+      background:var(--card);
       padding:24px 18px;
-      border-radius:22px;
+      border-radius:var(--radius-xl);
       margin-bottom:16px;
-      box-shadow:0 10px 32px rgba(0,0,0,0.12);
+      box-shadow:var(--shadow-lg);
       display:flex;
       flex-wrap:wrap;
       justify-content:space-between;
       align-items:center;
+      border: 1px solid var(--border);
     }
-    .logo {font-size:2em;font-weight:bold;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .logo {font-size:2em;font-weight:bold;background:linear-gradient(135deg,var(--accent1),var(--accent2));background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px;}
     .user-info {display:flex;flex-wrap:wrap;align-items:center;gap:14px;font-size:1em;}
     .balance, .commission-due, .net-worth {
-      background:linear-gradient(135deg,#11998e,#38ef7d);
+      background:linear-gradient(135deg,var(--success1),var(--success2));
       color:white;padding:8px 15px;border-radius:19px;font-weight:bold;font-size:1em;margin:2px 0;
     }
-    .clock {background:linear-gradient(135deg,#ffda77,#ffe6a3);color:#7b5e19;border-radius:9px;font-weight:700;
+    .clock {background:linear-gradient(135deg,var(--warn1),var(--warn2));color:#7b5e19;border-radius:9px;font-weight:700;
       font-size:1em;padding:6px 14px;margin-bottom:10px;margin-top:-7px;display:inline-block;}
     .mainstats {display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-bottom:22px;}
-    .stat-card {background:rgba(255,255,255,0.96);padding:18px;border-radius:13px;box-shadow:0 8px 22px rgba(0,0,0,0.10);}
+    .stat-card {background:var(--card);padding:18px;border-radius:13px;box-shadow:var(--shadow-md);border:1px solid var(--border);}
     .stat-label {color:#444;font-size:12px;font-weight:bold;margin-bottom:9px;text-transform:uppercase;letter-spacing:1px;}
     .stat-value {font-size:23px;font-weight:bold;color:#333;margin-bottom:11px;}
     .main-content {
-      display:flex;
-      flex-direction:column;
+      display:grid;
+      grid-template-columns: 1fr;
       gap:18px;
       margin-bottom:20px;
     }
-    .section {background:rgba(255,255,255,0.96);padding:15px;border-radius:15px;box-shadow:0 8px 22px rgba(0,0,0,0.09);margin-bottom:9px;}
-    .section-title {font-size:1em;font-weight:bold;color:#333;margin-bottom:13px;padding-bottom:8px;border-bottom:1px solid #efefef;}
+    @media (min-width: 900px) {
+      .main-content--top {grid-template-columns: 1.15fr 0.85fr;align-items:start;}
+      .main-content--bottom {grid-template-columns: 1fr 1fr;align-items:start;}
+    }
+    .section {background:var(--card);padding:15px;border-radius:var(--radius-lg);box-shadow:0 8px 22px rgba(0,0,0,0.09);margin-bottom:9px;border:1px solid var(--border);}
+    .section-title {font-size:1em;font-weight:800;color:#2b2b2b;margin-bottom:13px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.06);letter-spacing:-0.2px;}
     .product-card {background:linear-gradient(135deg,#f5f7fa,#c3cfe2);padding:13px;border-radius:11px;margin-bottom:11px;display:flex;flex-direction:column;gap:3px;}
     .product-info {flex:1;}
     .product-name {font-size:1em;font-weight:bold;color:#333;margin-bottom:3px;}
@@ -60,13 +87,39 @@
       background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;padding:8px 12px;border-radius:14px;cursor:pointer;font-weight:bold;transition:.2s;min-width:100px;margin:3px 2px;font-size:.97em;touch-action:manipulation;
     }
     .generate-link-btn:active,.generate-link-btn:hover {background:linear-gradient(135deg,#764ba2,#667eea);box-shadow:0 1px 5px #667eea44;}
+    .generate-link-btn:focus-visible {outline:3px solid rgba(255,255,255,0.75);outline-offset:2px;box-shadow:0 0 0 4px rgba(102,126,234,0.35);}
+    .generate-link-btn--payout {background:linear-gradient(90deg,#ee0979,#ff6a00);border-radius:8px;}
+    .generate-link-btn--payout:active,.generate-link-btn--payout:hover {background:linear-gradient(90deg,#ff6a00,#ee0979);}
+    .generate-link-btn--secondary {background:#eee;color:#333;}
+    .generate-link-btn--secondary:active,.generate-link-btn--secondary:hover {background:#e6e6e6;}
+    .btn-row {margin-top:7px;}
+    .section-title--spaced {margin-top:11px;}
+    .section-title--spaced-sm {margin-top:10px;}
+    .chart {width:100%;max-width:650px;display:block;margin:11px auto 10px auto;border-radius:11px;background:#f7f7ff;box-shadow:0 1px 10px #e2eeff;}
+    .chart-legend {text-align:center;font-size:.96em;margin-bottom:5px;margin-top:-10px;}
+    .legend-dot {font-weight:800;}
+    .legend-dot--traffic {color:#347bff;}
+    .legend-dot--clicks {color:#30be76;}
+    .legend-dot--sales {color:#9157c8;}
+    .muted-sm {color:#777;font-size:.93em;}
+    .empty-state {text-align:center;color:#999;}
+    .amount-positive {color:#11998e;font-weight:bold;}
+    .achievement-desc {font-size:0.94em;color:#666;}
+    .actions-row {margin:5px 0 0 0;display:flex;flex-wrap:wrap;gap:6px;}
+
+    #buyAdModal h3 {font-size:1em;margin-bottom:8px;}
+    #buyAdModal label {font-size:.97em;}
+    #buyAdModal input[type="range"] {width:120px;}
+    .modal-help {margin:6px 0;color:#666;font-size:.93em;}
     .affiliate-link-card {background:linear-gradient(135deg,#fdfbfb,#ebedee);border-radius:11px;padding:15px 9px;margin-bottom:13px;box-shadow:0 1px 8px #ddd;}
     .aff-title-row {display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin-bottom:6px;}
     .affiliate-product {font-size:1em;font-weight:bold;color:#343050;margin-right:6px;white-space:nowrap;}
     .affiliate-url {
       font-family:monospace;width:100%;font-size:.95em;padding:4px 8px;border:1px solid #ddd;
       border-radius:7px;background:#fff;color:#404040;margin-left:0;
+      cursor: text;
     }
+    .affiliate-url:focus-visible {outline:3px solid rgba(102,126,234,0.35);outline-offset:2px;}
     .aff-stats-row {display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.97em;margin-top:2px;}
     @media (max-width:700px) {
       .container {padding:6px;}
@@ -100,7 +153,20 @@
       .section-title {font-size:.95em;}
     }
     /* Modal mobile-friendly */
-    #buyAdModal {padding:12px 7px;max-width:98vw;font-size:.97em;}
+    #buyAdModal {
+      display:none;
+      position:fixed;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      background:#fff;
+      padding:12px 7px;
+      max-width:98vw;
+      font-size:.97em;
+      border-radius:15px;
+      box-shadow:0 4px 34px #33333322;
+      z-index:101;
+    }
   </style>
 </head>
 <body>
@@ -121,7 +187,7 @@
     <div class="stat-card"><div class="stat-label">Reputation</div><div class="stat-value" id="reputation">1</div></div>
     <div class="stat-card"><div class="stat-label">Authority</div><div class="stat-value" id="authority">1</div></div>
   </div>
-  <div class="main-content">
+  <div class="main-content main-content--top">
     <div class="section">
       <div class="section-title">Product Marketplace</div>
       <div id="productsList"></div>
@@ -130,12 +196,12 @@
     <div class="section">
       <div class="section-title">Top Affiliates</div>
       <ul class="leaderboard" id="leaderboard"></ul>
-      <div style="margin-top:7px;">
-        <button onclick="claimCommission()" class="generate-link-btn" style="background:linear-gradient(90deg,#ee0979,#ff6a00);border:none;border-radius:8px;color:#fff;font-weight:bold;padding:6px 11px;cursor:pointer;font-size:1em;">Claim Payout</button>
+      <div class="btn-row">
+        <button onclick="claimCommission()" class="generate-link-btn generate-link-btn--payout">Claim Payout</button>
       </div>
     </div>
   </div>
-  <div class="main-content">
+  <div class="main-content main-content--bottom">
     <div class="section">
       <div class="section-title">Your Affiliate Links</div>
       <div id="linksPanel"></div>
@@ -143,15 +209,15 @@
     <div class="section">
       <div class="section-title">Organic Growth Progress</div>
       <div id="organicProgress"></div>
-      <div class="section-title" style="margin-top:11px;">Achievements</div>
+      <div class="section-title section-title--spaced">Achievements</div>
       <div class="achievements-panel" id="achievementsPanel"></div>
-      <div class="section-title" style="margin-top:10px;">Timeline</div>
+      <div class="section-title section-title--spaced-sm">Timeline</div>
       <div class="timeline-panel" id="timelinePanel"></div>
-      <canvas id="animatedStatsChart" width="480" height="130" style="width:100%;max-width:650px;display:block;margin:11px auto 10px auto;border-radius:11px;background:#f7f7ff;box-shadow:0 1px 10px #e2eeff;"></canvas>
-      <div style="text-align:center;font-size:.96em;margin-bottom:5px;margin-top:-10px;">
-        <span style="color:#347bff;font-weight:bold;">● Traffic</span>
-        &nbsp; <span style="color:#30be76;font-weight:bold;">● Clicks</span>
-        &nbsp; <span style="color:#9157c8;font-weight:bold;">● Sales</span>
+      <canvas id="animatedStatsChart" width="480" height="130" class="chart"></canvas>
+      <div class="chart-legend">
+        <span class="legend-dot legend-dot--traffic">● Traffic</span>
+        &nbsp; <span class="legend-dot legend-dot--clicks">● Clicks</span>
+        &nbsp; <span class="legend-dot legend-dot--sales">● Sales</span>
       </div>
     </div>
   </div>
@@ -159,17 +225,17 @@
     <div class="section-title">Activity Timeline</div>
     <div id="activityFeed"></div>
   </div>
-  <div class="viral-banner" id="viralBanner"></div>
-  <div class="event-popup" id="eventPopup"></div>
-  <div id="buyAdModal" style="display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;padding:11px 7px;border-radius:15px;box-shadow:0 4px 34px #33333322;z-index:101;">
-    <h3 style="font-size:1em;margin-bottom:8px;">Buy Ad Campaign</h3>
-    <label style="font-size:.97em;">Duration (days):
-      <input type="range" min="1" max="30" value="1" id="adDurationSlider" style="width:120px;" oninput="updateAdDurationLabel(this.value)">
+  <div class="viral-banner" id="viralBanner" role="status" aria-live="polite"></div>
+  <div class="event-popup" id="eventPopup" role="status" aria-live="polite"></div>
+  <div id="buyAdModal">
+    <h3>Buy Ad Campaign</h3>
+    <label>Duration (days):
+      <input type="range" min="1" max="30" value="1" id="adDurationSlider" oninput="updateAdDurationLabel(this.value)">
       <span id="adDurationLabel">1</span>
     </label>
-    <div style="margin:6px 0;color:#666;font-size:.93em;">Costs multiply per day selected.</div>
+    <div class="modal-help">Costs multiply per day selected.</div>
     <button onclick="confirmBuyAd()" class="generate-link-btn">Confirm</button>
-    <button onclick="closeBuyAdModal()" class="generate-link-btn" style="background:#eee;color:#333;">Cancel</button>
+    <button onclick="closeBuyAdModal()" class="generate-link-btn generate-link-btn--secondary">Cancel</button>
   </div>
 </div>
 <script>
@@ -179,6 +245,7 @@ var appState = {
   activeLinksCount: 0, reputation: 1, authority: 1,
   activities: [], activeLinks: [], achievements:[], timeline:[], statsHistory:[],
   viralStreak:0,
+  daily: { traffic:0, clicks:0, conversions:0 },
   adCampaigns:[],
   products: [
     { id:1,name:'Premium Web Hosting',cat:'Tech',commission:36,price:99,desc:'Blazing-fast hosting for any site.' },
@@ -207,12 +274,12 @@ var appState = {
     {name:'Growth Hacker Joe',earnings:9320}
   ],
   events:[
-    {type:'fee',txt:"Platform Fee: Unexpected fee!",impact:-10},
-    {type:'chargeback',txt:"Chargeback: Conversion reversed.",impact:-25},
-    {type:'bot_clicks',txt:"Fake Traffic! Lost on bots.",impact:-18},
-    {type:'server_outage',txt:"Seller Outage: No earnings.",impact:-21},
-    {type:'bonus',txt:"Performance Bonus! Reputation boost.",impact:+33},
-    {type:'press',txt:"Trending! Featured product, viral boost!",impact:+77}
+    {type:'fee',txt:"Platform Fee: Unexpected fee!",impact:-8},
+    {type:'chargeback',txt:"Chargeback: Conversion reversed.",impact:-18},
+    {type:'bot_clicks',txt:"Fake Traffic! Lost on bots.",impact:-12},
+    {type:'server_outage',txt:"Seller Outage: No earnings.",impact:-15},
+    {type:'bonus',txt:"Performance Bonus! Reputation boost.",impact:+18},
+    {type:'press',txt:"Trending! Featured product, viral boost!",impact:+40}
   ],
   tips:["Tip: Match products to audiences.",
     "Most affiliate campaigns lose at first. Test & learn!",
@@ -233,6 +300,38 @@ function showPopupTip(msg) {
   popup.style.display = 'block';
   setTimeout(function(){popup.style.display='none';},3200);
 }
+function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
+function resetDailyCounters(){appState.daily={traffic:0,clicks:0,conversions:0};}
+function getLinkForProduct(productId){return appState.activeLinks.filter(l=>l.productId===productId)[0]||null;}
+function pickRandomActiveLink(){
+  if(!appState.activeLinks.length) return null;
+  return appState.activeLinks[Math.floor(Math.random()*appState.activeLinks.length)];
+}
+function progressGain(base){
+  var a = clamp(appState.authority, 0, 50);
+  var r = clamp(appState.reputation, 0, 50);
+  return base / (1 + 0.05*a + 0.03*r);
+}
+function getOrCreateLinkForProduct(productId){
+  var existing=getLinkForProduct(productId);
+  if(existing) return existing;
+  var product=appState.products.filter(p=>p.id===productId)[0];
+  if(!product) return null;
+  var linkId = Math.random().toString(36).substr(2,9);
+  var affiliateLink = 'https://affiliatehub.pro/go/'+linkId;
+  var linkData = {id:linkId,productId:productId,productName:product.name,url:affiliateLink,clicks:0,conversions:0,commissionDue:0,created:new Date()};
+  appState.activeLinks.push(linkData);
+  appState.activeLinksCount++;
+  addActivity('Link Generated','Created link for '+product.name+' (auto)',0);
+  return linkData;
+}
+function getConversionRate(baseRate){
+  var a = clamp(appState.authority, 0, 100);
+  var r = clamp(appState.reputation, 0, 100);
+  // Diminishing-returns scaling: meaningful early, stable late.
+  var multiplier = 1 + 0.018*Math.sqrt(a) + 0.012*Math.sqrt(r);
+  return clamp(baseRate * multiplier, 0.001, 0.18);
+}
 function showViralBanner(msg) {
   var banner=document.getElementById('viralBanner');
   banner.textContent=msg;
@@ -240,8 +339,8 @@ function showViralBanner(msg) {
   setTimeout(function(){banner.style.display='none';},3000);
 }
 function randomEvent() {
-  var ev = Math.random()<0.25
-    ? {type:'viral',txt:"VIRAL PRESS: Your affiliate campaign goes viral on socials! 💥🔥",impact:+Math.floor(Math.random()*210+120)}
+  var ev = Math.random()<0.18
+    ? {type:'viral',txt:"VIRAL PRESS: Your affiliate campaign goes viral on socials! 💥🔥",impact:+Math.floor(Math.random()*110+70)}
     : appState.events[Math.floor(Math.random()*appState.events.length)];
   if(ev.impact<0 && appState.budget+ev.impact<0) return;
   appState.budget += ev.impact;
@@ -265,6 +364,7 @@ function formatGameDate(day){
 function advanceDay(){
   appState.gameDay += 1;
   document.getElementById('gameTimeLabel').textContent = "Day "+appState.gameDay+" ("+formatGameDate(appState.gameDay)+")";
+  resetDailyCounters();
   runDailySim();
   updateTimeline();
   checkWinLoss();
@@ -284,8 +384,10 @@ function runDailySim(){
   }
   updateDashboard();
 }
-function showBuyAdModal(pid){
+function showBuyAdModal(pid, adTypeId){
   appState.selectedProductForAd = pid;
+  if(adTypeId) appState.selectedAdType = adTypeId;
+  if(!appState.selectedAdType) appState.selectedAdType = 'social';
   document.getElementById('adDurationSlider').value=1;
   updateAdDurationLabel(1);
   document.getElementById('buyAdModal').style.display='block';
@@ -295,23 +397,38 @@ function updateAdDurationLabel(v){document.getElementById('adDurationLabel').inn
 function confirmBuyAd(){
   var duration = parseInt(document.getElementById('adDurationSlider').value);
   var pid = appState.selectedProductForAd;
-  var adType = 'social';
-  var ad = appState.adTypes[0];
+  var adType = appState.selectedAdType || 'social';
+  var ad = appState.adTypes.filter(a=>a.id===adType)[0] || appState.adTypes[0];
   var cost = ad.cost * duration;
   if(appState.budget < cost){ showPopupTip("Not enough cash for campaign."); return;}
+  // Ensure the campaign can actually earn money.
+  getOrCreateLinkForProduct(pid);
   appState.budget -= cost;
-  appState.adCampaigns.push({name:getProductName(pid)+' Social Media Ad',productId:pid,adType:'social',days:duration});
+  appState.adCampaigns.push({name:getProductName(pid)+' '+ad.name,productId:pid,adType:ad.id,days:duration});
   closeBuyAdModal();
-  addActivity('Ad Campaign','Started campaign for '+getProductName(pid)+' for '+duration+' days.',-cost);
+  addActivity('Ad Campaign','Started '+ad.name+' for '+getProductName(pid)+' for '+duration+' days.',-cost);
   updateDashboard();
 }
 function getProductName(pid){var p = appState.products.filter(pr=>pr.id===pid)[0]; return p?p.name:"Product";}
 function buyAdSim(type,productId){
-  var ad = appState.adTypes[0];
+  var ad = appState.adTypes.filter(a=>a.id===type)[0] || appState.adTypes[0];
+  // Running ads costs money each day too.
+  var dailyFee = ad.dailyFee || 0;
+  if(dailyFee>0){
+    if(appState.budget < dailyFee){
+      addActivity('Ad Result', ad.name+': campaign paused (insufficient cash for daily fee).',0);
+      return;
+    }
+    appState.budget -= dailyFee;
+    appState.netWorth -= dailyFee;
+  }
   var viralChance = Math.random();
   var clicks = Math.floor(Math.random()*(ad.convert[1]-ad.convert[0]))+ad.convert[0];
-  var conversions = Math.floor(clicks*ad.rate*(viralChance>0.96?1.8:1));
-  var link = appState.activeLinks.filter(l=>l.productId===productId)[0];
+  var rate = getConversionRate(ad.rate);
+  var conversions = Math.floor(clicks*rate*(viralChance>0.96?1.8:1));
+  // Small floor: big traffic days shouldn't feel totally dead.
+  if(clicks>220 && conversions===0 && Math.random()<0.16) conversions = 1;
+  var link = getOrCreateLinkForProduct(productId);
   var viral = false;var bonus=0;
   if(viralChance>=0.94){
     clicks = Math.floor(clicks*7.3);
@@ -326,10 +443,14 @@ function buyAdSim(type,productId){
   var product = appState.products.filter(p=>p.id===productId)[0];
   if(link){
     link.clicks+=clicks;link.conversions+=conversions;
+    appState.daily.clicks += clicks;
+    appState.daily.conversions += conversions;
+    appState.daily.traffic += clicks;
     var earned = conversions*product.price*product.commission/100;
     appState.commissionDue += earned;appState.netWorth += earned;
     var viralDesc = viral ? ' <span class="viral-feed">🎉 VIRAL!</span>' : '';
-    addActivity('Ad Result', 'Day ad for '+product.name+': '+clicks+' clicks, '+conversions+' conversions, earned $'+earned.toFixed(2)+viralDesc,bonus,true);
+    var feeNote = dailyFee>0 ? ' (fee -$'+dailyFee.toFixed(2)+')' : '';
+    addActivity('Ad Result', ad.name+feeNote+' for '+product.name+': '+clicks+' clicks, '+conversions+' conversions, earned $'+earned.toFixed(2)+viralDesc,bonus,true);
     updateLinksPanel();
     if(viral && appState.viralStreak>=3) unlockAchievement("Trendsetter","3+ campaigns went viral in a row!");
   }
@@ -338,9 +459,10 @@ function autoOrganicSim(type){
   var ch = appState.organicChannels.filter(c=>c.type===type)[0];
   ch.posts++;
   var organicTraffic = Math.floor(Math.random()*44)+18;
-  appState.authority += Math.min(ch.maxAuthority,0.15);
-  appState.reputation += 0.05;
-  var link = appState.activeLinks[0],product;
+  ch.traffic += organicTraffic;
+  appState.authority += progressGain(0.06);
+  appState.reputation += progressGain(0.03);
+  var link = pickRandomActiveLink(),product;
   var viralChance = Math.random();
   var viral=false;var bonus=0;
   if(viralChance>0.97){
@@ -355,8 +477,12 @@ function autoOrganicSim(type){
   if(link){
     product = appState.products.filter(p=>p.id===link.productId)[0];
     link.clicks+=organicTraffic;
-    var conversions = Math.floor(organicTraffic*product.commission/200);
+    var conversions = Math.floor(organicTraffic * getConversionRate(0.018));
+    if(organicTraffic>85 && conversions===0 && Math.random()<0.20) conversions = 1;
     link.conversions+=conversions;
+    appState.daily.clicks += organicTraffic;
+    appState.daily.conversions += conversions;
+    appState.daily.traffic += organicTraffic;
     var earned = conversions*product.price*product.commission/100;
     appState.commissionDue+=earned;appState.netWorth += earned;
     var viralDesc = viral ? ' <span class="viral-feed">🎉 VIRAL!</span>' : '';
@@ -367,8 +493,8 @@ function autoOrganicSim(type){
 }
 function updateTimeline(){
   appState.timeline.push({day:appState.gameDay,budget:appState.budget,netWorth:appState.netWorth,commission:appState.commissionDue});
-  var clicks = sumClicks(), sales = sumConversions();
-  var traffic = clicks + Math.floor(Math.random()*30)+40;
+  var clicks = appState.daily.clicks || 0, sales = appState.daily.conversions || 0;
+  var traffic = appState.daily.traffic || 0;
   appState.statsHistory.push({day:appState.gameDay, t:traffic, c:clicks, s:sales});
   drawStatsChart();
   var html="";
@@ -431,7 +557,7 @@ function renderProducts() {
     var p=appState.products[i];
     html+='<div class="product-card">'
       +'<div class="product-info">'
-      +'<span class="product-name">'+p.name+'</span> <span style="color:#777;font-size:.93em;">['+p.cat+']</span><br>'
+      +'<span class="product-name">'+p.name+'</span> <span class="muted-sm">['+p.cat+']</span><br>'
       +'<span class="product-commission">Commission: '+p.commission+'% | $'+p.price+'</span>'
       +'<span class="product-description">'+p.desc+'</span></div>'
       +'<button class="generate-link-btn" onclick="generateAffiliateLink('+p.id+')">Quick Promote</button>'
@@ -442,12 +568,28 @@ function renderProducts() {
 }
 function renderAdOrganicActions(){
   var adHtml=appState.adTypes.map(function(ad){
-    return '<button class="generate-link-btn" style="margin:5px;" onclick="buyAd(\''+ad.id+'\')">Buy '+ad.name+' ($'+ad.cost+')</button>';
+    return '<button class="generate-link-btn" onclick="buyAd(\''+ad.id+'\')">Buy '+ad.name+' ($'+ad.cost+')</button>';
   }).join('');
   var orgHtml=appState.organicChannels.map(function(ch){
-    return '<button class="generate-link-btn" style="margin:5px;" onclick="makeOrganicAction(\''+ch.type+'\')">Create '+ch.name+'</button>';
+    return '<button class="generate-link-btn" onclick="makeOrganicAction(\''+ch.type+'\')">Create '+ch.name+'</button>';
   }).join('');
-  document.getElementById('adOrganicActions').innerHTML = '<div style="margin:5px 0 0 0;display:flex;flex-wrap:wrap;">'+adHtml+orgHtml+'</div>';
+  document.getElementById('adOrganicActions').innerHTML = '<div class="actions-row">'+adHtml+orgHtml+'</div>';
+}
+
+function buyAd(adTypeId){
+  appState.selectedAdType = adTypeId || 'social';
+
+  var pid = appState.selectedProductForAd;
+  if(!pid){
+    if(appState.activeLinks.length){
+      pid = appState.activeLinks[appState.activeLinks.length-1].productId;
+    } else {
+      showPopupTip('Create an affiliate link first, then buy ads.');
+      return;
+    }
+  }
+
+  showBuyAdModal(pid, appState.selectedAdType);
 }
 function generateAffiliateLink(productId){
   var product;
@@ -513,10 +655,12 @@ function makeOrganicAction(type){
   for(var i=0;i<appState.organicChannels.length;i++){if(appState.organicChannels[i].type===type){ch=appState.organicChannels[i];break;}}
   ch.posts++;
   var organicTraffic = Math.floor(Math.random()*80)+30;
-  appState.authority += Math.min(ch.maxAuthority,1);appState.reputation += 0.15;
+  ch.traffic += organicTraffic;
+  appState.authority += progressGain(0.25);
+  appState.reputation += progressGain(0.12);
   var viralChance = Math.random();
   var viral=false;var bonus=0;
-  if(viralChance>0.13){randomEvent();}
+  if(viralChance<0.13){randomEvent();}
   if(viralChance>=0.94){
     organicTraffic*=7;
     viral=true;
@@ -533,8 +677,12 @@ function makeOrganicAction(type){
     link=appState.activeLinks[idx];
     for(var j=0;j<appState.products.length;j++){if(appState.products[j].id===link.productId){product=appState.products[j];break;}}
     link.clicks+=organicTraffic;
-    var conversions = Math.floor(organicTraffic*product.commission/200);
+    var conversions = Math.floor(organicTraffic * getConversionRate(0.025));
+    if(organicTraffic>95 && conversions===0 && Math.random()<0.22) conversions = 1;
     link.conversions+=conversions;
+    appState.daily.clicks += organicTraffic;
+    appState.daily.conversions += conversions;
+    appState.daily.traffic += organicTraffic;
     var earned = conversions*product.price*product.commission/100;
     appState.commissionDue+=earned;
     appState.netWorth += earned;
@@ -558,7 +706,7 @@ function addActivity(type,description,amount,isViral){
 }
 function renderActivityFeed(){
   var activityFeed = document.getElementById('activityFeed');
-  if(appState.activities.length===0){activityFeed.innerHTML='<p style="text-align:center; color:#999;">No activity yet</p>';return;}
+  if(appState.activities.length===0){activityFeed.innerHTML='<p class="empty-state">No activity yet</p>';return;}
   var html='';
   for(var i=0;i<appState.activities.length;i++){
     var activity=appState.activities[i];
@@ -566,7 +714,7 @@ function renderActivityFeed(){
     html+='<div class="tracking-link-item '+viralClass+'">'
       +'<span class="activity-time">'+formatTime(activity.time)+'</span><br>'
       +activity.description
-      +(activity.amount>0 ? '<span style="color:#11998e;font-weight:bold;">+$'+activity.amount.toFixed(2)+'</span>' : '')
+      +(activity.amount>0 ? '<span class="amount-positive">+$'+activity.amount.toFixed(2)+'</span>' : '')
       +'</div>';
     if(activity.type=="Event" && activity.amount<0) unlockAchievement('Survivor','Survived a negative game event!');
     if(activity.type=="Payout" && activity.amount>50) unlockAchievement('Paid Out','Claimed $50+ in a single payout!');
@@ -588,9 +736,11 @@ function sumClicks(){var c=0;for(var i=0;i<appState.activeLinks.length;i++)c+=ap
 function sumConversions(){var c=0;for(var i=0;i<appState.activeLinks.length;i++)c+=appState.activeLinks[i].conversions;return c;}
 function claimCommission(){
   if(appState.commissionDue<1){showPopupTip('No commission to claim yet.');return;}
-  var fee = Math.floor(appState.commissionDue*.08);
-  appState.budget += appState.commissionDue-fee;
-  addActivity('Payout','Claimed $'+appState.commissionDue.toFixed(2)+', payout fee -$'+fee,appState.commissionDue-fee);
+  var fee = +(appState.commissionDue*0.08).toFixed(2);
+  var payout = +(appState.commissionDue-fee).toFixed(2);
+  appState.budget += payout;
+  appState.netWorth -= fee;
+  addActivity('Payout','Claimed $'+appState.commissionDue.toFixed(2)+', payout fee -$'+fee.toFixed(2),payout);
   appState.commissionDue = 0;
   updateDashboard();
   randomTip();
@@ -605,7 +755,7 @@ function updateAchievements(){
   var html="";
   for(var i=0;i<appState.achievements.length;i++){
     var a=appState.achievements[i];
-    html+='<div class="achievement-badge"><strong>'+a.name+'</strong><br><span style="font-size:0.94em;color:#666;">'+a.desc+'</span></div> ';
+    html+='<div class="achievement-badge"><strong>'+a.name+'</strong><br><span class="achievement-desc">'+a.desc+'</span></div> ';
   }
   document.getElementById('achievementsPanel').innerHTML=html;
 }
@@ -621,6 +771,7 @@ function init(){
   updateDashboard();
   updateAchievements();
   document.getElementById('gameTimeLabel').textContent = "Day "+appState.gameDay+" ("+formatGameDate(appState.gameDay)+")";
+  resetDailyCounters();
 }
 init();
 
