@@ -4,7 +4,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#db5c34">
-  <title>Affiliate Arcade Lab</title>
+  <title>Affiliate Marketing Simulator for Beginners | Affiliate Hub Pro</title>
+  <meta name="description" content="Practice affiliate marketing strategy in a free browser-based simulator. Test offers, SEO, email, community, and paid traffic decisions to learn what drives clicks, EPC, and commissions.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://affiliatehub.pro/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://affiliatehub.pro/">
+  <meta property="og:title" content="Affiliate Marketing Simulator for Beginners | Affiliate Hub Pro">
+  <meta property="og:description" content="Learn affiliate marketing with a free interactive simulator that lets you test offers, channels, and monetization strategy without real ad spend.">
+  <meta property="og:site_name" content="Affiliate Hub Pro">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Affiliate Marketing Simulator for Beginners | Affiliate Hub Pro">
+  <meta name="twitter:description" content="Learn affiliate marketing with a free interactive simulator that lets you test offers, channels, and monetization strategy without real ad spend.">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "Affiliate Hub Pro",
+          "url": "https://affiliatehub.pro/",
+          "description": "Affiliate Hub Pro is a free browser-based affiliate marketing simulator for beginners.",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Affiliate Hub Pro",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web",
+          "isAccessibleForFree": true,
+          "url": "https://affiliatehub.pro/",
+          "description": "A free affiliate marketing simulator and training tool that helps beginners practice offer selection, SEO, email, community, and paid traffic strategy.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Affiliate Hub Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Affiliate Hub Pro is a browser-based affiliate marketing simulator that lets you practice choosing offers, matching traffic channels, and improving monetization strategy without spending real money."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who is this affiliate marketing simulator for?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It is built for beginners, creators, and operators who want to learn affiliate marketing fundamentals such as search intent, EPC, conversion rate, trust building, and channel fit."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I learn affiliate marketing without running paid ads?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The simulator includes search content, email, and community traffic options so users can practice organic affiliate marketing strategy as well as paid traffic testing."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What topics does the simulator teach?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The simulator teaches offer selection, audience intent, conversion optimization, cash flow timing, traffic diversification, and compounding content strategy."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
 
@@ -45,6 +121,23 @@
         radial-gradient(circle at top right, rgba(18, 124, 120, 0.18), transparent 24%),
         linear-gradient(180deg, #fff7ea 0%, #f4ead8 46%, #eedfcb 100%);
       padding-bottom: calc(144px + var(--safe-bottom));
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -48px;
+      z-index: 100;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      top: 12px;
     }
 
     button {
@@ -684,6 +777,74 @@
       display: none;
     }
 
+    .seo-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .seo-card {
+      display: grid;
+      gap: 12px;
+    }
+
+    .seo-card ul,
+    .seo-card ol {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .seo-columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .seo-mini-card {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(23, 32, 36, 0.08);
+      background: rgba(255, 255, 255, 0.74);
+      padding: 14px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(23, 32, 36, 0.08);
+      background: rgba(255, 255, 255, 0.74);
+      padding: 14px;
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item p {
+      margin: 10px 0 0;
+    }
+
+    .seo-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
     @media (min-width: 860px) {
       body {
         padding-bottom: 28px;
@@ -732,35 +893,44 @@
       .desktop-only {
         display: inline-flex;
       }
+
+      .seo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .seo-columns {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
   <div class="toast-stack" id="toastStack"></div>
 
-  <div class="shell">
+  <main class="shell" id="mainContent">
     <section class="hero">
       <div class="hero-card">
-        <div class="eyebrow">Mobile-first affiliate sim with real strategy</div>
-        <h1>Build a money engine with your thumbs.</h1>
+        <div class="eyebrow">Free affiliate marketing simulator for beginners</div>
+        <h1>Learn affiliate marketing with a browser-based simulator.</h1>
         <p class="hero-copy">
-          Pick the right offer, push it through the right channel, stack compounding campaigns, and learn why the numbers move. This version is tuned for short mobile sessions and repeat play.
+          Practice affiliate marketing strategy without risking real ad spend. Test offers, search content, email, community, and paid traffic decisions to see how intent, trust, EPC, and conversions shape revenue.
         </p>
         <div class="headline-grid">
           <div class="headline-stat">
-            <span>Day</span>
+            <span>Session</span>
             <strong id="dayStat">1</strong>
           </div>
           <div class="headline-stat">
-            <span>Cash</span>
+            <span>Cash Flow</span>
             <strong id="cashStat">$750</strong>
           </div>
           <div class="headline-stat">
-            <span>Pending</span>
+            <span>Pending Payout</span>
             <strong id="pendingStat">$0</strong>
           </div>
           <div class="headline-stat">
-            <span>Actions</span>
+            <span>Moves Left</span>
             <strong id="actionsStat">3</strong>
           </div>
         </div>
@@ -769,7 +939,7 @@
       <aside class="hero-card status-card">
         <div>
           <div class="panel-header">
-            <h2>Market Pulse</h2>
+            <h2>Affiliate Strategy Pulse</h2>
             <p id="streakStat">Momentum streak: 0</p>
           </div>
           <div class="market-pulse" id="marketPulse"></div>
@@ -958,7 +1128,92 @@
         <div class="log-feed" id="logFeed"></div>
       </div>
     </section>
-  </div>
+
+    <section class="seo-grid" aria-label="Affiliate marketing simulator guide">
+      <article class="panel seo-card">
+        <div class="panel-header">
+          <div>
+            <h2>Practice affiliate marketing without wasting budget</h2>
+            <p>This page is built to help beginners learn affiliate marketing strategy through simulation, not theory alone.</p>
+          </div>
+        </div>
+        <p class="hero-copy">Affiliate Hub Pro focuses on realistic affiliate decisions: choosing the right offer, matching it to the right channel, building trust, and understanding how EPC, conversion rate, and payout timing affect growth. That makes the page relevant for searches around affiliate marketing simulator, affiliate marketing game, and learn affiliate marketing for beginners.</p>
+        <div class="seo-columns">
+          <div class="seo-mini-card">
+            <h3>Affiliate marketing simulator</h3>
+            <p class="small-copy">Use the interactive tool above to test offer and channel fit before trying similar ideas with real traffic.</p>
+          </div>
+          <div class="seo-mini-card">
+            <h3>Affiliate marketing game</h3>
+            <p class="small-copy">The game loop makes affiliate training easier to repeat, which helps users understand compounding content and monetization mechanics faster.</p>
+          </div>
+          <div class="seo-mini-card">
+            <h3>Learn affiliate marketing</h3>
+            <p class="small-copy">Each action teaches a core concept such as search intent, trust, channel economics, and conversion improvement.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel seo-card">
+        <div class="panel-header">
+          <div>
+            <h2>What the simulator teaches</h2>
+            <p>These are the search intents and learning outcomes this page now supports.</p>
+          </div>
+        </div>
+        <ol>
+          <li>How to choose affiliate offers based on intent, commission rate, and refund risk.</li>
+          <li>How SEO content, email, community, and paid traffic produce different click and conversion profiles.</li>
+          <li>Why trust and useful content improve affiliate conversion rate over time.</li>
+          <li>How to evaluate EPC, CAC, payout timing, and compounding campaigns before scaling.</li>
+        </ol>
+        <p class="seo-note">Higher-volume terms such as affiliate marketing or affiliate marketing for beginners are extremely competitive. This page is better positioned to win long-tail searches tied to a free simulator and hands-on practice.</p>
+      </article>
+
+      <article class="panel seo-card">
+        <div class="panel-header">
+          <div>
+            <h2>How to use Affiliate Hub Pro</h2>
+            <p>Use the simulator as a quick practice loop for affiliate decision-making.</p>
+          </div>
+        </div>
+        <ul>
+          <li>Select an offer and review the expected fit in each traffic channel.</li>
+          <li>Publish, research, and trust-build before spending on scale.</li>
+          <li>Use ad bursts to test economics, not to chase vanity metrics.</li>
+          <li>End the day and study campaign results, payouts, and lessons.</li>
+          <li>Repeat until you can identify profitable combinations consistently.</li>
+        </ul>
+      </article>
+
+      <article class="panel seo-card">
+        <div class="panel-header">
+          <div>
+            <h2>Affiliate marketing FAQ</h2>
+            <p>Visible answers support both users and search engines.</p>
+          </div>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>What is Affiliate Hub Pro?</summary>
+            <p class="small-copy">Affiliate Hub Pro is a free browser-based affiliate marketing simulator that lets you practice offer selection, traffic channel strategy, and monetization decisions without using real money.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Who is this affiliate marketing simulator for?</summary>
+            <p class="small-copy">It is designed for beginners, creators, and affiliate operators who want hands-on practice with SEO, email, community marketing, and paid traffic testing.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I learn affiliate marketing without paying for ads?</summary>
+            <p class="small-copy">Yes. The simulator includes organic traffic paths such as search content, email, and community so users can understand affiliate economics without relying on ad spend.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What metrics should beginners watch first?</summary>
+            <p class="small-copy">Start with click-through rate, conversion rate, EPC, refund risk, and payout timing. Those numbers reveal whether an affiliate campaign is improving or just looks busy.</p>
+          </details>
+        </div>
+      </article>
+    </section>
+  </main>
 
   <div class="mobile-dock" id="mobileDock">
     <div class="dock-head">
