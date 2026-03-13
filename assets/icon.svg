@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Affiliate Hub Pro icon</title>
+  <desc id="desc">Rounded app icon with bars and a growth arrow.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff7ea"/>
+      <stop offset="100%" stop-color="#eedfcb"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#db5c34"/>
+      <stop offset="100%" stop-color="#efb14c"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#127c78"/>
+      <stop offset="100%" stop-color="#1ba9a2"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="64" y="64" width="384" height="384" rx="84" fill="#fff" fill-opacity="0.58" stroke="#172024" stroke-opacity="0.08"/>
+  <rect x="120" y="278" width="44" height="96" rx="22" fill="#172024" fill-opacity="0.15"/>
+  <rect x="188" y="220" width="44" height="154" rx="22" fill="#172024" fill-opacity="0.18"/>
+  <rect x="256" y="160" width="44" height="214" rx="22" fill="url(#teal)"/>
+  <path d="M132 228 C177 195 220 212 259 171 C290 138 315 121 360 119" fill="none" stroke="url(#accent)" stroke-width="34" stroke-linecap="round"/>
+  <path d="M331 106 L384 106 L384 159" fill="none" stroke="url(#accent)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="350" cy="127" r="18" fill="#172024"/>
+</svg>

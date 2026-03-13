@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Affiliate Hub Pro social share card</title>
+  <desc id="desc">Social sharing card for Affiliate Hub Pro featuring the logo, core promise, and game visuals.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#172024"/>
+      <stop offset="100%" stop-color="#26424a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#db5c34"/>
+      <stop offset="100%" stop-color="#efb14c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1042" cy="92" r="110" fill="#db5c34" fill-opacity="0.2"/>
+  <circle cx="120" cy="538" r="140" fill="#127c78" fill-opacity="0.2"/>
+  <g transform="translate(86 82)">
+    <rect width="110" height="110" rx="28" fill="#fff" fill-opacity="0.94"/>
+    <rect x="24" y="70" width="12" height="20" rx="6" fill="#172024" fill-opacity="0.16"/>
+    <rect x="44" y="54" width="12" height="36" rx="6" fill="#172024" fill-opacity="0.18"/>
+    <rect x="64" y="32" width="12" height="58" rx="6" fill="#127c78"/>
+    <path d="M28 58 C40 51 48 48 58 49 C68 50 76 42 88 26" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M78 26 H92 V40" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(230 110)" fill="#fff">
+    <text x="0" y="0" dominant-baseline="hanging" font-family="'Space Grotesk', 'IBM Plex Sans', sans-serif" font-size="66" font-weight="700" letter-spacing="-2.2">Affiliate Hub Pro</text>
+    <text x="0" y="98" font-family="'Space Grotesk', 'IBM Plex Sans', sans-serif" font-size="58" font-weight="700" letter-spacing="-2">Train affiliate instincts before spending real money.</text>
+    <text x="0" y="160" font-family="'IBM Plex Sans', sans-serif" font-size="28" fill="#dbe4e6">Free browser-based simulator for offers, channels, trust, and revenue.</text>
+  </g>
+  <g transform="translate(670 302)">
+    <rect width="444" height="232" rx="30" fill="#fff" fill-opacity="0.96"/>
+    <rect x="28" y="28" width="120" height="84" rx="20" fill="#fff3eb"/>
+    <rect x="162" y="28" width="120" height="84" rx="20" fill="#f0fbfa"/>
+    <rect x="296" y="28" width="120" height="84" rx="20" fill="#fff3eb"/>
+    <rect x="28" y="142" width="330" height="24" rx="12" fill="#172024" fill-opacity="0.08"/>
+    <rect x="28" y="182" width="258" height="24" rx="12" fill="#172024" fill-opacity="0.08"/>
+    <rect x="28" y="142" width="250" height="24" rx="12" fill="url(#accent)"/>
+    <rect x="28" y="182" width="198" height="24" rx="12" fill="#127c78" fill-opacity="0.88"/>
+    <text x="44" y="64" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="700" fill="#172024">Offer</text>
+    <text x="44" y="96" font-family="'IBM Plex Sans', sans-serif" font-size="30" font-weight="700" fill="#172024">124</text>
+    <text x="178" y="64" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="700" fill="#172024">Trust</text>
+    <text x="178" y="96" font-family="'IBM Plex Sans', sans-serif" font-size="30" font-weight="700" fill="#172024">68</text>
+    <text x="312" y="64" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="700" fill="#172024">EPC</text>
+    <text x="312" y="96" font-family="'IBM Plex Sans', sans-serif" font-size="30" font-weight="700" fill="#172024">$3.42</text>
+  </g>
+</svg>

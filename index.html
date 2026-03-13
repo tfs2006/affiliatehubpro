@@ -8,14 +8,27 @@
   <meta name="description" content="Practice affiliate marketing strategy in a free browser-based simulator. Test offers, SEO, email, community, and paid traffic decisions to learn what drives clicks, EPC, and commissions.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="https://affiliatehub.pro/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="mask-icon" href="assets/icon.svg" color="#db5c34">
+  <link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="assets/game-hero.svg" as="image" type="image/svg+xml">
+  <link rel="image_src" href="https://affiliatehub.pro/assets/social-share-card.svg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://affiliatehub.pro/">
   <meta property="og:title" content="Affiliate Marketing Simulator for Beginners | Affiliate Hub Pro">
   <meta property="og:description" content="Learn affiliate marketing with a free interactive simulator that lets you test offers, channels, and monetization strategy without real ad spend.">
   <meta property="og:site_name" content="Affiliate Hub Pro">
+  <meta property="og:image" content="https://affiliatehub.pro/assets/og-image.svg">
+  <meta property="og:image:secure_url" content="https://affiliatehub.pro/assets/og-image.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Affiliate Hub Pro affiliate marketing simulator dashboard artwork">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Affiliate Marketing Simulator for Beginners | Affiliate Hub Pro">
   <meta name="twitter:description" content="Learn affiliate marketing with a free interactive simulator that lets you test offers, channels, and monetization strategy without real ad spend.">
+  <meta name="twitter:image" content="https://affiliatehub.pro/assets/twitter-card.svg">
+  <meta name="twitter:image:alt" content="Affiliate Hub Pro free affiliate marketing simulator social card">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -25,6 +38,8 @@
           "name": "Affiliate Hub Pro",
           "url": "https://affiliatehub.pro/",
           "description": "Affiliate Hub Pro is a free browser-based affiliate marketing simulator for beginners.",
+          "image": "https://affiliatehub.pro/assets/og-image.svg",
+          "thumbnailUrl": "https://affiliatehub.pro/assets/og-image.svg",
           "inLanguage": "en"
         },
         {
@@ -35,6 +50,8 @@
           "isAccessibleForFree": true,
           "url": "https://affiliatehub.pro/",
           "description": "A free affiliate marketing simulator and training tool that helps beginners practice offer selection, SEO, email, community, and paid traffic strategy.",
+          "image": "https://affiliatehub.pro/assets/og-image.svg",
+          "screenshot": "https://affiliatehub.pro/assets/game-hero.svg",
           "offers": {
             "@type": "Offer",
             "price": "0",
@@ -145,9 +162,41 @@
       color: inherit;
     }
 
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
     .shell {
       width: min(100vw - 18px, 100%);
       margin: 10px auto 24px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      width: min(100%, 300px);
+      height: auto;
+    }
+
+    .hero-art-wrap {
+      margin-top: 16px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(23, 32, 36, 0.08);
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+
+    .hero-art {
+      width: 100%;
+      height: auto;
     }
 
     .hero,
@@ -911,11 +960,18 @@
   <main class="shell" id="mainContent">
     <section class="hero">
       <div class="hero-card">
+        <div class="brand-row">
+          <img class="brand-logo" src="assets/logo.svg" alt="Affiliate Hub Pro logo" width="560" height="180">
+          <span class="chip">SEO + Trust + EPC</span>
+        </div>
         <div class="eyebrow">Free affiliate marketing simulator for beginners</div>
         <h1>Learn affiliate marketing with a browser-based simulator.</h1>
         <p class="hero-copy">
           Practice affiliate marketing strategy without risking real ad spend. Test offers, search content, email, community, and paid traffic decisions to see how intent, trust, EPC, and conversions shape revenue.
         </p>
+        <div class="hero-art-wrap">
+          <img class="hero-art" src="assets/game-hero.svg" alt="Illustration of the Affiliate Hub Pro simulator interface showing offer fit, trust, EPC, and traffic channels" width="960" height="720">
+        </div>
         <div class="headline-grid">
           <div class="headline-stat">
             <span>Session</span>

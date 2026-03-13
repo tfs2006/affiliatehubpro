@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" role="img" aria-labelledby="title desc">
+  <title id="title">Affiliate Hub Pro Twitter card</title>
+  <desc id="desc">Wide social card for Affiliate Hub Pro with title and simulator metrics.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff8eb"/>
+      <stop offset="50%" stop-color="#f5ead9"/>
+      <stop offset="100%" stop-color="#eedfcb"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#db5c34"/>
+      <stop offset="100%" stop-color="#efb14c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="800" fill="url(#bg)"/>
+  <circle cx="164" cy="150" r="134" fill="#db5c34" fill-opacity="0.12"/>
+  <circle cx="1422" cy="118" r="126" fill="#127c78" fill-opacity="0.1"/>
+  <g transform="translate(86 82)">
+    <rect width="118" height="118" rx="28" fill="#fffdf7" stroke="#172024" stroke-opacity="0.08"/>
+    <rect x="22" y="74" width="14" height="22" rx="7" fill="#172024" fill-opacity="0.16"/>
+    <rect x="45" y="55" width="14" height="41" rx="7" fill="#172024" fill-opacity="0.18"/>
+    <rect x="68" y="34" width="14" height="62" rx="7" fill="#127c78"/>
+    <path d="M28 58 C41 49 48 47 58 48 C70 49 80 38 93 22" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M84 22 H98 V36" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(236 116)" fill="#172024">
+    <text x="0" y="0" dominant-baseline="hanging" font-family="'Space Grotesk', 'IBM Plex Sans', sans-serif" font-size="78" font-weight="700" letter-spacing="-2.4">Affiliate Hub Pro</text>
+    <text x="0" y="118" font-family="'Space Grotesk', 'IBM Plex Sans', sans-serif" font-size="72" font-weight="700" letter-spacing="-2.6">Free Affiliate Marketing Simulator</text>
+    <text x="0" y="184" font-family="'IBM Plex Sans', sans-serif" font-size="32" fill="#5a6267">Practice SEO, email, community, paid traffic, and conversion strategy.</text>
+  </g>
+  <g transform="translate(116 358)">
+    <rect width="632" height="274" rx="34" fill="#fffdf7" fill-opacity="0.92" stroke="#172024" stroke-opacity="0.08"/>
+    <text x="40" y="64" font-family="'IBM Plex Sans', sans-serif" font-size="28" font-weight="700" fill="#172024">What it teaches</text>
+    <text x="40" y="118" font-family="'IBM Plex Sans', sans-serif" font-size="26" fill="#172024">1. Offer and channel fit</text>
+    <text x="40" y="162" font-family="'IBM Plex Sans', sans-serif" font-size="26" fill="#172024">2. EPC, CAC, and payout timing</text>
+    <text x="40" y="206" font-family="'IBM Plex Sans', sans-serif" font-size="26" fill="#172024">3. Trust and compounding content</text>
+  </g>
+  <g transform="translate(848 300)">
+    <rect width="622" height="332" rx="34" fill="#fffdf7" fill-opacity="0.92" stroke="#172024" stroke-opacity="0.08"/>
+    <rect x="34" y="34" width="170" height="114" rx="24" fill="#fff4ed"/>
+    <rect x="226" y="34" width="170" height="114" rx="24" fill="#f2fbf9"/>
+    <rect x="418" y="34" width="170" height="114" rx="24" fill="#fff4ed"/>
+    <rect x="34" y="182" width="502" height="36" rx="16" fill="#172024" fill-opacity="0.06"/>
+    <rect x="34" y="238" width="398" height="36" rx="16" fill="#172024" fill-opacity="0.06"/>
+    <rect x="34" y="182" width="386" height="36" rx="16" fill="url(#accent)"/>
+    <rect x="34" y="238" width="310" height="36" rx="16" fill="#127c78" fill-opacity="0.88"/>
+    <text x="58" y="76" font-family="'IBM Plex Sans', sans-serif" font-size="24" font-weight="700" fill="#172024">Search Content</text>
+    <text x="58" y="116" font-family="'IBM Plex Sans', sans-serif" font-size="42" font-weight="700" fill="#172024">144</text>
+    <text x="250" y="76" font-family="'IBM Plex Sans', sans-serif" font-size="24" font-weight="700" fill="#172024">Trust</text>
+    <text x="250" y="116" font-family="'IBM Plex Sans', sans-serif" font-size="42" font-weight="700" fill="#172024">68</text>
+    <text x="442" y="76" font-family="'IBM Plex Sans', sans-serif" font-size="24" font-weight="700" fill="#172024">EPC</text>
+    <text x="442" y="116" font-family="'IBM Plex Sans', sans-serif" font-size="42" font-weight="700" fill="#172024">$3.42</text>
+  </g>
+</svg>
