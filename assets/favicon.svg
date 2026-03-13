@@ -1,20 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">Affiliate Hub Pro favicon</title>
-  <desc id="desc">Small brand mark with an ascending arrow.</desc>
+  <desc id="desc">Compact chart badge with an upward growth path.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#fff7ea"/>
-      <stop offset="100%" stop-color="#eedfcb"/>
+    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff8ee"/>
+      <stop offset="1" stop-color="#efdfc8"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#db5c34"/>
-      <stop offset="100%" stop-color="#efb14c"/>
+    <linearGradient id="line" x1="16" y1="17" x2="49" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e16036"/>
+      <stop offset="1" stop-color="#f2b24c"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
-  <rect x="12" y="34" width="7" height="14" rx="3.5" fill="#172024" fill-opacity="0.16"/>
-  <rect x="23" y="27" width="7" height="21" rx="3.5" fill="#127c78"/>
-  <rect x="34" y="19" width="7" height="29" rx="3.5" fill="#172024" fill-opacity="0.2"/>
-  <path d="M15 29 C22 24 27 25 33 20 C37 17 41 15 47 15" fill="none" stroke="url(#accent)" stroke-width="5" stroke-linecap="round"/>
-  <path d="M42 11 H50 V19" fill="none" stroke="url(#accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="#172024" stroke-opacity="0.08"/>
+  <circle cx="48" cy="15" r="10" fill="#127c78" fill-opacity="0.11"/>
+  <rect x="13" y="34" width="7" height="13" rx="3.5" fill="#172024" fill-opacity="0.15"/>
+  <rect x="25" y="27" width="7" height="20" rx="3.5" fill="#127c78"/>
+  <rect x="37" y="21" width="7" height="26" rx="3.5" fill="#172024" fill-opacity="0.22"/>
+  <path d="M15 28 C21 24 25 24 30 22 C35 20 38 16 45 15" fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M40 11 H49 V20" fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

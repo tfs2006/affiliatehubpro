@@ -1,46 +1,63 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Affiliate Hub Pro social share card</title>
-  <desc id="desc">Social sharing card for Affiliate Hub Pro featuring the logo, core promise, and game visuals.</desc>
+  <desc id="desc">Dark social share card for Affiliate Hub Pro with prominent headline and simulator metrics panel.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#172024"/>
-      <stop offset="100%" stop-color="#26424a"/>
+    <linearGradient id="bg" x1="44" y1="34" x2="1144" y2="608" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#152126"/>
+      <stop offset="1" stop-color="#2b474e"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#db5c34"/>
-      <stop offset="100%" stop-color="#efb14c"/>
+    <linearGradient id="panel" x1="672" y1="310" x2="1090" y2="538" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fffefb"/>
+      <stop offset="1" stop-color="#fff6eb"/>
     </linearGradient>
+    <linearGradient id="accent" x1="86" y1="90" x2="1084" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#de6238"/>
+      <stop offset="1" stop-color="#f3b34b"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="816" y1="346" x2="860" y2="470" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#17908c"/>
+      <stop offset="1" stop-color="#0f6f6a"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#081013" flood-opacity="0.26"/>
+    </filter>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="1042" cy="92" r="110" fill="#db5c34" fill-opacity="0.2"/>
-  <circle cx="120" cy="538" r="140" fill="#127c78" fill-opacity="0.2"/>
+  <circle cx="1042" cy="94" r="112" fill="#db5c34" fill-opacity="0.18"/>
+  <circle cx="120" cy="538" r="140" fill="#127c78" fill-opacity="0.16"/>
   <g transform="translate(86 82)">
-    <rect width="110" height="110" rx="28" fill="#fff" fill-opacity="0.94"/>
-    <rect x="24" y="70" width="12" height="20" rx="6" fill="#172024" fill-opacity="0.16"/>
-    <rect x="44" y="54" width="12" height="36" rx="6" fill="#172024" fill-opacity="0.18"/>
-    <rect x="64" y="32" width="12" height="58" rx="6" fill="#127c78"/>
-    <path d="M28 58 C40 51 48 48 58 49 C68 50 76 42 88 26" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
-    <path d="M78 26 H92 V40" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect width="112" height="112" rx="28" fill="#fffef9" fill-opacity="0.96"/>
+    <rect x="1" y="1" width="110" height="110" rx="27" fill="none" stroke="#172024" stroke-opacity="0.08"/>
+    <rect x="24" y="72" width="14" height="20" rx="7" fill="#172024" fill-opacity="0.14"/>
+    <rect x="46" y="54" width="14" height="38" rx="7" fill="#172024" fill-opacity="0.18"/>
+    <rect x="68" y="34" width="14" height="58" rx="7" fill="#127c78"/>
+    <path d="M28 58 C39 51 49 48 59 48 C68 48 78 38 90 24" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M79 24 H93 V38" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g transform="translate(230 110)" fill="#fff">
-    <text x="0" y="0" dominant-baseline="hanging" font-family="'Space Grotesk', 'IBM Plex Sans', sans-serif" font-size="66" font-weight="700" letter-spacing="-2.2">Affiliate Hub Pro</text>
-    <text x="0" y="98" font-family="'Space Grotesk', 'IBM Plex Sans', sans-serif" font-size="58" font-weight="700" letter-spacing="-2">Train affiliate instincts before spending real money.</text>
-    <text x="0" y="160" font-family="'IBM Plex Sans', sans-serif" font-size="28" fill="#dbe4e6">Free browser-based simulator for offers, channels, trust, and revenue.</text>
+  <g transform="translate(232 108)">
+    <text x="0" y="0" dominant-baseline="hanging" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="2.2" fill="#82d2cb">AFFILIATE HUB PRO</text>
+    <text x="0" y="90" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="64" font-weight="700" letter-spacing="-2.4" fill="#ffffff">Train affiliate instincts before spending real money.</text>
+    <text x="0" y="160" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#d8e6e8">Free browser-based simulator for offers, channels, trust, and revenue strategy.</text>
   </g>
-  <g transform="translate(670 302)">
-    <rect width="444" height="232" rx="30" fill="#fff" fill-opacity="0.96"/>
-    <rect x="28" y="28" width="120" height="84" rx="20" fill="#fff3eb"/>
-    <rect x="162" y="28" width="120" height="84" rx="20" fill="#f0fbfa"/>
-    <rect x="296" y="28" width="120" height="84" rx="20" fill="#fff3eb"/>
-    <rect x="28" y="142" width="330" height="24" rx="12" fill="#172024" fill-opacity="0.08"/>
-    <rect x="28" y="182" width="258" height="24" rx="12" fill="#172024" fill-opacity="0.08"/>
-    <rect x="28" y="142" width="250" height="24" rx="12" fill="url(#accent)"/>
-    <rect x="28" y="182" width="198" height="24" rx="12" fill="#127c78" fill-opacity="0.88"/>
-    <text x="44" y="64" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="700" fill="#172024">Offer</text>
-    <text x="44" y="96" font-family="'IBM Plex Sans', sans-serif" font-size="30" font-weight="700" fill="#172024">124</text>
-    <text x="178" y="64" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="700" fill="#172024">Trust</text>
-    <text x="178" y="96" font-family="'IBM Plex Sans', sans-serif" font-size="30" font-weight="700" fill="#172024">68</text>
-    <text x="312" y="64" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="700" fill="#172024">EPC</text>
-    <text x="312" y="96" font-family="'IBM Plex Sans', sans-serif" font-size="30" font-weight="700" fill="#172024">$3.42</text>
+  <g transform="translate(84 420)">
+    <rect width="540" height="92" rx="24" fill="#fff" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.08"/>
+    <text x="28" y="40" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Practice:</text>
+    <text x="28" y="72" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#d8e6e8">offer fit, EPC, traffic channels, and compounding affiliate growth.</text>
+  </g>
+  <g transform="translate(670 302)" filter="url(#shadow)">
+    <rect width="446" height="236" rx="32" fill="url(#panel)"/>
+    <rect x="28" y="28" width="122" height="86" rx="20" fill="#fff2e9"/>
+    <rect x="162" y="28" width="122" height="86" rx="20" fill="#eef9f7"/>
+    <rect x="296" y="28" width="122" height="86" rx="20" fill="#fff5ee"/>
+    <rect x="28" y="144" width="334" height="24" rx="12" fill="#172024" fill-opacity="0.08"/>
+    <rect x="28" y="184" width="260" height="24" rx="12" fill="#172024" fill-opacity="0.08"/>
+    <rect x="28" y="144" width="254" height="24" rx="12" fill="url(#accent)"/>
+    <rect x="28" y="184" width="202" height="24" rx="12" fill="url(#teal)"/>
+    <text x="44" y="64" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#172024">Offer</text>
+    <text x="44" y="96" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#172024">124</text>
+    <text x="178" y="64" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#172024">Trust</text>
+    <text x="178" y="96" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#172024">68</text>
+    <text x="312" y="64" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#172024">EPC</text>
+    <text x="312" y="96" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#172024">$3.42</text>
   </g>
 </svg>

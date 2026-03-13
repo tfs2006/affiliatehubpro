@@ -1,74 +1,79 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
   <title id="title">Affiliate Hub Pro game illustration</title>
-  <desc id="desc">Stylized dashboard artwork showing affiliate offers, channels, trust, and earnings cards.</desc>
+  <desc id="desc">Refined simulator artwork showing offer scoring, traffic mix, and monetization dashboards.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#fff8eb"/>
-      <stop offset="50%" stop-color="#f7eddd"/>
-      <stop offset="100%" stop-color="#eedfcb"/>
+    <linearGradient id="bg" x1="40" y1="28" x2="910" y2="688" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff9ef"/>
+      <stop offset="0.5" stop-color="#f6ead9"/>
+      <stop offset="1" stop-color="#eddcc6"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#db5c34"/>
-      <stop offset="100%" stop-color="#f0ad42"/>
+    <linearGradient id="surface" x1="142" y1="118" x2="824" y2="598" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fffefb"/>
+      <stop offset="1" stop-color="#fff7ec"/>
     </linearGradient>
-    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#127c78"/>
-      <stop offset="100%" stop-color="#1e9e96"/>
+    <linearGradient id="accent" x1="176" y1="160" x2="760" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#de6238"/>
+      <stop offset="1" stop-color="#f3b34b"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="448" y1="208" x2="520" y2="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#17908c"/>
+      <stop offset="1" stop-color="#0f6f6b"/>
     </linearGradient>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="20" stdDeviation="18" flood-color="#8a3026" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#8a3026" flood-opacity="0.16"/>
     </filter>
   </defs>
   <rect width="960" height="720" rx="36" fill="url(#bg)"/>
-  <circle cx="170" cy="120" r="90" fill="#db5c34" fill-opacity="0.10"/>
-  <circle cx="812" cy="180" r="120" fill="#127c78" fill-opacity="0.10"/>
+  <circle cx="130" cy="118" r="84" fill="#db5c34" fill-opacity="0.09"/>
+  <circle cx="820" cy="154" r="116" fill="#127c78" fill-opacity="0.08"/>
+  <circle cx="864" cy="608" r="88" fill="#172024" fill-opacity="0.04"/>
   <g filter="url(#shadow)">
-    <rect x="94" y="98" width="772" height="524" rx="34" fill="#fffdf7" fill-opacity="0.9" stroke="#172024" stroke-opacity="0.08"/>
-    <rect x="124" y="128" width="248" height="142" rx="24" fill="#fff7ea"/>
-    <rect x="394" y="128" width="210" height="142" rx="24" fill="#f4fbfb"/>
-    <rect x="626" y="128" width="210" height="142" rx="24" fill="#fff7ea"/>
-    <rect x="124" y="296" width="452" height="286" rx="28" fill="#ffffff"/>
-    <rect x="598" y="296" width="238" height="128" rx="24" fill="#fff4ed"/>
-    <rect x="598" y="454" width="238" height="128" rx="24" fill="#f2fbf9"/>
+    <rect x="92" y="92" width="776" height="536" rx="38" fill="url(#surface)" stroke="#172024" stroke-opacity="0.08"/>
+    <rect x="118" y="118" width="724" height="44" rx="22" fill="#172024" fill-opacity="0.06"/>
+    <circle cx="150" cy="140" r="7" fill="#db5c34" fill-opacity="0.55"/>
+    <circle cx="174" cy="140" r="7" fill="#d89616" fill-opacity="0.55"/>
+    <circle cx="198" cy="140" r="7" fill="#127c78" fill-opacity="0.55"/>
+    <rect x="124" y="186" width="236" height="132" rx="24" fill="#fff2e8"/>
+    <rect x="376" y="186" width="220" height="132" rx="24" fill="#effaf8"/>
+    <rect x="612" y="186" width="224" height="132" rx="24" fill="#fff7ed"/>
+    <rect x="124" y="344" width="472" height="248" rx="28" fill="#ffffff"/>
+    <rect x="616" y="344" width="220" height="114" rx="24" fill="#fff6ee"/>
+    <rect x="616" y="478" width="220" height="114" rx="24" fill="#f2faf8"/>
   </g>
-  <g font-family="'IBM Plex Sans', sans-serif" fill="#172024">
-    <text x="152" y="166" font-size="26" font-weight="700">Offer Fit</text>
-    <text x="152" y="205" font-size="54" font-weight="700">124</text>
-    <text x="152" y="234" font-size="18" fill="#5a6267">Creator CRM in search content</text>
-    <text x="422" y="166" font-size="26" font-weight="700">Trust</text>
-    <text x="422" y="205" font-size="54" font-weight="700">68</text>
-    <text x="422" y="234" font-size="18" fill="#5a6267">Compounding conversion lift</text>
-    <text x="654" y="166" font-size="26" font-weight="700">EPC</text>
-    <text x="654" y="205" font-size="54" font-weight="700">$3.42</text>
-    <text x="654" y="234" font-size="18" fill="#5a6267">Profit signal before scale</text>
-    <text x="154" y="348" font-size="28" font-weight="700">Traffic Channels</text>
-  </g>
-  <g>
-    <rect x="154" y="376" width="392" height="42" rx="16" fill="#172024" fill-opacity="0.05"/>
-    <rect x="154" y="436" width="302" height="42" rx="16" fill="#172024" fill-opacity="0.05"/>
-    <rect x="154" y="496" width="352" height="42" rx="16" fill="#172024" fill-opacity="0.05"/>
-    <rect x="154" y="556" width="242" height="42" rx="16" fill="#172024" fill-opacity="0.05"/>
-    <rect x="154" y="376" width="304" height="42" rx="16" fill="url(#accent)" fill-opacity="0.95"/>
-    <rect x="154" y="436" width="248" height="42" rx="16" fill="#127c78" fill-opacity="0.85"/>
-    <rect x="154" y="496" width="278" height="42" rx="16" fill="#172024" fill-opacity="0.16"/>
-    <rect x="154" y="556" width="174" height="42" rx="16" fill="#d89616" fill-opacity="0.75"/>
-  </g>
-  <g font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" fill="#172024">
-    <text x="172" y="403">Search Content</text>
-    <text x="172" y="463">Email List</text>
-    <text x="172" y="523">Community</text>
-    <text x="172" y="583">Short Video</text>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#172024">
+    <text x="150" y="228" font-size="23" font-weight="700">Offer Fit</text>
+    <text x="150" y="278" font-size="56" font-weight="700">124</text>
+    <text x="150" y="304" font-size="18" fill="#5a6267">High-intent creator software</text>
+    <text x="402" y="228" font-size="23" font-weight="700">Trust</text>
+    <text x="402" y="278" font-size="56" font-weight="700">68</text>
+    <text x="402" y="304" font-size="18" fill="#5a6267">Momentum from useful content</text>
+    <text x="638" y="228" font-size="23" font-weight="700">EPC</text>
+    <text x="638" y="278" font-size="56" font-weight="700">$3.42</text>
+    <text x="638" y="304" font-size="18" fill="#5a6267">Strong signal before scale</text>
+    <text x="154" y="392" font-size="28" font-weight="700">Traffic Mix</text>
+    <text x="646" y="392" font-size="24" font-weight="700">Why this round wins</text>
+    <text x="646" y="420" font-size="18" fill="#5a6267">The simulator rewards fit, patience, and real audience intent.</text>
+    <text x="646" y="520" font-size="22" font-weight="700">Search-led strategy</text>
+    <text x="646" y="548" font-size="18" fill="#5a6267">Best compounding path for beginner affiliates.</text>
   </g>
   <g>
-    <path d="M638 380 C676 338 714 330 760 312 C784 302 806 284 824 254" fill="none" stroke="url(#accent)" stroke-width="18" stroke-linecap="round"/>
-    <path d="M790 254 H828 V292" fill="none" stroke="url(#accent)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="744" cy="316" r="11" fill="#172024"/>
+    <rect x="154" y="420" width="400" height="40" rx="16" fill="#172024" fill-opacity="0.05"/>
+    <rect x="154" y="476" width="332" height="40" rx="16" fill="#172024" fill-opacity="0.05"/>
+    <rect x="154" y="532" width="368" height="40" rx="16" fill="#172024" fill-opacity="0.05"/>
+    <rect x="154" y="420" width="322" height="40" rx="16" fill="url(#accent)"/>
+    <rect x="154" y="476" width="264" height="40" rx="16" fill="url(#teal)"/>
+    <rect x="154" y="532" width="230" height="40" rx="16" fill="#172024" fill-opacity="0.16"/>
+    <rect x="646" y="446" width="156" height="16" rx="8" fill="#172024" fill-opacity="0.08"/>
+    <rect x="646" y="570" width="144" height="12" rx="6" fill="#172024" fill-opacity="0.08"/>
   </g>
-  <g font-family="'IBM Plex Sans', sans-serif" fill="#172024">
-    <text x="626" y="340" font-size="28" font-weight="700">Why rankings and revenue move</text>
-    <text x="626" y="372" font-size="18" fill="#5a6267">Offer fit, user intent, trust, and payout timing.</text>
-    <text x="626" y="506" font-size="24" font-weight="700">Search first</text>
-    <text x="626" y="536" font-size="18" fill="#5a6267">Durable traffic with strong intent.</text>
-    <text x="626" y="564" font-size="18" fill="#5a6267">Best for compounding affiliate assets.</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#172024">
+    <text x="172" y="446">Search Content</text>
+    <text x="172" y="502">Email Nurture</text>
+    <text x="172" y="558">Community</text>
+  </g>
+  <g>
+    <path d="M650 442 C694 410 724 396 754 382 C784 368 809 340 824 302" fill="none" stroke="url(#accent)" stroke-width="18" stroke-linecap="round"/>
+    <path d="M790 302 H828 V340" fill="none" stroke="url(#accent)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="748" cy="384" r="10" fill="#172024"/>
   </g>
 </svg>
