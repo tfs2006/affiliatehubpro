@@ -2,786 +2,1715 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-  <title>AffiliateHub Pro - Real Life Affiliate Marketing Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiliate Arcade Lab</title>
   <style>
-    :root {
-      --bg1: #667eea;
-      --bg2: #764ba2;
-      --accent1: #667eea;
-      --accent2: #764ba2;
-      --success1: #11998e;
-      --success2: #38ef7d;
-      --warn1: #ffda77;
-      --warn2: #ffe6a3;
-      --card: rgba(255,255,255,0.96);
-      --text: #222;
-      --muted: #666;
-      --border: rgba(0,0,0,0.08);
-      --shadow-lg: 0 10px 32px rgba(0,0,0,0.12);
-      --shadow-md: 0 8px 22px rgba(0,0,0,0.10);
-      --shadow-sm: 0 1px 8px rgba(0,0,0,0.10);
-      --radius-xl: 22px;
-      --radius-lg: 15px;
-      --radius-md: 11px;
-    }
-    html { box-sizing: border-box; }
-    *, *:before, *:after { box-sizing: inherit; }
-    body {
-      font-family:'Segoe UI',Arial,sans-serif;
-      background:linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);
-      color: var(--text);
-      line-height: 1.35;
-      margin:0;
-      padding:0;
-      min-height:100vh;
-      overscroll-behavior-y:contain;
-    }
-    .container {
-      max-width:1400px;
-      margin:0 auto;
-      padding:clamp(10px, 2.2vw, 20px);
-    }
-    .header {
-      background:var(--card);
-      padding:24px 18px;
-      border-radius:var(--radius-xl);
-      margin-bottom:16px;
-      box-shadow:var(--shadow-lg);
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      align-items:center;
-      border: 1px solid var(--border);
-    }
-    .logo {font-size:2em;font-weight:bold;background:linear-gradient(135deg,var(--accent1),var(--accent2));background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px;}
-    .user-info {display:flex;flex-wrap:wrap;align-items:center;gap:14px;font-size:1em;}
-    .balance, .commission-due, .net-worth {
-      background:linear-gradient(135deg,var(--success1),var(--success2));
-      color:white;padding:8px 15px;border-radius:19px;font-weight:bold;font-size:1em;margin:2px 0;
-    }
-    .clock {background:linear-gradient(135deg,var(--warn1),var(--warn2));color:#7b5e19;border-radius:9px;font-weight:700;
-      font-size:1em;padding:6px 14px;margin-bottom:10px;margin-top:-7px;display:inline-block;}
-    .mainstats {display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-bottom:22px;}
-    .stat-card {background:var(--card);padding:18px;border-radius:13px;box-shadow:var(--shadow-md);border:1px solid var(--border);}
-    .stat-label {color:#444;font-size:12px;font-weight:bold;margin-bottom:9px;text-transform:uppercase;letter-spacing:1px;}
-    .stat-value {font-size:23px;font-weight:bold;color:#333;margin-bottom:11px;}
-    .main-content {
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:18px;
-      margin-bottom:20px;
-    }
-    @media (min-width: 900px) {
-      .main-content--top {grid-template-columns: 1.15fr 0.85fr;align-items:start;}
-      .main-content--bottom {grid-template-columns: 1fr 1fr;align-items:start;}
-    }
-    .section {background:var(--card);padding:15px;border-radius:var(--radius-lg);box-shadow:0 8px 22px rgba(0,0,0,0.09);margin-bottom:9px;border:1px solid var(--border);}
-    .section-title {font-size:1em;font-weight:800;color:#2b2b2b;margin-bottom:13px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.06);letter-spacing:-0.2px;}
-    .product-card {background:linear-gradient(135deg,#f5f7fa,#c3cfe2);padding:13px;border-radius:11px;margin-bottom:11px;display:flex;flex-direction:column;gap:3px;}
-    .product-info {flex:1;}
-    .product-name {font-size:1em;font-weight:bold;color:#333;margin-bottom:3px;}
-    .product-commission {color:#11998e;font-weight:600;font-size:12px;margin-right:4px;}
-    .product-description {color:#777;font-size:.95em;margin-top:1px;}
-    .generate-link-btn {
-      background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;padding:8px 12px;border-radius:14px;cursor:pointer;font-weight:bold;transition:.2s;min-width:100px;margin:3px 2px;font-size:.97em;touch-action:manipulation;
-    }
-    .generate-link-btn:active,.generate-link-btn:hover {background:linear-gradient(135deg,#764ba2,#667eea);box-shadow:0 1px 5px #667eea44;}
-    .generate-link-btn:focus-visible {outline:3px solid rgba(255,255,255,0.75);outline-offset:2px;box-shadow:0 0 0 4px rgba(102,126,234,0.35);}
-    .generate-link-btn--payout {background:linear-gradient(90deg,#ee0979,#ff6a00);border-radius:8px;}
-    .generate-link-btn--payout:active,.generate-link-btn--payout:hover {background:linear-gradient(90deg,#ff6a00,#ee0979);}
-    .generate-link-btn--secondary {background:#eee;color:#333;}
-    .generate-link-btn--secondary:active,.generate-link-btn--secondary:hover {background:#e6e6e6;}
-    .btn-row {margin-top:7px;}
-    .section-title--spaced {margin-top:11px;}
-    .section-title--spaced-sm {margin-top:10px;}
-    .chart {width:100%;max-width:650px;display:block;margin:11px auto 10px auto;border-radius:11px;background:#f7f7ff;box-shadow:0 1px 10px #e2eeff;}
-    .chart-legend {text-align:center;font-size:.96em;margin-bottom:5px;margin-top:-10px;}
-    .legend-dot {font-weight:800;}
-    .legend-dot--traffic {color:#347bff;}
-    .legend-dot--clicks {color:#30be76;}
-    .legend-dot--sales {color:#9157c8;}
-    .muted-sm {color:#777;font-size:.93em;}
-    .empty-state {text-align:center;color:#999;}
-    .amount-positive {color:#11998e;font-weight:bold;}
-    .achievement-desc {font-size:0.94em;color:#666;}
-    .actions-row {margin:5px 0 0 0;display:flex;flex-wrap:wrap;gap:6px;}
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
 
-    #buyAdModal h3 {font-size:1em;margin-bottom:8px;}
-    #buyAdModal label {font-size:.97em;}
-    #buyAdModal input[type="range"] {width:120px;}
-    .modal-help {margin:6px 0;color:#666;font-size:.93em;}
-    .affiliate-link-card {background:linear-gradient(135deg,#fdfbfb,#ebedee);border-radius:11px;padding:15px 9px;margin-bottom:13px;box-shadow:0 1px 8px #ddd;}
-    .aff-title-row {display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin-bottom:6px;}
-    .affiliate-product {font-size:1em;font-weight:bold;color:#343050;margin-right:6px;white-space:nowrap;}
-    .affiliate-url {
-      font-family:monospace;width:100%;font-size:.95em;padding:4px 8px;border:1px solid #ddd;
-      border-radius:7px;background:#fff;color:#404040;margin-left:0;
-      cursor: text;
+    :root {
+      --bg: #f5efe3;
+      --ink: #182126;
+      --muted: #5d6467;
+      --panel: rgba(255, 252, 246, 0.9);
+      --panel-strong: #fffaf1;
+      --border: rgba(24, 33, 38, 0.08);
+      --accent: #db5c34;
+      --accent-deep: #8e2c2c;
+      --accent-soft: #ffd1b8;
+      --teal: #0f7b7b;
+      --gold: #d89a1d;
+      --blue: #3268a8;
+      --success: #1d8b57;
+      --danger: #b34747;
+      --shadow: 0 22px 60px rgba(88, 57, 26, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
     }
-    .affiliate-url:focus-visible {outline:3px solid rgba(102,126,234,0.35);outline-offset:2px;}
-    .aff-stats-row {display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.97em;margin-top:2px;}
-    @media (max-width:700px) {
-      .container {padding:6px;}
-      .header {flex-direction:column;gap:7px;padding:12px;}
-      .mainstats {grid-template-columns:1fr;}
-      .user-info {flex-direction:column;align-items:flex-start;}
-      .main-content {gap:10px;}
-      .section {padding:7px;}
-      .product-card {padding:7px;}
-      .affiliate-link-card {padding:8px 3px;}
+
+    * {
+      box-sizing: border-box;
     }
-    .event-popup {display:none;position:fixed;left:50%;top:11vh;transform:translateX(-50%);background:#ffeeba;border-radius:11px;padding:11px 17px;box-shadow:0 2px 18px #88888844;z-index:99;font-size:.98em;color:#4F4F2F;max-width:88vw;text-align:center;}
-    .viral-banner {display:none;position:fixed;top:0;left:50%;transform:translateX(-50%);z-index:1200;background:linear-gradient(90deg,#f3355a,#fae05b,#38ef7d);color:#222;font-weight:bold;font-size:1em;padding:12px 18px;border-radius:0 0 18px 18px;box-shadow:0 11px 44px #4442;}
-    .achievements-panel{background:#f7f7fa;border-radius:10px;padding:11px;margin-bottom:8px;box-shadow:0 1px 10px #efefef77;}
-    .achievement-badge{margin-bottom:6px;display:inline-block;background:#eaeaff;padding:7px 14px;border-radius:9px;font-weight:bold;color:#333;font-size:.93em;}
-    .leaderboard {list-style:none;margin-top:10px;}
-    .leaderboard-item {display:flex;justify-content:space-between;align-items:center;padding:7px 0;background:#f8f9fa;margin-bottom:3px;border-radius:7px;}
-    .leaderboard-rank {width:27px;height:27px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:15px;margin-right:7px;}
-    .leaderboard-name {flex:1;margin-left:11px;font-weight:600;}
-    .leaderboard-earnings {color:#11998e;font-weight:bold;font-size:15px;}
-    .timeline-panel{background:#f7f7fa;border-radius:7px;padding:8px 5px;margin-bottom:8px;}
-    .viral-feed {background:linear-gradient(90deg,rgba(51,255,108,0.13),rgba(249,99,54,0.14));border-radius:8px;padding:2px 7px;border:1px solid #f8e3ec;font-weight:bold;color:#b940aa;}
-    .tracking-link-item {background:linear-gradient(135deg,#fdfbfb,#ebedee);padding:7px;border-radius:8px;margin-bottom:9px;font-size:.97em;word-break:break-all;}
-    .link-url {font-family:monospace;background:#fff;padding:5px;border-radius:5px;margin:0 0 3px 0;word-break:break-all;font-size:.94em;border:1px solid #e0e0e0;}
-    .activity-time {font-size:.92em;color:#9a91a1;}
-    @media (max-width:460px) {
-      .logo {font-size:1.4em;}
-      .clock,.balance,.commission-due,.net-worth {font-size:.97em;}
-      .mainstats {font-size:.98em;}
-      .stat-value {font-size:17px;}
-      .section-title {font-size:.95em;}
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: 'IBM Plex Sans', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(219, 92, 52, 0.15), transparent 28%),
+        radial-gradient(circle at top right, rgba(15, 123, 123, 0.18), transparent 26%),
+        linear-gradient(180deg, #fff8ed 0%, #f3ebdc 48%, #efe4d1 100%);
     }
-    /* Modal mobile-friendly */
-    #buyAdModal {
-      display:none;
-      position:fixed;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      background:#fff;
-      padding:12px 7px;
-      max-width:98vw;
-      font-size:.97em;
-      border-radius:15px;
-      box-shadow:0 4px 34px #33333322;
-      z-index:101;
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1480px, calc(100vw - 28px));
+      margin: 18px auto 30px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .hero-card,
+    .panel {
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      inset: auto -90px -90px auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(219, 92, 52, 0.2), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 209, 184, 0.55);
+      color: var(--accent-deep);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      margin-top: 14px;
+      font-size: clamp(32px, 4vw, 56px);
+      line-height: 0.94;
+      max-width: 11ch;
+    }
+
+    .hero-copy {
+      margin-top: 14px;
+      width: min(62ch, 100%);
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .headline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .headline-stat {
+      padding: 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(24, 33, 38, 0.07);
+    }
+
+    .headline-stat span {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .headline-stat strong {
+      font-size: 28px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .status-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      background:
+        linear-gradient(160deg, rgba(15, 123, 123, 0.12), transparent 40%),
+        var(--panel);
+    }
+
+    .market-pulse {
+      padding: 16px;
+      border-radius: var(--radius-lg);
+      background: #fffdf7;
+      border: 1px solid rgba(24, 33, 38, 0.08);
+    }
+
+    .market-pulse strong {
+      color: var(--accent-deep);
+    }
+
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric-tile {
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(24, 33, 38, 0.07);
+    }
+
+    .metric-tile span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .metric-tile strong {
+      font-size: 23px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.3fr 1.05fr 1fr;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 20px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 16px;
+    }
+
+    .panel-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .product-card,
+    .channel-card,
+    .campaign-card,
+    .lesson-card,
+    .mission-card,
+    .log-item,
+    .tip-card {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(24, 33, 38, 0.08);
+      background: rgba(255, 255, 255, 0.72);
+      padding: 16px;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .product-card.is-selected,
+    .channel-card.is-selected,
+    .campaign-card.is-selected {
+      border-color: rgba(219, 92, 52, 0.5);
+      box-shadow: 0 14px 28px rgba(219, 92, 52, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .product-top,
+    .channel-top,
+    .campaign-top,
+    .mission-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(15, 123, 123, 0.12);
+      color: var(--teal);
+    }
+
+    .tag.warn {
+      background: rgba(216, 154, 29, 0.14);
+      color: #8c640f;
+    }
+
+    .tag.hot {
+      background: rgba(219, 92, 52, 0.14);
+      color: var(--accent-deep);
+    }
+
+    .small-copy {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .score-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .progress {
+      margin-top: 12px;
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(24, 33, 38, 0.08);
+      overflow: hidden;
+    }
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), #f0b04c);
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .action-btn,
+    .ghost-btn,
+    .mini-btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 16px;
+      transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+    }
+
+    .action-btn:disabled,
+    .ghost-btn:disabled,
+    .mini-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .action-btn:hover:not(:disabled),
+    .ghost-btn:hover:not(:disabled),
+    .mini-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .action-btn {
+      min-height: 72px;
+      padding: 14px;
+      text-align: left;
+      background: linear-gradient(135deg, #fff8ea, #ffe6cb);
+      border: 1px solid rgba(219, 92, 52, 0.18);
+      box-shadow: 0 10px 22px rgba(219, 92, 52, 0.1);
+    }
+
+    .action-btn strong,
+    .ghost-btn strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 4px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .action-btn span,
+    .ghost-btn span {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .ghost-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .ghost-btn {
+      min-height: 58px;
+      padding: 12px 14px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(24, 33, 38, 0.1);
+    }
+
+    .mini-btn {
+      padding: 9px 12px;
+      background: var(--ink);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .mini-btn.alt {
+      background: rgba(24, 33, 38, 0.07);
+      color: var(--ink);
+    }
+
+    .log-feed,
+    .campaign-feed,
+    .lesson-feed,
+    .achievements-feed,
+    .concept-feed {
+      display: grid;
+      gap: 10px;
+    }
+
+    .log-item strong,
+    .lesson-card strong,
+    .mission-card strong,
+    .tip-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .log-item p,
+    .lesson-card p,
+    .mission-card p,
+    .tip-card p,
+    .concept-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .lesson-card {
+      background: linear-gradient(135deg, rgba(15, 123, 123, 0.1), rgba(255, 255, 255, 0.88));
+    }
+
+    .tip-card {
+      background: linear-gradient(135deg, rgba(216, 154, 29, 0.12), rgba(255, 255, 255, 0.88));
+    }
+
+    .concept-card {
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(24, 33, 38, 0.08);
+    }
+
+    .concept-card strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .history-chart {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 6px;
+      align-items: end;
+      min-height: 130px;
+    }
+
+    .bar {
+      border-radius: 999px 999px 10px 10px;
+      background: linear-gradient(180deg, rgba(50, 104, 168, 0.9), rgba(15, 123, 123, 0.82));
+      position: relative;
+      min-height: 10px;
+    }
+
+    .bar::after {
+      content: attr(data-day);
+      position: absolute;
+      left: 50%;
+      bottom: -20px;
+      transform: translateX(-50%);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .highlight {
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .danger {
+      color: var(--danger);
+      font-weight: 700;
+    }
+
+    .section-block + .section-block {
+      margin-top: 18px;
+    }
+
+    .footer-row {
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1180px) {
+      .hero,
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .headline-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100vw - 14px, 100%);
+        margin-top: 8px;
+      }
+
+      .hero-card,
+      .panel,
+      .status-card {
+        padding: 16px;
+      }
+
+      .headline-grid,
+      .metric-strip,
+      .action-grid,
+      .ghost-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <div class="logo">⚡ AffiliateHub Pro</div>
-    <div class="user-info">
-      <div class="balance">Cash: $<span id="budget">500.00</span></div>
-      <div class="commission-due">Commission to Claim: $<span id="commissionDue">0.00</span></div>
-      <div class="net-worth">Net Worth: $<span id="netWorth">500.00</span></div>
-    </div>
-  </div>
-  <div class="clock" id="gameTimeLabel"></div>
-  <div class="mainstats">
-    <div class="stat-card"><div class="stat-label">Total Clicks</div><div class="stat-value" id="totalClicks">0</div></div>
-    <div class="stat-card"><div class="stat-label">Conversions</div><div class="stat-value" id="totalConversions">0</div></div>
-    <div class="stat-card"><div class="stat-label">Active Links</div><div class="stat-value" id="activeLinksStat">0</div></div>
-    <div class="stat-card"><div class="stat-label">Reputation</div><div class="stat-value" id="reputation">1</div></div>
-    <div class="stat-card"><div class="stat-label">Authority</div><div class="stat-value" id="authority">1</div></div>
-  </div>
-  <div class="main-content main-content--top">
-    <div class="section">
-      <div class="section-title">Product Marketplace</div>
-      <div id="productsList"></div>
-      <div id="adOrganicActions"></div>
-    </div>
-    <div class="section">
-      <div class="section-title">Top Affiliates</div>
-      <ul class="leaderboard" id="leaderboard"></ul>
-      <div class="btn-row">
-        <button onclick="claimCommission()" class="generate-link-btn generate-link-btn--payout">Claim Payout</button>
+  <div class="shell">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Affiliate simulator with strategy, compounding, and feedback</div>
+        <h1>Build a real affiliate engine, not a clicky slot machine.</h1>
+        <p class="hero-copy">
+          Pick offers, match them to the right traffic channel, compound your content portfolio, and learn why some campaigns print cash while others burn budget. Every turn gives you both outcomes and the reason behind them.
+        </p>
+        <div class="headline-grid">
+          <div class="headline-stat">
+            <span>Day</span>
+            <strong id="dayStat">1</strong>
+          </div>
+          <div class="headline-stat">
+            <span>Cash</span>
+            <strong id="cashStat">$750</strong>
+          </div>
+          <div class="headline-stat">
+            <span>Pending</span>
+            <strong id="pendingStat">$0</strong>
+          </div>
+          <div class="headline-stat">
+            <span>Actions</span>
+            <strong id="actionsStat">3</strong>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="main-content main-content--bottom">
-    <div class="section">
-      <div class="section-title">Your Affiliate Links</div>
-      <div id="linksPanel"></div>
-    </div>
-    <div class="section">
-      <div class="section-title">Organic Growth Progress</div>
-      <div id="organicProgress"></div>
-      <div class="section-title section-title--spaced">Achievements</div>
-      <div class="achievements-panel" id="achievementsPanel"></div>
-      <div class="section-title section-title--spaced-sm">Timeline</div>
-      <div class="timeline-panel" id="timelinePanel"></div>
-      <canvas id="animatedStatsChart" width="480" height="130" class="chart"></canvas>
-      <div class="chart-legend">
-        <span class="legend-dot legend-dot--traffic">● Traffic</span>
-        &nbsp; <span class="legend-dot legend-dot--clicks">● Clicks</span>
-        &nbsp; <span class="legend-dot legend-dot--sales">● Sales</span>
+      <aside class="hero-card status-card">
+        <div>
+          <div class="panel-header">
+            <h2>Market Pulse</h2>
+            <p id="streakStat">Momentum streak: 0</p>
+          </div>
+          <div class="market-pulse" id="marketPulse"></div>
+        </div>
+        <div class="metric-strip">
+          <div class="metric-tile">
+            <span>Net Worth</span>
+            <strong id="worthStat">$750</strong>
+          </div>
+          <div class="metric-tile">
+            <span>Level</span>
+            <strong id="levelStat">1</strong>
+          </div>
+          <div class="metric-tile">
+            <span>Trust</span>
+            <strong id="trustStat">20</strong>
+          </div>
+          <div class="metric-tile">
+            <span>Skill</span>
+            <strong id="skillStat">20</strong>
+          </div>
+        </div>
+        <div class="tip-card" id="coachTip"></div>
+      </aside>
+    </section>
+
+    <section class="layout">
+      <div class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Offers</h2>
+            <p>Higher commissions are tempting. Fit and intent usually matter more.</p>
+          </div>
+          <button class="mini-btn alt" id="shuffleFocusBtn" type="button">Rotate focus</button>
+        </div>
+        <div class="stack" id="productList"></div>
       </div>
-    </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Execution Deck</h2>
+            <p>Selected offer and channel shape every action.</p>
+          </div>
+          <button class="mini-btn alt" id="endDayBtnTop" type="button">End day</button>
+        </div>
+        <div class="section-block">
+          <div class="stack" id="channelList"></div>
+        </div>
+        <div class="section-block">
+          <div class="lesson-card" id="selectionInsight"></div>
+          <div class="action-grid">
+            <button class="action-btn" id="publishBtn" type="button">
+              <strong>Publish content</strong>
+              <span>Create or strengthen a compounding campaign in the selected channel.</span>
+            </button>
+            <button class="action-btn" id="adBurstBtn" type="button">
+              <strong>Run ad burst</strong>
+              <span>Spend $120 for immediate traffic. Good for testing, bad for blind hope.</span>
+            </button>
+            <button class="action-btn" id="researchBtn" type="button">
+              <strong>Research angle</strong>
+              <span>Reveal a better channel fit and gain skill.</span>
+            </button>
+            <button class="action-btn" id="trustBtn" type="button">
+              <strong>Build trust</strong>
+              <span>Improve conversion rate, audience retention, and long-term payouts.</span>
+            </button>
+          </div>
+          <div class="ghost-row">
+            <button class="ghost-btn" id="upgradeBtn" type="button">
+              <strong>Upgrade channel</strong>
+              <span id="upgradeCopy">Spend cash to scale this channel's reach.</span>
+            </button>
+            <button class="ghost-btn" id="resetBtn" type="button">
+              <strong>Reset run</strong>
+              <span>Start fresh if you want a new climb.</span>
+            </button>
+          </div>
+        </div>
+        <div class="footer-row">
+          <span id="nextMove"></span>
+          <button class="mini-btn" id="endDayBtnBottom" type="button">End day and simulate</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Coach Desk</h2>
+            <p>Use the numbers. Good simulators teach pattern recognition.</p>
+          </div>
+          <button class="mini-btn alt" id="saveBtn" type="button">Save run</button>
+        </div>
+        <div class="stack">
+          <div class="mission-card" id="missionCard"></div>
+          <div class="lesson-feed" id="lessonFeed"></div>
+          <div class="concept-feed" id="conceptFeed"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout" style="margin-top: 18px;">
+      <div class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Campaign Portfolio</h2>
+            <p>Publishing once helps. Publishing repeatedly compounds.</p>
+          </div>
+          <p id="portfolioLabel">0 live campaigns</p>
+        </div>
+        <div class="campaign-feed" id="campaignFeed"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Performance</h2>
+            <p>Watch momentum, not just isolated hits.</p>
+          </div>
+          <p id="performanceLabel">CTR 0.0% | CVR 0.0%</p>
+        </div>
+        <div class="metric-strip">
+          <div class="metric-tile">
+            <span>Total Clicks</span>
+            <strong id="clicksStat">0</strong>
+          </div>
+          <div class="metric-tile">
+            <span>Total Sales</span>
+            <strong id="salesStat">0</strong>
+          </div>
+          <div class="metric-tile">
+            <span>EPC</span>
+            <strong id="epcStat">$0.00</strong>
+          </div>
+          <div class="metric-tile">
+            <span>Audience</span>
+            <strong id="audienceStat">0</strong>
+          </div>
+        </div>
+        <div class="history-chart" id="historyChart"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Run Log</h2>
+            <p>Recent wins, misses, and lessons.</p>
+          </div>
+          <p id="xpLabel">XP 0 / 100</p>
+        </div>
+        <div class="achievements-feed" id="achievementFeed"></div>
+        <div class="log-feed" id="logFeed"></div>
+      </div>
+    </section>
   </div>
-  <div class="section">
-    <div class="section-title">Activity Timeline</div>
-    <div id="activityFeed"></div>
-  </div>
-  <div class="viral-banner" id="viralBanner" role="status" aria-live="polite"></div>
-  <div class="event-popup" id="eventPopup" role="status" aria-live="polite"></div>
-  <div id="buyAdModal">
-    <h3>Buy Ad Campaign</h3>
-    <label>Duration (days):
-      <input type="range" min="1" max="30" value="1" id="adDurationSlider" oninput="updateAdDurationLabel(this.value)">
-      <span id="adDurationLabel">1</span>
-    </label>
-    <div class="modal-help">Costs multiply per day selected.</div>
-    <button onclick="confirmBuyAd()" class="generate-link-btn">Confirm</button>
-    <button onclick="closeBuyAdModal()" class="generate-link-btn generate-link-btn--secondary">Cancel</button>
-  </div>
-</div>
-<script>
-// Full logic, viral and mobile-ready. All functions as in previous "viral" answer—here is the complete script:
-var appState = {
-  budget: 500, netWorth: 500, commissionDue: 0, gameDay: 1,
-  activeLinksCount: 0, reputation: 1, authority: 1,
-  activities: [], activeLinks: [], achievements:[], timeline:[], statsHistory:[],
-  viralStreak:0,
-  daily: { traffic:0, clicks:0, conversions:0 },
-  adCampaigns:[],
-  products: [
-    { id:1,name:'Premium Web Hosting',cat:'Tech',commission:36,price:99,desc:'Blazing-fast hosting for any site.' },
-    { id:2,name:'Lifestyle Meal Kits',cat:'Health',commission:18,price:59,desc:'Healthy meals delivered weekly.' },
-    { id:3,name:'SaaS Sales CRM Pro',cat:'B2B',commission:29,price:199,desc:'CRM for sales teams.' },
-    { id:4,name:'Fitness Tracker',cat:'Tech',commission:21,price:119,desc:'Monitor health and activity.' },
-    { id:5,name:'Designer Sunglasses',cat:'Fashion',commission:22,price:129,desc:'Luxury sunglasses.' },
-    { id:6,name:'Home Cleaning Robots',cat:'Tech',commission:15,price:259,desc:'Automated robot cleaning.' }
-  ],
-  adTypes: [
-    { id:'social', name:'Social Media Ad', cost:54, dailyFee:3, convert:[120,370], rate:0.038 },
-    { id:'search', name:'Search Engine Ad', cost:108, dailyFee:7, convert:[300,700], rate:0.052 },
-    { id:'display', name:'Display Ad', cost:76, dailyFee:5, convert:[160,550], rate:0.028 },
-    { id:'influencer', name:'Influencer Shoutout', cost:180, dailyFee:0, convert:[480,1700], rate:0.075 }
-  ],
-  organicChannels:[
-    {type:'blog',name:'Blog',posts:0,traffic:0,maxAuthority:6},
-    {type:'site',name:'Website',posts:0,traffic:0,maxAuthority:12},
-    {type:'social',name:'Social Page',posts:0,traffic:0,maxAuthority:7},
-    {type:'email',name:'Email List',posts:0,traffic:0,maxAuthority:4}
-  ],
-  leaderboard:[
-    {name:'Sarah Marketing',earnings:16420},
-    {name:'Tech Guru Mike',earnings:13850},
-    {name:'Affiliate Amy',earnings:10720},
-    {name:'Growth Hacker Joe',earnings:9320}
-  ],
-  events:[
-    {type:'fee',txt:"Platform Fee: Unexpected fee!",impact:-8},
-    {type:'chargeback',txt:"Chargeback: Conversion reversed.",impact:-18},
-    {type:'bot_clicks',txt:"Fake Traffic! Lost on bots.",impact:-12},
-    {type:'server_outage',txt:"Seller Outage: No earnings.",impact:-15},
-    {type:'bonus',txt:"Performance Bonus! Reputation boost.",impact:+18},
-    {type:'press',txt:"Trending! Featured product, viral boost!",impact:+40}
-  ],
-  tips:["Tip: Match products to audiences.",
-    "Most affiliate campaigns lose at first. Test & learn!",
-    "Payouts and commissions can be delayed.",
-    "Reputation/authority are key for higher commission.",
-    "Diversify your marketing channels.",
-    "Small failures build experience for big wins.",
-    "Watch out for hidden fees!",
-    "Chargebacks hurt—track traffic sources!",
-    "Every failed campaign is a lesson!",
-    "VIRAL ADVICE: Double down when your campaign trends!"
-  ]
-};
-// --- all game logic follows (same as previous, fully included/glued) ---
-function showPopupTip(msg) {
-  var popup = document.getElementById('eventPopup');
-  popup.innerHTML = msg;
-  popup.style.display = 'block';
-  setTimeout(function(){popup.style.display='none';},3200);
-}
-function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
-function resetDailyCounters(){appState.daily={traffic:0,clicks:0,conversions:0};}
-function getLinkForProduct(productId){return appState.activeLinks.filter(l=>l.productId===productId)[0]||null;}
-function pickRandomActiveLink(){
-  if(!appState.activeLinks.length) return null;
-  return appState.activeLinks[Math.floor(Math.random()*appState.activeLinks.length)];
-}
-function progressGain(base){
-  var a = clamp(appState.authority, 0, 50);
-  var r = clamp(appState.reputation, 0, 50);
-  return base / (1 + 0.05*a + 0.03*r);
-}
-function getOrCreateLinkForProduct(productId){
-  var existing=getLinkForProduct(productId);
-  if(existing) return existing;
-  var product=appState.products.filter(p=>p.id===productId)[0];
-  if(!product) return null;
-  var linkId = Math.random().toString(36).substr(2,9);
-  var affiliateLink = 'https://affiliatehub.pro/go/'+linkId;
-  var linkData = {id:linkId,productId:productId,productName:product.name,url:affiliateLink,clicks:0,conversions:0,commissionDue:0,created:new Date()};
-  appState.activeLinks.push(linkData);
-  appState.activeLinksCount++;
-  addActivity('Link Generated','Created link for '+product.name+' (auto)',0);
-  return linkData;
-}
-function getConversionRate(baseRate){
-  var a = clamp(appState.authority, 0, 100);
-  var r = clamp(appState.reputation, 0, 100);
-  // Diminishing-returns scaling: meaningful early, stable late.
-  var multiplier = 1 + 0.018*Math.sqrt(a) + 0.012*Math.sqrt(r);
-  return clamp(baseRate * multiplier, 0.001, 0.18);
-}
-function showViralBanner(msg) {
-  var banner=document.getElementById('viralBanner');
-  banner.textContent=msg;
-  banner.style.display='block';
-  setTimeout(function(){banner.style.display='none';},3000);
-}
-function randomEvent() {
-  var ev = Math.random()<0.18
-    ? {type:'viral',txt:"VIRAL PRESS: Your affiliate campaign goes viral on socials! 💥🔥",impact:+Math.floor(Math.random()*110+70)}
-    : appState.events[Math.floor(Math.random()*appState.events.length)];
-  if(ev.impact<0 && appState.budget+ev.impact<0) return;
-  appState.budget += ev.impact;
-  appState.netWorth += ev.impact;
-  if(ev.type==='viral') {
-    appState.viralStreak++;
-    showViralBanner(ev.txt+" Boost: +$"+ev.impact);
-    unlockAchievement("Viral Press","Your campaign got featured on social media!");
-    addActivity('Event',ev.txt+" Boost +$"+ev.impact+' <span class="viral-feed">VIRAL!</span>',ev.impact,true);
-  } else {
-    addActivity('Event',ev.txt,ev.impact);
-    showPopupTip(ev.txt+(ev.impact>0?" (+$"+ev.impact+")":" (-$"+Math.abs(ev.impact)+")"));
-  }
-  updateDashboard();
-}
-function randomTip() {showPopupTip(appState.tips[Math.floor(Math.random()*appState.tips.length)]);}
-function formatGameDate(day){
-  var base=new Date(2025,0,1);base.setDate(base.getDate()+day-1);
-  return base.toDateString();
-}
-function advanceDay(){
-  appState.gameDay += 1;
-  document.getElementById('gameTimeLabel').textContent = "Day "+appState.gameDay+" ("+formatGameDate(appState.gameDay)+")";
-  resetDailyCounters();
-  runDailySim();
-  updateTimeline();
-  checkWinLoss();
-}
-function runDailySim(){
-  for(var i=0;i<appState.adCampaigns.length;i++){
-    var camp=appState.adCampaigns[i];
-    if(camp.days>0){
-      buyAdSim(camp.adType,camp.productId);
-      camp.days--;
-      addActivity('Ad Campaign',camp.name + " (Days left: "+camp.days+")",0);
-      if(camp.days===0) addActivity('Ad Campaign Ended',camp.name+" finished!",0);
+
+  <script>
+    const STORAGE_KEY = 'affiliate-arcade-lab-save';
+
+    const PRODUCTS = [
+      {
+        id: 'creator-crm',
+        name: 'Creator CRM',
+        niche: 'Productivity',
+        price: 149,
+        commissionRate: 0.32,
+        baseCv: 0.028,
+        volatility: 0.12,
+        refundRisk: 0.05,
+        description: 'A workflow tool for creators and solo operators who want fewer dropped leads.',
+        fit: { seo: 1.24, short: 0.76, email: 1.18, community: 1.08, ads: 0.94 }
+      },
+      {
+        id: 'fit-reset',
+        name: 'Fit Reset Blueprint',
+        niche: 'Wellness',
+        price: 89,
+        commissionRate: 0.52,
+        baseCv: 0.034,
+        volatility: 0.2,
+        refundRisk: 0.1,
+        description: 'A structured eight-week habit program with strong hooks and higher refund risk.',
+        fit: { seo: 1.05, short: 1.16, email: 1.02, community: 1.1, ads: 1.03 }
+      },
+      {
+        id: 'money-map',
+        name: 'Money Map Course',
+        niche: 'Finance',
+        price: 219,
+        commissionRate: 0.24,
+        baseCv: 0.021,
+        volatility: 0.1,
+        refundRisk: 0.04,
+        description: 'A premium budgeting and cash-flow course that sells with credibility and patience.',
+        fit: { seo: 1.21, short: 0.72, email: 1.2, community: 1.08, ads: 0.88 }
+      },
+      {
+        id: 'desk-aesthetic',
+        name: 'Desk Aesthetic Bundle',
+        niche: 'Lifestyle',
+        price: 64,
+        commissionRate: 0.4,
+        baseCv: 0.041,
+        volatility: 0.26,
+        refundRisk: 0.08,
+        description: 'Impulse-friendly digital bundle with strong visual appeal and plenty of copy angles.',
+        fit: { seo: 0.92, short: 1.3, email: 0.97, community: 1.04, ads: 1.06 }
+      },
+      {
+        id: 'ai-toolkit',
+        name: 'AI Workflow Toolkit',
+        niche: 'Tech',
+        price: 129,
+        commissionRate: 0.34,
+        baseCv: 0.026,
+        volatility: 0.18,
+        refundRisk: 0.06,
+        description: 'Templates, prompts, and automations for teams trying to move faster with AI.',
+        fit: { seo: 1.18, short: 0.95, email: 1.14, community: 1.15, ads: 1.02 }
+      },
+      {
+        id: 'home-gym',
+        name: 'Compact Home Gym',
+        niche: 'Wellness',
+        price: 279,
+        commissionRate: 0.14,
+        baseCv: 0.017,
+        volatility: 0.14,
+        refundRisk: 0.03,
+        description: 'A higher-ticket physical product that rewards trust and punishes weak intent.',
+        fit: { seo: 1.08, short: 0.9, email: 1.12, community: 1.06, ads: 0.85 }
+      }
+    ];
+
+    const CHANNELS = [
+      {
+        id: 'seo',
+        name: 'Search Content',
+        blurb: 'Slower start, durable traffic, high intent.',
+        baseReach: 115,
+        ctrBase: 0.06,
+        intent: 1.16,
+        growth: 0.08,
+        upgradeBase: 90
+      },
+      {
+        id: 'short',
+        name: 'Short Video',
+        blurb: 'Fast reach, volatile clicks, weaker intent unless the hook is sharp.',
+        baseReach: 180,
+        ctrBase: 0.04,
+        intent: 0.86,
+        growth: 0.18,
+        upgradeBase: 85
+      },
+      {
+        id: 'email',
+        name: 'Email List',
+        blurb: 'Requires an audience first, but your best converter when trust is high.',
+        baseReach: 72,
+        ctrBase: 0.11,
+        intent: 1.28,
+        growth: 0.12,
+        upgradeBase: 110
+      },
+      {
+        id: 'community',
+        name: 'Community',
+        blurb: 'Comments, trust, and useful discussions. Stable but not explosive.',
+        baseReach: 92,
+        ctrBase: 0.055,
+        intent: 1.08,
+        growth: 0.14,
+        upgradeBase: 100
+      }
+    ];
+
+    const CONCEPTS = [
+      {
+        title: 'EPC',
+        text: 'Earnings per click helps compare offers fast. If one product makes more per visitor, you can often afford higher traffic costs.'
+      },
+      {
+        title: 'Intent beats vanity reach',
+        text: 'A smaller audience with buying intent will often outperform a huge audience that is only curious.'
+      },
+      {
+        title: 'Compounding content',
+        text: 'SEO and community assets can keep producing after the day you publish them. That is what makes them simulator-worthy.'
+      },
+      {
+        title: 'Trust raises conversion',
+        text: 'People buy more readily from sources that feel consistent, useful, and specific. Trust turns similar traffic into better revenue.'
+      }
+    ];
+
+    const TRENDS = [
+      { niche: 'Tech', label: 'AI operators and automation workflows are peaking.', boost: 1.22 },
+      { niche: 'Wellness', label: 'Habit resets and home training are flooding feeds.', boost: 1.24 },
+      { niche: 'Finance', label: 'Budgeting and savings content is gaining search volume.', boost: 1.2 },
+      { niche: 'Lifestyle', label: 'Aesthetic organization content is trending visually.', boost: 1.26 },
+      { niche: 'Productivity', label: 'Small business systems are hot with creators.', boost: 1.23 }
+    ];
+
+    const LESSON_LIBRARY = {
+      publish: 'Publishing into the right channel builds an asset. Search and community pieces can keep paying because the traffic source sticks around.',
+      ads: 'Paid traffic is a testing tool. Compare your cost per acquisition against your commission, or you are just renting dopamine.',
+      research: 'Research is leverage. Knowing the strongest angle lets you spend actions where the offer-channel fit is actually favorable.',
+      trust: 'Trust lifts conversion rate across every campaign. It is boring, which is why it compounds harder than hype.',
+      payout: 'Commission timing matters. Profit on paper is not the same thing as cash you can deploy today.'
+    };
+
+    function baseState() {
+      return {
+        day: 1,
+        actions: 3,
+        cash: 750,
+        pending: 0,
+        netWorth: 750,
+        trust: 20,
+        skill: 20,
+        level: 1,
+        xp: 0,
+        xpNext: 100,
+        totalClicks: 0,
+        totalSales: 0,
+        totalRevenue: 0,
+        streak: 0,
+        selectedProductId: PRODUCTS[0].id,
+        selectedChannelId: CHANNELS[0].id,
+        log: [],
+        lessons: [],
+        achievements: [],
+        research: {},
+        campaigns: [],
+        payoutQueue: [],
+        channels: CHANNELS.reduce((acc, channel) => {
+          acc[channel.id] = { level: 1, audience: channel.id === 'email' ? 42 : 0 };
+          return acc;
+        }, {}),
+        history: [],
+        turnStats: { published: 0, clicks: 0, sales: 0, trustGain: 0 },
+        marketTrend: TRENDS[0],
+        coachTip: 'Start by matching a product to the channel where intent is strongest. A simulator should reward judgment, not random tapping.',
+        mission: null,
+        gameFocusIndex: 0
+      };
     }
-  }
-  for(var i=0;i<appState.organicChannels.length;i++){
-    autoOrganicSim(appState.organicChannels[i].type);
-  }
-  updateDashboard();
-}
-function showBuyAdModal(pid, adTypeId){
-  appState.selectedProductForAd = pid;
-  if(adTypeId) appState.selectedAdType = adTypeId;
-  if(!appState.selectedAdType) appState.selectedAdType = 'social';
-  document.getElementById('adDurationSlider').value=1;
-  updateAdDurationLabel(1);
-  document.getElementById('buyAdModal').style.display='block';
-}
-function closeBuyAdModal(){document.getElementById('buyAdModal').style.display='none';}
-function updateAdDurationLabel(v){document.getElementById('adDurationLabel').innerText=v;}
-function confirmBuyAd(){
-  var duration = parseInt(document.getElementById('adDurationSlider').value);
-  var pid = appState.selectedProductForAd;
-  var adType = appState.selectedAdType || 'social';
-  var ad = appState.adTypes.filter(a=>a.id===adType)[0] || appState.adTypes[0];
-  var cost = ad.cost * duration;
-  if(appState.budget < cost){ showPopupTip("Not enough cash for campaign."); return;}
-  // Ensure the campaign can actually earn money.
-  getOrCreateLinkForProduct(pid);
-  appState.budget -= cost;
-  appState.adCampaigns.push({name:getProductName(pid)+' '+ad.name,productId:pid,adType:ad.id,days:duration});
-  closeBuyAdModal();
-  addActivity('Ad Campaign','Started '+ad.name+' for '+getProductName(pid)+' for '+duration+' days.',-cost);
-  updateDashboard();
-}
-function getProductName(pid){var p = appState.products.filter(pr=>pr.id===pid)[0]; return p?p.name:"Product";}
-function buyAdSim(type,productId){
-  var ad = appState.adTypes.filter(a=>a.id===type)[0] || appState.adTypes[0];
-  // Running ads costs money each day too.
-  var dailyFee = ad.dailyFee || 0;
-  if(dailyFee>0){
-    if(appState.budget < dailyFee){
-      addActivity('Ad Result', ad.name+': campaign paused (insufficient cash for daily fee).',0);
-      return;
+
+    let state = loadState();
+
+    function loadState() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) {
+        const fresh = baseState();
+        fresh.mission = createMission(fresh);
+        return fresh;
+      }
+
+      try {
+        const parsed = JSON.parse(raw);
+        const fresh = baseState();
+        const merged = {
+          ...fresh,
+          ...parsed,
+          channels: { ...fresh.channels, ...(parsed.channels || {}) },
+          research: parsed.research || {},
+          campaigns: parsed.campaigns || [],
+          payoutQueue: parsed.payoutQueue || [],
+          log: parsed.log || [],
+          lessons: parsed.lessons || [],
+          achievements: parsed.achievements || [],
+          history: parsed.history || []
+        };
+        merged.mission = parsed.mission || createMission(merged);
+        return merged;
+      } catch (_error) {
+        const fresh = baseState();
+        fresh.mission = createMission(fresh);
+        return fresh;
+      }
     }
-    appState.budget -= dailyFee;
-    appState.netWorth -= dailyFee;
-  }
-  var viralChance = Math.random();
-  var clicks = Math.floor(Math.random()*(ad.convert[1]-ad.convert[0]))+ad.convert[0];
-  var rate = getConversionRate(ad.rate);
-  var conversions = Math.floor(clicks*rate*(viralChance>0.96?1.8:1));
-  // Small floor: big traffic days shouldn't feel totally dead.
-  if(clicks>220 && conversions===0 && Math.random()<0.16) conversions = 1;
-  var link = getOrCreateLinkForProduct(productId);
-  var viral = false;var bonus=0;
-  if(viralChance>=0.94){
-    clicks = Math.floor(clicks*7.3);
-    conversions = Math.floor(conversions*3.8);
-    viral=true;
-    bonus=Math.floor(conversions*ad.dailyFee*2.2+Math.random()*60);
-    appState.budget+=bonus;appState.netWorth+=bonus;
-    appState.viralStreak++;
-    showViralBanner("VIRAL AD BLAST: "+clicks+" clicks, "+conversions+" conversions! Bonus +$"+bonus);
-    unlockAchievement("Viral Ad","Your paid ad campaign suddenly went viral!");
-  }
-  var product = appState.products.filter(p=>p.id===productId)[0];
-  if(link){
-    link.clicks+=clicks;link.conversions+=conversions;
-    appState.daily.clicks += clicks;
-    appState.daily.conversions += conversions;
-    appState.daily.traffic += clicks;
-    var earned = conversions*product.price*product.commission/100;
-    appState.commissionDue += earned;appState.netWorth += earned;
-    var viralDesc = viral ? ' <span class="viral-feed">🎉 VIRAL!</span>' : '';
-    var feeNote = dailyFee>0 ? ' (fee -$'+dailyFee.toFixed(2)+')' : '';
-    addActivity('Ad Result', ad.name+feeNote+' for '+product.name+': '+clicks+' clicks, '+conversions+' conversions, earned $'+earned.toFixed(2)+viralDesc,bonus,true);
-    updateLinksPanel();
-    if(viral && appState.viralStreak>=3) unlockAchievement("Trendsetter","3+ campaigns went viral in a row!");
-  }
-}
-function autoOrganicSim(type){
-  var ch = appState.organicChannels.filter(c=>c.type===type)[0];
-  ch.posts++;
-  var organicTraffic = Math.floor(Math.random()*44)+18;
-  ch.traffic += organicTraffic;
-  appState.authority += progressGain(0.06);
-  appState.reputation += progressGain(0.03);
-  var link = pickRandomActiveLink(),product;
-  var viralChance = Math.random();
-  var viral=false;var bonus=0;
-  if(viralChance>0.97){
-    organicTraffic *= 7;
-    viral=true;
-    bonus = Math.floor(Math.random()*160+33);
-    appState.budget+=bonus;appState.netWorth+=bonus;
-    appState.viralStreak++;
-    showViralBanner("ORGANIC VIRAL: "+ch.name+" reached "+organicTraffic+" traffic! Bonus +$"+bonus);
-    unlockAchievement("Organic Viral","Viral organic traffic boost!");
-  }
-  if(link){
-    product = appState.products.filter(p=>p.id===link.productId)[0];
-    link.clicks+=organicTraffic;
-    var conversions = Math.floor(organicTraffic * getConversionRate(0.018));
-    if(organicTraffic>85 && conversions===0 && Math.random()<0.20) conversions = 1;
-    link.conversions+=conversions;
-    appState.daily.clicks += organicTraffic;
-    appState.daily.conversions += conversions;
-    appState.daily.traffic += organicTraffic;
-    var earned = conversions*product.price*product.commission/100;
-    appState.commissionDue+=earned;appState.netWorth += earned;
-    var viralDesc = viral ? ' <span class="viral-feed">🎉 VIRAL!</span>' : '';
-    addActivity('Auto Organic','Day '+type+': '+organicTraffic+' organic visitors, '+conversions+' conversions, earned $'+earned.toFixed(2)+viralDesc,bonus,true);
-    updateLinksPanel();
-  }
-  if(viral && appState.viralStreak>=3) unlockAchievement("Content Trendsetter","3+ organic campaigns went viral in a row!");
-}
-function updateTimeline(){
-  appState.timeline.push({day:appState.gameDay,budget:appState.budget,netWorth:appState.netWorth,commission:appState.commissionDue});
-  var clicks = appState.daily.clicks || 0, sales = appState.daily.conversions || 0;
-  var traffic = appState.daily.traffic || 0;
-  appState.statsHistory.push({day:appState.gameDay, t:traffic, c:clicks, s:sales});
-  drawStatsChart();
-  var html="";
-  for(var i=0;i<appState.timeline.length;i++){
-    var t=appState.timeline[i];
-    html+="Day "+t.day+": Net Worth $"+t.netWorth.toFixed(2)+" | Cash $"+t.budget.toFixed(2)+"<br>";
-  }
-  document.getElementById('timelinePanel').innerHTML=html;
-}
-function drawStatsChart() {
-  var canvas = document.getElementById('animatedStatsChart');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  var h = appState.statsHistory || [];
-  var len = Math.min(h.length,28), offset = Math.max(0, h.length-len);
-  var maxT=1, maxC=1, maxS=1;
-  for(var i=offset;i<h.length;i++){
-    maxT = Math.max(maxT, h[i].t); maxC = Math.max(maxC, h[i].c); maxS = Math.max(maxS, h[i].s);
-  }
-  var y=function(v,max){return canvas.height-24-((v/max)*85);}
-  var X=function(i){return 36+i*(canvas.width-60)/(Math.max(len-1,1));};
-  var lastIdx=h.length-1; var animStep=0, animMax=14;
-  function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.strokeStyle="#347bff"; ctx.lineWidth=3; ctx.beginPath();
-    for(var i=offset;i<h.length;i++){
-      var px=X(i-offset), py=y(i==lastIdx?h[i].t*(1+.06*(animStep/animMax)):h[i].t,maxT);
-      if(i==offset)ctx.moveTo(px,py);else ctx.lineTo(px,py);
-      ctx.globalAlpha=0.98; ctx.fillStyle="#347bff"; ctx.beginPath(); ctx.arc(px,py,2.1,0,6.3); ctx.fill();
-    }ctx.stroke();
-    ctx.strokeStyle="#30be76";ctx.lineWidth=2;ctx.beginPath();
-    for(var i=offset;i<h.length;i++){
-      var px=X(i-offset), py=y(i==lastIdx?h[i].c*(1+.11*(animStep/animMax)):h[i].c,maxC);
-      if(i==offset)ctx.moveTo(px,py);else ctx.lineTo(px,py);
-      ctx.globalAlpha=0.97; ctx.fillStyle="#30be76"; ctx.beginPath(); ctx.arc(px,py,2.1,0,6.3); ctx.fill();
-    }ctx.stroke();
-    ctx.strokeStyle="#9157c8";ctx.lineWidth=2;ctx.beginPath();
-    for(var i=offset;i<h.length;i++){
-      var px=X(i-offset), py=y(i==lastIdx?h[i].s*(1+.18*(animStep/animMax)):h[i].s,maxS);
-      if(i==offset)ctx.moveTo(px,py);else ctx.lineTo(px,py);
-      ctx.globalAlpha=0.88; ctx.fillStyle="#9157c8"; ctx.beginPath(); ctx.arc(px,py,2.1,0,6.3); ctx.fill();
-    }ctx.stroke();
-    animStep++; if(animStep<animMax) requestAnimationFrame(animate);
-  }
-  animate();
-}
-function checkWinLoss(){
-  if(appState.budget<0){
-    showPopupTip("Out of cash! You lost. Try again with a new strategy.");clearInterval(dayTimer);
-  }
-  if(appState.netWorth>=5000){
-    showPopupTip("Victory! You reached $5,000 net worth. You win!");
-    clearInterval(dayTimer);unlockAchievement("Victory","Reached $5,000 net worth. Master Affiliate!");
-  }
-}
-function renderProducts() {
-  var html="";
-  for(var i=0;i<appState.products.length;i++){
-    var p=appState.products[i];
-    html+='<div class="product-card">'
-      +'<div class="product-info">'
-      +'<span class="product-name">'+p.name+'</span> <span class="muted-sm">['+p.cat+']</span><br>'
-      +'<span class="product-commission">Commission: '+p.commission+'% | $'+p.price+'</span>'
-      +'<span class="product-description">'+p.desc+'</span></div>'
-      +'<button class="generate-link-btn" onclick="generateAffiliateLink('+p.id+')">Quick Promote</button>'
-      +'<button class="generate-link-btn" onclick="showBuyAdModal('+p.id+')">Paid Ad (Choose Campaign Length)</button>'
-      +'</div>';
-  }
-  document.getElementById('productsList').innerHTML = html;
-}
-function renderAdOrganicActions(){
-  var adHtml=appState.adTypes.map(function(ad){
-    return '<button class="generate-link-btn" onclick="buyAd(\''+ad.id+'\')">Buy '+ad.name+' ($'+ad.cost+')</button>';
-  }).join('');
-  var orgHtml=appState.organicChannels.map(function(ch){
-    return '<button class="generate-link-btn" onclick="makeOrganicAction(\''+ch.type+'\')">Create '+ch.name+'</button>';
-  }).join('');
-  document.getElementById('adOrganicActions').innerHTML = '<div class="actions-row">'+adHtml+orgHtml+'</div>';
-}
 
-function buyAd(adTypeId){
-  appState.selectedAdType = adTypeId || 'social';
-
-  var pid = appState.selectedProductForAd;
-  if(!pid){
-    if(appState.activeLinks.length){
-      pid = appState.activeLinks[appState.activeLinks.length-1].productId;
-    } else {
-      showPopupTip('Create an affiliate link first, then buy ads.');
-      return;
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     }
-  }
 
-  showBuyAdModal(pid, appState.selectedAdType);
-}
-function generateAffiliateLink(productId){
-  var product;
-  for(var i=0;i<appState.products.length;i++){if(appState.products[i].id===productId){product=appState.products[i];break;}}
-  var linkId = Math.random().toString(36).substr(2,9);
-  var affiliateLink = 'https://affiliatehub.pro/go/'+linkId;
-  var linkData = {
-    id:linkId,productId:productId,productName:product.name,
-    url:affiliateLink,clicks:0,conversions:0,commissionDue:0,created:new Date()
-  };
-  appState.activeLinks.push(linkData);
-  appState.activeLinksCount++;
-  addActivity('Link Generated','Created link for '+product.name,0);
-  updateLinksPanel();
-  updateDashboard();
-  showPopupTip('Now promote: '+product.name+'! Try ads or organic.');
-  unlockAchievement('Link Creator', 'Created your first affiliate link!');
-}
-function updateLinksPanel() {
-  var html='';
-  for(var i=0;i<appState.activeLinks.length;i++){
-    var link=appState.activeLinks[i],product;
-    for(var j=0;j<appState.products.length;j++){if(appState.products[j].id===link.productId){product=appState.products[j];break;}}
-    var earned = link.conversions*product.price*product.commission/100;
-    html+=`
-    <div class="affiliate-link-card">
-      <div class="aff-title-row">
-        <span class="affiliate-product">${link.productName}</span>
-        <input class="affiliate-url" value="${link.url}" readonly onclick="this.select()">
-      </div>
-      <div class="aff-stats-row">
-        <span><b>Clicks:</b> ${link.clicks}</span>
-        <span><b>Conversions:</b> ${link.conversions}</span>
-        <span><b>Commission Gained:</b> $${earned.toFixed(2)}</span>
-      </div>
-    </div>`;
-    if(earned>=100) unlockAchievement("Big Earner","Earned $100+ commission on a link!");
-  }
-  document.getElementById('linksPanel').innerHTML = html;
-  document.getElementById('activeLinksStat').textContent = appState.activeLinks.length;
-}
-function renderLeaderboard(){
-  var leaderboard = document.getElementById('leaderboard');
-  appState.leaderboard.sort(function(a,b){return b.earnings-a.earnings;});
-  var html="";
-  for(var i=0;i<appState.leaderboard.length;i++){
-    var affiliate=appState.leaderboard[i];
-    html+='<li class="leaderboard-item"><span class="leaderboard-rank">'+(i+1)+'</span> <span class="leaderboard-name">'+affiliate.name+'</span> <span class="leaderboard-earnings">$'+affiliate.earnings.toLocaleString()+'</span></li>';
-  }
-  leaderboard.innerHTML = html;
-}
-function renderOrganicProgress(){
-  var html="";
-  for(var i=0;i<appState.organicChannels.length;i++){
-    var ch=appState.organicChannels[i];
-    html+='<div class="product-description"><strong>'+ch.name+'</strong>: Posts '+ch.posts+', Organic Traffic '+ch.traffic+'</div>';
-    if(ch.posts>=10) unlockAchievement('Content Machine','Created 10+ '+ch.name+' posts!');
-  }
-  document.getElementById('organicProgress').innerHTML = html;
-}
-function makeOrganicAction(type){
-  var ch;
-  for(var i=0;i<appState.organicChannels.length;i++){if(appState.organicChannels[i].type===type){ch=appState.organicChannels[i];break;}}
-  ch.posts++;
-  var organicTraffic = Math.floor(Math.random()*80)+30;
-  ch.traffic += organicTraffic;
-  appState.authority += progressGain(0.25);
-  appState.reputation += progressGain(0.12);
-  var viralChance = Math.random();
-  var viral=false;var bonus=0;
-  if(viralChance<0.13){randomEvent();}
-  if(viralChance>=0.94){
-    organicTraffic*=7;
-    viral=true;
-    bonus = Math.floor(Math.random()*180+45);
-    appState.budget+=bonus;
-    appState.netWorth+=bonus;
-    appState.viralStreak++;
-    showViralBanner("ORGANIC SOCIAL VIRAL: "+ch.name+" reached "+organicTraffic+" visitors! Bonus +$"+bonus);
-    unlockAchievement("Social Trend Viral","You started a viral social streak!");
-  }
-  var link=null,product=null;
-  if(appState.activeLinks.length){
-    var idx=Math.floor(Math.random()*appState.activeLinks.length);
-    link=appState.activeLinks[idx];
-    for(var j=0;j<appState.products.length;j++){if(appState.products[j].id===link.productId){product=appState.products[j];break;}}
-    link.clicks+=organicTraffic;
-    var conversions = Math.floor(organicTraffic * getConversionRate(0.025));
-    if(organicTraffic>95 && conversions===0 && Math.random()<0.22) conversions = 1;
-    link.conversions+=conversions;
-    appState.daily.clicks += organicTraffic;
-    appState.daily.conversions += conversions;
-    appState.daily.traffic += organicTraffic;
-    var earned = conversions*product.price*product.commission/100;
-    appState.commissionDue+=earned;
-    appState.netWorth += earned;
-    var viralDesc=viral?' <span class="viral-feed">🎉 VIRAL!</span>':'';
-    addActivity('Organic Growth','Created '+ch.name+' content: '+organicTraffic+' visitors, '+conversions+' conversions, earned $'+earned.toFixed(2)+viralDesc,bonus,true);
-    updateLinksPanel();
-    if(appState.netWorth>=1000) unlockAchievement("First $1000","You reached $1,000 net worth!");
-    if(viral && appState.viralStreak>=3) unlockAchievement("Viral Social Streak","3+ social posts went viral!");
-  }else{
-    addActivity('Organic Growth', 'Created '+ch.name+' content, '+organicTraffic+' visitors but no links!',0,viral);
-  }
-  updateDashboard();renderOrganicProgress();
-  if(viral) showPopupTip('Organic traffic went VIRAL!');
-  randomTip();
-}
-function addActivity(type,description,amount,isViral){
-  var activity = {type:type,description:description,amount:amount,time:new Date(),isViral:isViral};
-  appState.activities.unshift(activity);
-  if(appState.activities.length>16) appState.activities.pop();
-  renderActivityFeed();
-}
-function renderActivityFeed(){
-  var activityFeed = document.getElementById('activityFeed');
-  if(appState.activities.length===0){activityFeed.innerHTML='<p class="empty-state">No activity yet</p>';return;}
-  var html='';
-  for(var i=0;i<appState.activities.length;i++){
-    var activity=appState.activities[i];
-    var viralClass = activity.isViral ? 'viral-feed' : '';
-    html+='<div class="tracking-link-item '+viralClass+'">'
-      +'<span class="activity-time">'+formatTime(activity.time)+'</span><br>'
-      +activity.description
-      +(activity.amount>0 ? '<span class="amount-positive">+$'+activity.amount.toFixed(2)+'</span>' : '')
-      +'</div>';
-    if(activity.type=="Event" && activity.amount<0) unlockAchievement('Survivor','Survived a negative game event!');
-    if(activity.type=="Payout" && activity.amount>50) unlockAchievement('Paid Out','Claimed $50+ in a single payout!');
-  }
-  activityFeed.innerHTML = html;
-}
-function updateDashboard(){
-  document.getElementById('budget').textContent = appState.budget.toFixed(2);
-  document.getElementById('commissionDue').textContent = appState.commissionDue.toFixed(2);
-  document.getElementById('netWorth').textContent = appState.netWorth.toFixed(2);
-  document.getElementById('activeLinksStat').textContent = appState.activeLinks.length;
-  document.getElementById('reputation').textContent = appState.reputation.toFixed(1);
-  document.getElementById('authority').textContent = appState.authority.toFixed(1);
-  document.getElementById('totalClicks').textContent = sumClicks();
-  document.getElementById('totalConversions').textContent = sumConversions();
-  renderLeaderboard();updateAchievements();
-}
-function sumClicks(){var c=0;for(var i=0;i<appState.activeLinks.length;i++)c+=appState.activeLinks[i].clicks;return c;}
-function sumConversions(){var c=0;for(var i=0;i<appState.activeLinks.length;i++)c+=appState.activeLinks[i].conversions;return c;}
-function claimCommission(){
-  if(appState.commissionDue<1){showPopupTip('No commission to claim yet.');return;}
-  var fee = +(appState.commissionDue*0.08).toFixed(2);
-  var payout = +(appState.commissionDue-fee).toFixed(2);
-  appState.budget += payout;
-  appState.netWorth -= fee;
-  addActivity('Payout','Claimed $'+appState.commissionDue.toFixed(2)+', payout fee -$'+fee.toFixed(2),payout);
-  appState.commissionDue = 0;
-  updateDashboard();
-  randomTip();
-}
-function unlockAchievement(name,desc){
-  if(appState.achievements.filter(a=>a.name===name).length) return;
-  appState.achievements.push({name:name,desc:desc});
-  updateAchievements();
-  showPopupTip("📛 Achievement unlocked: "+name);
-}
-function updateAchievements(){
-  var html="";
-  for(var i=0;i<appState.achievements.length;i++){
-    var a=appState.achievements[i];
-    html+='<div class="achievement-badge"><strong>'+a.name+'</strong><br><span class="achievement-desc">'+a.desc+'</span></div> ';
-  }
-  document.getElementById('achievementsPanel').innerHTML=html;
-}
-function formatTime(date){var now=new Date(),diff=Math.floor((now-date)/1000);if(diff<60)return'Just now';if(diff<3600)return Math.floor(diff/60)+' min ago';if(diff<86400)return Math.floor(diff/3600)+' hr ago';return date.toLocaleDateString();}
+    function currency(value) {
+      return '$' + value.toFixed(2);
+    }
 
-function init(){
-  renderProducts();
-  renderAdOrganicActions();
-  renderLeaderboard();
-  renderOrganicProgress();
-  renderActivityFeed();
-  updateLinksPanel();
-  updateDashboard();
-  updateAchievements();
-  document.getElementById('gameTimeLabel').textContent = "Day "+appState.gameDay+" ("+formatGameDate(appState.gameDay)+")";
-  resetDailyCounters();
-}
-init();
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
 
-var dayTimer = setInterval(advanceDay,15000);
+    function randomBetween(min, max) {
+      return min + Math.random() * (max - min);
+    }
 
-setInterval(function(){
-  for(var i=0;i<appState.leaderboard.length;i++)
-    appState.leaderboard[i].earnings+=Math.floor(Math.random()*70)+28;
-  renderLeaderboard();
-},15000);
-</script>
+    function pick(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function getProduct(productId) {
+      return PRODUCTS.find((product) => product.id === productId);
+    }
+
+    function getChannel(channelId) {
+      return CHANNELS.find((channel) => channel.id === channelId);
+    }
+
+    function getSelectedProduct() {
+      return getProduct(state.selectedProductId);
+    }
+
+    function getSelectedChannel() {
+      return getChannel(state.selectedChannelId);
+    }
+
+    function upgradeCost(channelId) {
+      const channel = getChannel(channelId);
+      const currentLevel = state.channels[channelId].level;
+      return channel.upgradeBase + currentLevel * 70;
+    }
+
+    function trendMultiplier(product) {
+      return state.marketTrend.niche === product.niche ? state.marketTrend.boost : 1;
+    }
+
+    function researchBonus(productId, channelId) {
+      const productResearch = state.research[productId] || {};
+      return productResearch[channelId] || 0;
+    }
+
+    function getCampaign(productId, channelId) {
+      return state.campaigns.find((campaign) => campaign.productId === productId && campaign.channelId === channelId);
+    }
+
+    function missionProgress() {
+      const mission = state.mission;
+      if (!mission) {
+        return 0;
+      }
+
+      if (mission.type === 'sales') {
+        return state.turnStats.sales;
+      }
+      if (mission.type === 'clicks') {
+        return state.turnStats.clicks;
+      }
+      if (mission.type === 'publish') {
+        return state.turnStats.published;
+      }
+      if (mission.type === 'trust') {
+        return state.turnStats.trustGain;
+      }
+      return 0;
+    }
+
+    function createMission(currentState) {
+      const options = [
+        { type: 'publish', goal: 2, rewardCash: 70, rewardXp: 20, text: 'Publish 2 assets in one day.' },
+        { type: 'clicks', goal: 90, rewardCash: 85, rewardXp: 25, text: 'Generate 90 clicks before the day ends.' },
+        { type: 'sales', goal: 3, rewardCash: 120, rewardXp: 30, text: 'Close 3 sales in one day.' },
+        { type: 'trust', goal: 6, rewardCash: 55, rewardXp: 18, text: 'Increase trust by 6 in one day.' }
+      ];
+
+      if (currentState.day < 4) {
+        return options[0];
+      }
+      if (currentState.day < 8) {
+        return pick(options.slice(0, 3));
+      }
+      return pick(options);
+    }
+
+    function addLog(title, text, tone) {
+      state.log.unshift({ title, text, tone: tone || 'neutral' });
+      state.log = state.log.slice(0, 12);
+    }
+
+    function addLesson(title, text) {
+      state.lessons.unshift({ title, text });
+      state.lessons = state.lessons.slice(0, 4);
+    }
+
+    function addAchievement(title, text) {
+      const exists = state.achievements.some((item) => item.title === title);
+      if (exists) {
+        return;
+      }
+      state.achievements.unshift({ title, text });
+      state.achievements = state.achievements.slice(0, 5);
+      addLog('Achievement unlocked', title + ': ' + text, 'good');
+    }
+
+    function addXp(amount) {
+      state.xp += amount;
+      while (state.xp >= state.xpNext) {
+        state.xp -= state.xpNext;
+        state.level += 1;
+        state.xpNext = Math.round(state.xpNext * 1.15);
+        state.trust += 2;
+        state.skill += 2;
+        addLog('Level up', 'Your reputation as an operator is growing. Trust and skill both increased.', 'good');
+      }
+    }
+
+    function useAction() {
+      if (state.actions <= 0) {
+        addLog('No actions left', 'End the day to process your campaigns and reset your action points.', 'bad');
+        return false;
+      }
+
+      state.actions -= 1;
+      return true;
+    }
+
+    function currentAudience() {
+      return Object.values(state.channels).reduce((sum, channel) => sum + channel.audience, 0);
+    }
+
+    function epc() {
+      return state.totalClicks ? state.totalRevenue / state.totalClicks : 0;
+    }
+
+    function conversionRate() {
+      return state.totalClicks ? state.totalSales / state.totalClicks : 0;
+    }
+
+    function ctrApprox() {
+      const impressions = state.history.reduce((sum, day) => sum + (day.impressions || 0), 0);
+      return impressions ? state.totalClicks / impressions : 0;
+    }
+
+    function evaluateMission() {
+      if (!state.mission) {
+        return;
+      }
+
+      const progress = missionProgress();
+      if (progress >= state.mission.goal) {
+        state.cash += state.mission.rewardCash;
+        addXp(state.mission.rewardXp);
+        addLog(
+          'Mission cleared',
+          state.mission.text + ' Reward: ' + currency(state.mission.rewardCash) + ' and ' + state.mission.rewardXp + ' XP.',
+          'good'
+        );
+        state.coachTip = 'You hit the mission by focusing on a measurable lever. That is the habit to keep.';
+        state.mission = createMission(state);
+      }
+    }
+
+    function publishContent() {
+      if (!useAction()) {
+        render();
+        return;
+      }
+
+      const product = getSelectedProduct();
+      const channel = getSelectedChannel();
+      const existing = getCampaign(product.id, channel.id);
+      const channelState = state.channels[channel.id];
+      const fit = product.fit[channel.id];
+      const research = researchBonus(product.id, channel.id);
+      const freshnessGain = 0.22 + research * 0.04;
+      const strengthGain = 0.85 + state.skill / 85 + research * 0.15;
+
+      if (existing) {
+        existing.strength += strengthGain;
+        existing.freshness = clamp(existing.freshness + freshnessGain, 0.6, 1.7);
+        existing.notes = 'Reinforced';
+      } else {
+        state.campaigns.push({
+          id: product.id + '-' + channel.id,
+          productId: product.id,
+          channelId: channel.id,
+          strength: 1 + strengthGain,
+          freshness: 1.05 + research * 0.06,
+          notes: 'New'
+        });
+      }
+
+      const audienceGain = Math.round(channel.baseReach * channel.growth * (1 + channelState.level * 0.25) * fit * 0.22);
+      channelState.audience += audienceGain;
+      state.turnStats.published += 1;
+      addXp(12);
+      state.coachTip = 'Publishing compounds because that asset keeps producing during future day simulations.';
+      addLesson('Publishing compounds', LESSON_LIBRARY.publish);
+      addLog(
+        'Asset published',
+        product.name + ' on ' + channel.name + '. Better fit means stronger compounding traffic tomorrow.',
+        'good'
+      );
+
+      if (fit >= 1.2) {
+        addAchievement('Sharp positioning', 'You matched an offer with a channel where it naturally sells better.');
+      }
+
+      evaluateMission();
+      render();
+    }
+
+    function researchAngle() {
+      if (!useAction()) {
+        render();
+        return;
+      }
+
+      const product = getSelectedProduct();
+      const ranked = CHANNELS
+        .map((channel) => ({ channel, score: product.fit[channel.id] * channel.intent }))
+        .sort((left, right) => right.score - left.score);
+
+      const best = ranked[0];
+      const nextBest = ranked[1];
+      const researchState = state.research[product.id] || {};
+      researchState[best.channel.id] = clamp((researchState[best.channel.id] || 0) + 1, 0, 3);
+      if (nextBest) {
+        researchState[nextBest.channel.id] = clamp((researchState[nextBest.channel.id] || 0) + 0.5, 0, 2);
+      }
+      state.research[product.id] = researchState;
+      state.skill += 3;
+      addXp(10);
+      state.coachTip = best.channel.name + ' currently has the strongest expected fit for ' + product.name + '. Use research to remove guesswork.';
+      addLesson('Research is leverage', LESSON_LIBRARY.research);
+      addLog(
+        'Angle discovered',
+        product.name + ' looks strongest in ' + best.channel.name + '. The runner-up is ' + nextBest.channel.name + '.',
+        'good'
+      );
+
+      evaluateMission();
+      render();
+    }
+
+    function buildTrust() {
+      if (!useAction()) {
+        render();
+        return;
+      }
+
+      const trustGain = 4 + Math.floor(state.level / 2);
+      state.trust += trustGain;
+      state.turnStats.trustGain += trustGain;
+      state.channels.email.audience += 18 + Math.round(state.trust * 0.2);
+      state.channels.community.audience += 10 + Math.round(state.level * 1.5);
+      addXp(9);
+      state.coachTip = 'Trust pays twice: your list grows and your conversion rate improves across every active campaign.';
+      addLesson('Trust lifts conversion', LESSON_LIBRARY.trust);
+      addLog('Trust action', 'You published useful proof and follow-up content. Audience trust moved up by ' + trustGain + '.', 'good');
+
+      if (state.trust >= 40) {
+        addAchievement('Credible voice', 'Trust reached 40. Your traffic is starting to monetize more reliably.');
+      }
+
+      evaluateMission();
+      render();
+    }
+
+    function runAdBurst() {
+      if (!useAction()) {
+        render();
+        return;
+      }
+      if (state.cash < 120) {
+        state.actions += 1;
+        addLog('Budget too low', 'You need at least $120 cash to run this ad test.', 'bad');
+        render();
+        return;
+      }
+
+      const product = getSelectedProduct();
+      const budget = 120;
+      const cpc = clamp(0.55 + product.volatility + Math.random() * 0.35 - state.skill * 0.004, 0.42, 1.3);
+      const clicks = Math.max(18, Math.floor(budget / cpc));
+      const intent = 0.94 + product.fit.ads * 0.16;
+      const cv = clamp(product.baseCv * intent * (1 + state.trust * 0.012) * (1 + state.skill * 0.008), 0.01, 0.11);
+      const grossSales = Math.floor(clicks * cv * randomBetween(0.86, 1.16));
+      const refunds = Math.floor(grossSales * product.refundRisk * randomBetween(0.2, 1.2));
+      const sales = Math.max(0, grossSales - refunds);
+      const commission = sales * product.price * product.commissionRate;
+      const cac = sales ? budget / sales : budget;
+      const epcValue = clicks ? commission / clicks : 0;
+
+      state.cash -= budget;
+      state.pending += commission;
+      state.payoutQueue.push({ day: state.day + 2, amount: commission });
+      state.totalClicks += clicks;
+      state.totalSales += sales;
+      state.totalRevenue += commission;
+      state.turnStats.clicks += clicks;
+      state.turnStats.sales += sales;
+      addXp(14);
+      addLesson('Ads are for testing', LESSON_LIBRARY.ads);
+
+      const verdict = commission >= budget ? 'profitable' : 'under water';
+      state.coachTip = 'This ad burst was ' + verdict + ' because CAC landed at ' + currency(cac) + ' while commission per sale was ' + currency(product.price * product.commissionRate) + '.';
+      addLog(
+        'Ad burst result',
+        product.name + ': ' + clicks + ' clicks, ' + sales + ' sales, ' + currency(commission) + ' commission. CAC ' + currency(cac) + ', EPC ' + currency(epcValue) + '.',
+        commission >= budget ? 'good' : 'bad'
+      );
+
+      if (commission >= budget * 1.4) {
+        addAchievement('Paid traffic discipline', 'You ran a clearly profitable ad test instead of blind spending.');
+      }
+
+      evaluateMission();
+      render();
+    }
+
+    function upgradeChannel() {
+      const channel = getSelectedChannel();
+      const cost = upgradeCost(channel.id);
+
+      if (!useAction()) {
+        render();
+        return;
+      }
+      if (state.cash < cost) {
+        state.actions += 1;
+        addLog('Not enough cash', 'You need ' + currency(cost) + ' to upgrade ' + channel.name + '.', 'bad');
+        render();
+        return;
+      }
+
+      state.cash -= cost;
+      state.channels[channel.id].level += 1;
+      state.channels[channel.id].audience += Math.round(channel.baseReach * 0.35);
+      addXp(10);
+      addLog('Channel upgraded', channel.name + ' advanced to level ' + state.channels[channel.id].level + '.', 'good');
+      state.coachTip = 'Scaling a channel is strongest after you know the offer-channel fit. Bigger reach only helps if the economics already work.';
+
+      if (state.channels[channel.id].level >= 3) {
+        addAchievement('Distribution builder', 'You pushed a channel to level 3 or higher.');
+      }
+
+      render();
+    }
+
+    function processPayouts() {
+      let released = 0;
+      const remaining = [];
+      for (const payout of state.payoutQueue) {
+        if (payout.day <= state.day) {
+          released += payout.amount;
+        } else {
+          remaining.push(payout);
+        }
+      }
+
+      state.payoutQueue = remaining;
+      if (released > 0) {
+        state.cash += released;
+        state.pending = Math.max(0, state.pending - released);
+        addLesson('Cash flow matters', LESSON_LIBRARY.payout);
+        addLog('Commission payout', currency(released) + ' became spendable cash today.', 'good');
+      }
+    }
+
+    function simulateCampaign(campaign) {
+      const product = getProduct(campaign.productId);
+      const channel = getChannel(campaign.channelId);
+      const channelState = state.channels[channel.id];
+      const trend = trendMultiplier(product);
+      const research = researchBonus(product.id, channel.id);
+      const freshness = clamp(campaign.freshness, 0.55, 1.8);
+      const audienceFactor = 1 + Math.min(channelState.audience / 2200, 0.9);
+      const levelFactor = 1 + channelState.level * 0.24;
+      const reach = channel.baseReach * campaign.strength * freshness * audienceFactor * levelFactor * trend * randomBetween(0.82, 1.22);
+      const effectiveReach = channel.id === 'email' ? Math.min(reach, channelState.audience * randomBetween(0.4, 0.75) + 16) : reach;
+      const ctr = clamp(channel.ctrBase * product.fit[channel.id] * (1 + state.skill * 0.01) * (1 + research * 0.05), 0.025, 0.23);
+      const clicks = Math.max(0, Math.round(effectiveReach * ctr));
+      const cv = clamp(product.baseCv * channel.intent * product.fit[channel.id] * (1 + state.trust * 0.011) * (1 + state.skill * 0.007), 0.008, 0.15);
+      const grossSales = Math.floor(clicks * cv * randomBetween(0.84, 1.14));
+      const refunds = Math.floor(grossSales * product.refundRisk * randomBetween(0.15, 0.9));
+      const sales = Math.max(0, grossSales - refunds);
+      const commission = sales * product.price * product.commissionRate;
+      const audienceGrowth = Math.round(clicks * channel.growth * randomBetween(0.45, 0.9));
+
+      channelState.audience += audienceGrowth;
+      campaign.freshness = clamp(campaign.freshness * 0.93, 0.55, 1.8);
+      campaign.strength = clamp(campaign.strength * 0.992, 0.9, 5.5);
+
+      state.totalClicks += clicks;
+      state.totalSales += sales;
+      state.totalRevenue += commission;
+      state.pending += commission;
+      state.payoutQueue.push({ day: state.day + 2, amount: commission });
+      state.turnStats.clicks += clicks;
+      state.turnStats.sales += sales;
+
+      return {
+        product,
+        channel,
+        impressions: Math.round(effectiveReach),
+        clicks,
+        sales,
+        commission,
+        audienceGrowth,
+        bestReason: product.fit[channel.id] >= 1.12 ? 'strong fit' : channel.intent >= 1.15 ? 'high intent' : 'steady compounding'
+      };
+    }
+
+    function rotateTrend() {
+      state.gameFocusIndex = (state.gameFocusIndex + 1) % TRENDS.length;
+      state.marketTrend = TRENDS[state.gameFocusIndex];
+    }
+
+    function endDay() {
+      const beforeWorth = state.cash + state.pending;
+      state.day += 1;
+      processPayouts();
+
+      let dailyCommission = 0;
+      let dailyClicks = 0;
+      let dailyImpressions = 0;
+      let dailySales = 0;
+
+      for (const campaign of state.campaigns) {
+        const result = simulateCampaign(campaign);
+        dailyCommission += result.commission;
+        dailyClicks += result.clicks;
+        dailyImpressions += result.impressions;
+        dailySales += result.sales;
+
+        if (result.clicks > 0) {
+          addLog(
+            'Campaign tick',
+            result.product.name + ' via ' + result.channel.name + ': ' + result.clicks + ' clicks, ' + result.sales + ' sales, ' + currency(result.commission) + ' pending from ' + result.bestReason + '.',
+            result.commission > 0 ? 'good' : 'neutral'
+          );
+        }
+      }
+
+      if (state.day % 3 === 0) {
+        rotateTrend();
+        addLog('Trend shift', state.marketTrend.niche + ' is now receiving extra demand. Strong operators adapt quickly.', 'neutral');
+      }
+
+      const eventRoll = Math.random();
+      if (eventRoll > 0.9) {
+        const bonus = 40 + Math.round(Math.random() * 80);
+        state.cash += bonus;
+        addLog('Bonus spike', 'An unexpected mention pushed extra referral interest. Immediate cash bonus: ' + currency(bonus) + '.', 'good');
+      } else if (eventRoll < 0.1) {
+        const hit = 30 + Math.round(Math.random() * 45);
+        state.cash = Math.max(0, state.cash - hit);
+        addLog('Platform friction', 'Tracking noise and creative fatigue drained ' + currency(hit) + ' from your cash.', 'bad');
+      }
+
+      state.netWorth = state.cash + state.pending;
+      const afterWorth = state.netWorth;
+      state.streak = afterWorth > beforeWorth ? state.streak + 1 : 0;
+
+      if (state.streak >= 3) {
+        addAchievement('Operator momentum', 'You improved net worth for three days in a row.');
+      }
+      if (state.totalSales >= 20) {
+        addAchievement('Closer', 'Your campaigns have passed 20 total sales.');
+      }
+      if (state.netWorth >= 2500) {
+        addAchievement('Scaled past survival', 'Net worth passed $2,500. The engine is becoming real.');
+      }
+      if (state.netWorth >= 6000) {
+        addAchievement('Affiliate machine', 'You built a portfolio with serious compounding power.');
+      }
+
+      state.history.push({
+        day: state.day,
+        commission: dailyCommission,
+        clicks: dailyClicks,
+        impressions: dailyImpressions,
+        sales: dailySales,
+        worth: state.netWorth
+      });
+      state.history = state.history.slice(-12);
+
+      addXp(16 + Math.min(24, dailySales * 2));
+      state.actions = 3;
+      state.turnStats = { published: 0, clicks: 0, sales: 0, trustGain: 0 };
+      state.mission = createMission(state);
+      state.coachTip = dailyCommission > 0
+        ? 'The day rolled because your existing assets kept working. That is the core simulator loop: publish, learn, compound, reinvest.'
+        : 'No commission today means the funnel still has a weak link. Improve fit, trust, or channel level before scaling.';
+
+      render();
+    }
+
+    function bestMoveText() {
+      const product = getSelectedProduct();
+      const ranked = CHANNELS
+        .map((channel) => {
+          const projected = product.fit[channel.id] * channel.intent * (1 + researchBonus(product.id, channel.id) * 0.08);
+          return { channel, projected };
+        })
+        .sort((left, right) => right.projected - left.projected);
+      return 'Best current angle for ' + product.name + ': ' + ranked[0].channel.name + ' first, ' + ranked[1].channel.name + ' second.';
+    }
+
+    function productCard(product) {
+      const selected = product.id === state.selectedProductId ? ' is-selected' : '';
+      const trendTag = state.marketTrend.niche === product.niche ? '<span class="tag hot">Trending niche</span>' : '';
+      const expected = Math.round(product.fit[state.selectedChannelId] * 100);
+      return [
+        '<button class="product-card' + selected + '" type="button" data-product="' + product.id + '">',
+        '  <div class="product-top">',
+        '    <div>',
+        '      <h3>' + product.name + '</h3>',
+        '      <div class="tag-row"><span class="tag">' + product.niche + '</span><span class="tag warn">' + Math.round(product.commissionRate * 100) + '% commission</span>' + trendTag + '</div>',
+        '    </div>',
+        '    <strong>' + currency(product.price) + '</strong>',
+        '  </div>',
+        '  <p class="small-copy">' + product.description + '</p>',
+        '  <div class="score-line"><span>Fit in selected channel</span><strong>' + expected + '/100</strong></div>',
+        '  <div class="progress"><span style="width:' + clamp(expected, 12, 100) + '%"></span></div>',
+        '</button>'
+      ].join('');
+    }
+
+    function channelCard(channel) {
+      const selected = channel.id === state.selectedChannelId ? ' is-selected' : '';
+      const data = state.channels[channel.id];
+      const fit = getSelectedProduct().fit[channel.id] * channel.intent;
+      return [
+        '<button class="channel-card' + selected + '" type="button" data-channel="' + channel.id + '">',
+        '  <div class="channel-top">',
+        '    <div>',
+        '      <h3>' + channel.name + '</h3>',
+        '      <div class="tag-row"><span class="tag">Level ' + data.level + '</span><span class="tag">Audience ' + data.audience + '</span></div>',
+        '    </div>',
+        '    <strong>' + Math.round(fit * 100) + '</strong>',
+        '  </div>',
+        '  <p class="small-copy">' + channel.blurb + '</p>',
+        '</button>'
+      ].join('');
+    }
+
+    function renderProducts() {
+      document.getElementById('productList').innerHTML = PRODUCTS.map(productCard).join('');
+      document.querySelectorAll('[data-product]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.selectedProductId = button.getAttribute('data-product');
+          render();
+        });
+      });
+    }
+
+    function renderChannels() {
+      document.getElementById('channelList').innerHTML = CHANNELS.map(channelCard).join('');
+      document.querySelectorAll('[data-channel]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.selectedChannelId = button.getAttribute('data-channel');
+          render();
+        });
+      });
+    }
+
+    function renderSelection() {
+      const product = getSelectedProduct();
+      const channel = getSelectedChannel();
+      const fit = product.fit[channel.id];
+      const channelPower = Math.round(fit * channel.intent * trendMultiplier(product) * 100);
+      const research = researchBonus(product.id, channel.id);
+      const researchText = research > 0 ? 'Research bonus +' + research.toFixed(1) + ' tiers.' : 'No research bonus yet.';
+
+      document.getElementById('selectionInsight').innerHTML =
+        '<strong>' + product.name + ' x ' + channel.name + '</strong>' +
+        '<p>Projected strength score: <span class="highlight">' + channelPower + '</span>. ' + researchText + ' Trending niches and trusted channels outperform random reach.</p>';
+
+      document.getElementById('upgradeCopy').textContent =
+        'Spend ' + currency(upgradeCost(channel.id)) + ' to push ' + channel.name + ' to level ' + (state.channels[channel.id].level + 1) + '.';
+
+      document.getElementById('nextMove').textContent = bestMoveText();
+    }
+
+    function renderStats() {
+      document.getElementById('dayStat').textContent = state.day;
+      document.getElementById('cashStat').textContent = currency(state.cash);
+      document.getElementById('pendingStat').textContent = currency(state.pending);
+      document.getElementById('actionsStat').textContent = state.actions;
+      document.getElementById('worthStat').textContent = currency(state.netWorth);
+      document.getElementById('levelStat').textContent = state.level;
+      document.getElementById('trustStat').textContent = Math.round(state.trust);
+      document.getElementById('skillStat').textContent = Math.round(state.skill);
+      document.getElementById('streakStat').textContent = 'Momentum streak: ' + state.streak;
+      document.getElementById('clicksStat').textContent = state.totalClicks;
+      document.getElementById('salesStat').textContent = state.totalSales;
+      document.getElementById('epcStat').textContent = currency(epc());
+      document.getElementById('audienceStat').textContent = currentAudience();
+      document.getElementById('performanceLabel').textContent =
+        'CTR ' + (ctrApprox() * 100).toFixed(1) + '% | CVR ' + (conversionRate() * 100).toFixed(1) + '%';
+      document.getElementById('xpLabel').textContent = 'XP ' + state.xp + ' / ' + state.xpNext;
+    }
+
+    function renderMarket() {
+      document.getElementById('marketPulse').innerHTML =
+        '<strong>' + state.marketTrend.niche + '</strong> is getting a temporary demand boost. ' + state.marketTrend.label;
+      document.getElementById('coachTip').innerHTML =
+        '<strong>Coach note</strong><p>' + state.coachTip + '</p>';
+    }
+
+    function renderMission() {
+      const mission = state.mission;
+      const progress = missionProgress();
+      const percent = clamp((progress / mission.goal) * 100, 0, 100);
+      document.getElementById('missionCard').innerHTML =
+        '<div class="mission-top"><div><strong>Daily mission</strong><p>' + mission.text + '</p></div><strong>' + progress + '/' + mission.goal + '</strong></div>' +
+        '<div class="progress"><span style="width:' + percent + '%"></span></div>' +
+        '<p class="small-copy">Reward: ' + currency(mission.rewardCash) + ' and ' + mission.rewardXp + ' XP.</p>';
+    }
+
+    function renderLessons() {
+      const lessonMarkup = state.lessons.length
+        ? state.lessons.map((lesson) => '<div class="lesson-card"><strong>' + lesson.title + '</strong><p>' + lesson.text + '</p></div>').join('')
+        : '<div class="lesson-card"><strong>Lesson queue</strong><p>Your choices will populate this panel with why your results happened.</p></div>';
+      document.getElementById('lessonFeed').innerHTML = lessonMarkup;
+
+      document.getElementById('conceptFeed').innerHTML = CONCEPTS.map((concept) => {
+        return '<div class="concept-card"><strong>' + concept.title + '</strong><p>' + concept.text + '</p></div>';
+      }).join('');
+    }
+
+    function renderCampaigns() {
+      const feed = document.getElementById('campaignFeed');
+      document.getElementById('portfolioLabel').textContent = state.campaigns.length + ' live campaigns';
+
+      if (!state.campaigns.length) {
+        feed.innerHTML = '<div class="campaign-card"><strong>No live campaigns yet</strong><p>Publish content to create assets that keep earning during each end-of-day simulation.</p></div>';
+        return;
+      }
+
+      feed.innerHTML = state.campaigns.map((campaign) => {
+        const product = getProduct(campaign.productId);
+        const channel = getChannel(campaign.channelId);
+        const freshness = clamp(campaign.freshness * 100, 0, 170);
+        return [
+          '<div class="campaign-card' + (campaign.productId === state.selectedProductId && campaign.channelId === state.selectedChannelId ? ' is-selected' : '') + '">',
+          '  <div class="campaign-top">',
+          '    <div>',
+          '      <strong>' + product.name + '</strong>',
+          '      <p>' + channel.name + ' | Strength ' + campaign.strength.toFixed(2) + '</p>',
+          '    </div>',
+          '    <span class="tag">' + campaign.notes + '</span>',
+          '  </div>',
+          '  <div class="score-line"><span>Freshness</span><strong>' + Math.round(freshness) + '%</strong></div>',
+          '  <div class="progress"><span style="width:' + clamp(freshness, 10, 100) + '%"></span></div>',
+          '</div>'
+        ].join('');
+      }).join('');
+    }
+
+    function renderHistory() {
+      const chart = document.getElementById('historyChart');
+      if (!state.history.length) {
+        chart.innerHTML = '<div class="tip-card" style="grid-column: 1 / -1;"><strong>Nothing to graph yet</strong><p>End a few days and the chart will show how your commissions are trending.</p></div>';
+        return;
+      }
+
+      const max = Math.max(...state.history.map((entry) => entry.commission || 1), 1);
+      chart.innerHTML = state.history.map((entry) => {
+        const height = Math.max(12, Math.round((entry.commission / max) * 118));
+        return '<div class="bar" data-day="D' + entry.day + '" style="height:' + height + 'px"></div>';
+      }).join('');
+    }
+
+    function renderAchievementsAndLog() {
+      const achievementFeed = document.getElementById('achievementFeed');
+      achievementFeed.innerHTML = state.achievements.length
+        ? state.achievements.map((item) => '<div class="tip-card"><strong>' + item.title + '</strong><p>' + item.text + '</p></div>').join('')
+        : '<div class="tip-card"><strong>Milestones will appear here</strong><p>Hit streaks, profitable tests, trust thresholds, and scale markers to unlock them.</p></div>';
+
+      const logFeed = document.getElementById('logFeed');
+      logFeed.innerHTML = state.log.length
+        ? state.log.map((entry) => {
+          const toneClass = entry.tone === 'good' ? 'highlight' : entry.tone === 'bad' ? 'danger' : '';
+          return '<div class="log-item"><strong class="' + toneClass + '">' + entry.title + '</strong><p>' + entry.text + '</p></div>';
+        }).join('')
+        : '<div class="log-item"><strong>Run log is empty</strong><p>Your choices and end-of-day outcomes will show up here.</p></div>';
+    }
+
+    function syncActionButtons() {
+      const disabled = state.actions <= 0;
+      document.getElementById('publishBtn').disabled = disabled;
+      document.getElementById('adBurstBtn').disabled = disabled;
+      document.getElementById('researchBtn').disabled = disabled;
+      document.getElementById('trustBtn').disabled = disabled;
+      document.getElementById('upgradeBtn').disabled = disabled;
+    }
+
+    function render() {
+      state.netWorth = state.cash + state.pending;
+      renderProducts();
+      renderChannels();
+      renderSelection();
+      renderStats();
+      renderMarket();
+      renderMission();
+      renderLessons();
+      renderCampaigns();
+      renderHistory();
+      renderAchievementsAndLog();
+      syncActionButtons();
+      saveState();
+    }
+
+    function wireControls() {
+      document.getElementById('publishBtn').addEventListener('click', publishContent);
+      document.getElementById('adBurstBtn').addEventListener('click', runAdBurst);
+      document.getElementById('researchBtn').addEventListener('click', researchAngle);
+      document.getElementById('trustBtn').addEventListener('click', buildTrust);
+      document.getElementById('upgradeBtn').addEventListener('click', upgradeChannel);
+      document.getElementById('endDayBtnTop').addEventListener('click', endDay);
+      document.getElementById('endDayBtnBottom').addEventListener('click', endDay);
+      document.getElementById('saveBtn').addEventListener('click', () => {
+        saveState();
+        addLog('Run saved', 'Local progress saved in your browser on this machine.', 'neutral');
+        render();
+      });
+      document.getElementById('resetBtn').addEventListener('click', () => {
+        localStorage.removeItem(STORAGE_KEY);
+        state = baseState();
+        state.mission = createMission(state);
+        addLog('New run', 'Fresh state loaded. Rebuild the engine from zero assumptions.', 'neutral');
+        render();
+      });
+      document.getElementById('shuffleFocusBtn').addEventListener('click', () => {
+        state.gameFocusIndex = (state.gameFocusIndex + 1) % PRODUCTS.length;
+        state.selectedProductId = PRODUCTS[state.gameFocusIndex].id;
+        render();
+      });
+    }
+
+    wireControls();
+    render();
+  </script>
 </body>
 </html>
