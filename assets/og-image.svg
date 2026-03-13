@@ -1,21 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Affiliate Hub Pro Open Graph image</title>
-  <desc id="desc">Open Graph image with refined branding and simulator dashboard visuals for Affiliate Hub Pro.</desc>
+  <desc id="desc">Open Graph card for Affiliate Hub Pro with a clean title block and simplified dashboard panel.</desc>
   <defs>
-    <linearGradient id="bg" x1="54" y1="26" x2="1130" y2="608" gradientUnits="userSpaceOnUse">
+    <linearGradient id="bg" x1="54" y1="22" x2="1138" y2="608" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#fff9ef"/>
-      <stop offset="0.52" stop-color="#f6ead9"/>
       <stop offset="1" stop-color="#eddcc6"/>
     </linearGradient>
-    <linearGradient id="card" x1="730" y1="146" x2="1080" y2="466" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fffefb"/>
-      <stop offset="1" stop-color="#fff7ed"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="82" y1="96" x2="1056" y2="302" gradientUnits="userSpaceOnUse">
+    <linearGradient id="accent" x1="84" y1="84" x2="1074" y2="346" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#de6238"/>
-      <stop offset="1" stop-color="#f3b34b"/>
+      <stop offset="1" stop-color="#f2b24c"/>
     </linearGradient>
-    <linearGradient id="teal" x1="888" y1="182" x2="936" y2="314" gradientUnits="userSpaceOnUse">
+    <linearGradient id="teal" x1="838" y1="196" x2="940" y2="382" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#17908c"/>
       <stop offset="1" stop-color="#0f6f6a"/>
     </linearGradient>
@@ -25,41 +20,36 @@
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <circle cx="122" cy="112" r="112" fill="#db5c34" fill-opacity="0.1"/>
-  <circle cx="1050" cy="108" r="122" fill="#127c78" fill-opacity="0.09"/>
-  <circle cx="1014" cy="566" r="92" fill="#172024" fill-opacity="0.04"/>
+  <circle cx="1048" cy="108" r="122" fill="#127c78" fill-opacity="0.09"/>
   <g transform="translate(84 84)">
     <rect width="126" height="126" rx="32" fill="#fffdf8"/>
     <rect x="1" y="1" width="124" height="124" rx="31" fill="none" stroke="#172024" stroke-opacity="0.08"/>
     <rect x="24" y="78" width="16" height="24" rx="8" fill="#172024" fill-opacity="0.14"/>
     <rect x="50" y="58" width="16" height="44" rx="8" fill="#172024" fill-opacity="0.18"/>
     <rect x="76" y="36" width="16" height="66" rx="8" fill="url(#teal)"/>
-    <path d="M28 62 C40 54 51 50 62 50 C74 50 87 38 100 22" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
-    <path d="M90 22 H104 V36" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28 62 C42 54 53 50 63 46 C76 42 88 34 102 20" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M88 20 H104 V36" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g transform="translate(246 112)">
-    <text x="0" y="0" dominant-baseline="hanging" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="2.2" fill="#127c78">AFFILIATE HUB PRO</text>
-    <text x="0" y="88" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="66" font-weight="700" letter-spacing="-2.2" fill="#172024">Affiliate Marketing Simulator</text>
-    <text x="0" y="154" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#5a6267">
-      <tspan x="0" dy="0">Practice offers, trust, EPC, and channel strategy</tspan>
-      <tspan x="0" dy="34">in a browser-based simulator.</tspan>
-    </text>
-    <g transform="translate(0 242)">
-      <rect width="484" height="64" rx="20" fill="#fffdf7" fill-opacity="0.86" stroke="#172024" stroke-opacity="0.08"/>
-      <text x="24" y="40" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#172024">Built for "affiliate marketing simulator"</text>
-    </g>
+  <g transform="translate(246 110)">
+    <text x="0" y="0" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="2" fill="#127c78">AFFILIATE HUB PRO</text>
+    <text x="0" y="86" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="70" font-weight="700" letter-spacing="-2">Affiliate Marketing</text>
+    <text x="0" y="154" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="70" font-weight="700" letter-spacing="-2">Simulator</text>
+    <text x="0" y="218" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#5a6267">Practice offers, trust, traffic, and EPC.</text>
+    <rect x="0" y="266" width="318" height="56" rx="18" fill="#fffdf8" stroke="#172024" stroke-opacity="0.08"/>
+    <text x="26" y="302" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#172024">Free browser-based game</text>
   </g>
-  <g filter="url(#shadow)" transform="translate(724 144)">
-    <rect width="396" height="342" rx="36" fill="url(#card)" stroke="#172024" stroke-opacity="0.08"/>
-    <rect x="30" y="30" width="336" height="26" rx="13" fill="#172024" fill-opacity="0.06"/>
-    <rect x="30" y="82" width="150" height="106" rx="22" fill="#fff2e9"/>
-    <rect x="216" y="82" width="150" height="106" rx="22" fill="#eef9f7"/>
-    <rect x="30" y="216" width="302" height="32" rx="14" fill="#172024" fill-opacity="0.06"/>
-    <rect x="30" y="266" width="246" height="32" rx="14" fill="#172024" fill-opacity="0.06"/>
-    <rect x="30" y="216" width="236" height="32" rx="14" fill="url(#accent)"/>
-    <rect x="30" y="266" width="192" height="32" rx="14" fill="#127c78" fill-opacity="0.88"/>
-    <text x="50" y="122" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#172024">Offer Fit</text>
-    <text x="50" y="162" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#172024">124</text>
-    <text x="236" y="122" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#172024">EPC</text>
-    <text x="236" y="162" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#172024">$3.42</text>
+  <g transform="translate(760 144)" filter="url(#shadow)">
+    <rect width="360" height="340" rx="34" fill="#fffdf8" stroke="#172024" stroke-opacity="0.08"/>
+    <rect x="28" y="28" width="304" height="22" rx="11" fill="#172024" fill-opacity="0.06"/>
+    <rect x="28" y="78" width="140" height="102" rx="22" fill="#fff1e7"/>
+    <rect x="192" y="78" width="140" height="102" rx="22" fill="#eef9f7"/>
+    <rect x="28" y="214" width="274" height="30" rx="14" fill="#172024" fill-opacity="0.06"/>
+    <rect x="28" y="264" width="222" height="30" rx="14" fill="#172024" fill-opacity="0.06"/>
+    <rect x="28" y="214" width="214" height="30" rx="14" fill="url(#accent)"/>
+    <rect x="28" y="264" width="176" height="30" rx="14" fill="url(#teal)"/>
+    <text x="48" y="118" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#172024">Offer</text>
+    <text x="48" y="160" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#172024">124</text>
+    <text x="212" y="118" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#172024">EPC</text>
+    <text x="212" y="160" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#172024">$3.42</text>
   </g>
 </svg>
