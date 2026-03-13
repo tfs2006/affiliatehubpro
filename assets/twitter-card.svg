@@ -33,15 +33,21 @@
   </g>
   <g transform="translate(242 116)">
     <text x="0" y="0" dominant-baseline="hanging" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="2.5" fill="#127c78">AFFILIATE HUB PRO</text>
-    <text x="0" y="102" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="-3.2" fill="#172024">Free Affiliate Marketing Simulator</text>
-    <text x="0" y="182" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#5a6267">Practice SEO, email, community, paid traffic, trust, and monetization strategy.</text>
+    <text x="0" y="102" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="78" font-weight="700" letter-spacing="-2.6" fill="#172024">
+      <tspan x="0" dy="0">Free Affiliate Marketing</tspan>
+      <tspan x="0" dy="74">Simulator</tspan>
+    </text>
+    <text x="0" y="182" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#5a6267">
+      <tspan x="0" dy="0">Practice SEO, email, community, and paid traffic</tspan>
+      <tspan x="0" dy="36">trust, and monetization strategy.</tspan>
+    </text>
   </g>
   <g transform="translate(118 378)" filter="url(#shadow)">
     <rect width="642" height="282" rx="36" fill="#fffdf8" fill-opacity="0.94" stroke="#172024" stroke-opacity="0.08"/>
     <text x="42" y="68" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#172024">What the simulator trains</text>
     <text x="42" y="126" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#172024">1. Offer and channel fit</text>
-    <text x="42" y="174" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#172024">2. EPC, CAC, and payout timing</text>
-    <text x="42" y="222" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#172024">3. Trust and compounding content</text>
+    <text x="42" y="174" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#172024">2. EPC, CAC, and timing</text>
+    <text x="42" y="222" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#172024">3. Trust and compounding</text>
     <rect x="42" y="240" width="256" height="14" rx="7" fill="#172024" fill-opacity="0.08"/>
   </g>
   <g transform="translate(850 300)" filter="url(#shadow)">

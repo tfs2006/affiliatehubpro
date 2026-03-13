@@ -43,18 +43,24 @@
   <g font-family="Arial, Helvetica, sans-serif" fill="#172024">
     <text x="150" y="228" font-size="23" font-weight="700">Offer Fit</text>
     <text x="150" y="278" font-size="56" font-weight="700">124</text>
-    <text x="150" y="304" font-size="18" fill="#5a6267">High-intent creator software</text>
+    <text x="150" y="304" font-size="17" fill="#5a6267">High-intent offer</text>
     <text x="402" y="228" font-size="23" font-weight="700">Trust</text>
     <text x="402" y="278" font-size="56" font-weight="700">68</text>
-    <text x="402" y="304" font-size="18" fill="#5a6267">Momentum from useful content</text>
+    <text x="402" y="304" font-size="17" fill="#5a6267">Content momentum</text>
     <text x="638" y="228" font-size="23" font-weight="700">EPC</text>
     <text x="638" y="278" font-size="56" font-weight="700">$3.42</text>
-    <text x="638" y="304" font-size="18" fill="#5a6267">Strong signal before scale</text>
+    <text x="638" y="304" font-size="17" fill="#5a6267">Ready to scale</text>
     <text x="154" y="392" font-size="28" font-weight="700">Traffic Mix</text>
     <text x="646" y="392" font-size="24" font-weight="700">Why this round wins</text>
-    <text x="646" y="420" font-size="18" fill="#5a6267">The simulator rewards fit, patience, and real audience intent.</text>
+    <text x="646" y="420" font-size="17" fill="#5a6267">
+      <tspan x="646" dy="0">Fit, patience, and strong intent</tspan>
+      <tspan x="646" dy="22">beat random promotion.</tspan>
+    </text>
     <text x="646" y="520" font-size="22" font-weight="700">Search-led strategy</text>
-    <text x="646" y="548" font-size="18" fill="#5a6267">Best compounding path for beginner affiliates.</text>
+    <text x="646" y="548" font-size="17" fill="#5a6267">
+      <tspan x="646" dy="0">Best compounding path for</tspan>
+      <tspan x="646" dy="22">new affiliate sites.</tspan>
+    </text>
   </g>
   <g>
     <rect x="154" y="420" width="400" height="40" rx="16" fill="#172024" fill-opacity="0.05"/>
@@ -63,8 +69,8 @@
     <rect x="154" y="420" width="322" height="40" rx="16" fill="url(#accent)"/>
     <rect x="154" y="476" width="264" height="40" rx="16" fill="url(#teal)"/>
     <rect x="154" y="532" width="230" height="40" rx="16" fill="#172024" fill-opacity="0.16"/>
-    <rect x="646" y="446" width="156" height="16" rx="8" fill="#172024" fill-opacity="0.08"/>
-    <rect x="646" y="570" width="144" height="12" rx="6" fill="#172024" fill-opacity="0.08"/>
+    <rect x="646" y="464" width="156" height="16" rx="8" fill="#172024" fill-opacity="0.08"/>
+    <rect x="646" y="590" width="144" height="12" rx="6" fill="#172024" fill-opacity="0.08"/>
   </g>
   <g font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#172024">
     <text x="172" y="446">Search Content</text>

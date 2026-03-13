@@ -36,13 +36,16 @@
   </g>
   <g transform="translate(232 108)">
     <text x="0" y="0" dominant-baseline="hanging" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="2.2" fill="#82d2cb">AFFILIATE HUB PRO</text>
-    <text x="0" y="90" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="64" font-weight="700" letter-spacing="-2.4" fill="#ffffff">Train affiliate instincts before spending real money.</text>
-    <text x="0" y="160" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#d8e6e8">Free browser-based simulator for offers, channels, trust, and revenue strategy.</text>
+    <text x="0" y="90" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="58" font-weight="700" letter-spacing="-1.8" fill="#ffffff">
+      <tspan x="0" dy="0">Train affiliate instincts before</tspan>
+      <tspan x="0" dy="62">spending real money.</tspan>
+    </text>
+    <text x="0" y="194" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#d8e6e8">Free simulator for offers, channels, trust, and revenue strategy.</text>
   </g>
   <g transform="translate(84 420)">
     <rect width="540" height="92" rx="24" fill="#fff" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.08"/>
     <text x="28" y="40" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Practice:</text>
-    <text x="28" y="72" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#d8e6e8">offer fit, EPC, traffic channels, and compounding affiliate growth.</text>
+    <text x="28" y="72" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#d8e6e8">offer fit, EPC, traffic channels, and compounding growth.</text>
   </g>
   <g transform="translate(670 302)" filter="url(#shadow)">
     <rect width="446" height="236" rx="32" fill="url(#panel)"/>
