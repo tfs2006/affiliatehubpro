@@ -2,35 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#db5c34">
   <title>Affiliate Arcade Lab</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
 
     :root {
-      --bg: #f5efe3;
-      --ink: #182126;
-      --muted: #5d6467;
-      --panel: rgba(255, 252, 246, 0.9);
-      --panel-strong: #fffaf1;
-      --border: rgba(24, 33, 38, 0.08);
+      --bg: #f3ead7;
+      --ink: #172024;
+      --muted: #5a6267;
+      --panel: rgba(255, 252, 245, 0.92);
+      --border: rgba(23, 32, 36, 0.08);
       --accent: #db5c34;
-      --accent-deep: #8e2c2c;
-      --accent-soft: #ffd1b8;
-      --teal: #0f7b7b;
-      --gold: #d89a1d;
-      --blue: #3268a8;
+      --accent-deep: #8a3026;
+      --teal: #127c78;
+      --gold: #d89616;
       --success: #1d8b57;
-      --danger: #b34747;
-      --shadow: 0 22px 60px rgba(88, 57, 26, 0.12);
+      --danger: #bc4d47;
+      --shadow: 0 18px 46px rgba(104, 67, 26, 0.12);
       --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --radius-sm: 10px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --safe-bottom: max(16px, env(safe-area-inset-bottom));
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -39,39 +41,51 @@
       color: var(--ink);
       font-family: 'IBM Plex Sans', sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(219, 92, 52, 0.15), transparent 28%),
-        radial-gradient(circle at top right, rgba(15, 123, 123, 0.18), transparent 26%),
-        linear-gradient(180deg, #fff8ed 0%, #f3ebdc 48%, #efe4d1 100%);
+        radial-gradient(circle at top left, rgba(219, 92, 52, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(18, 124, 120, 0.18), transparent 24%),
+        linear-gradient(180deg, #fff7ea 0%, #f4ead8 46%, #eedfcb 100%);
+      padding-bottom: calc(144px + var(--safe-bottom));
     }
 
-    button,
-    select {
+    button {
       font: inherit;
+      color: inherit;
     }
 
     .shell {
-      width: min(1480px, calc(100vw - 28px));
-      margin: 18px auto 30px;
+      width: min(100vw - 18px, 100%);
+      margin: 10px auto 24px;
+    }
+
+    .hero,
+    .layout,
+    .layout-secondary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
     }
 
     .hero {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 18px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .hero-card,
-    .panel {
+    .panel,
+    .mobile-dock,
+    .summary-card {
       background: var(--panel);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
     }
 
+    .hero-card,
+    .panel {
+      padding: 16px;
+    }
+
     .hero-card {
-      padding: 24px;
       position: relative;
       overflow: hidden;
     }
@@ -79,156 +93,215 @@
     .hero-card::after {
       content: '';
       position: absolute;
-      inset: auto -90px -90px auto;
-      width: 240px;
-      height: 240px;
+      right: -70px;
+      bottom: -70px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(219, 92, 52, 0.2), transparent 68%);
+      background: radial-gradient(circle, rgba(219, 92, 52, 0.18), transparent 68%);
       pointer-events: none;
     }
 
-    .eyebrow {
+    .eyebrow,
+    .chip,
+    .tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
+      justify-content: center;
+      min-height: 30px;
+      padding: 5px 11px;
       border-radius: 999px;
-      background: rgba(255, 209, 184, 0.55);
-      color: var(--accent-deep);
       font-size: 12px;
       font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+    }
+
+    .eyebrow {
+      gap: 8px;
+      background: rgba(255, 215, 194, 0.68);
+      color: var(--accent-deep);
+    }
+
+    .chip {
+      background: rgba(18, 124, 120, 0.1);
+      color: var(--teal);
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .tag {
+      background: rgba(18, 124, 120, 0.12);
+      color: var(--teal);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .tag.warn {
+      background: rgba(216, 150, 22, 0.14);
+      color: #8e6610;
+    }
+
+    .tag.hot {
+      background: rgba(219, 92, 52, 0.16);
+      color: var(--accent-deep);
     }
 
     h1,
     h2,
-    h3 {
+    h3,
+    h4 {
       margin: 0;
       font-family: 'Space Grotesk', sans-serif;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
     }
 
     h1 {
-      margin-top: 14px;
-      font-size: clamp(32px, 4vw, 56px);
-      line-height: 0.94;
-      max-width: 11ch;
+      margin-top: 12px;
+      font-size: clamp(32px, 9vw, 56px);
+      line-height: 0.92;
+      max-width: 10ch;
+    }
+
+    h2 {
+      font-size: clamp(22px, 5vw, 30px);
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    .hero-copy,
+    .small-copy,
+    .panel-header p,
+    .log-item p,
+    .concept-card p,
+    .lesson-card p,
+    .mission-card p,
+    .tip-card p,
+    .summary-copy {
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+      font-size: 14px;
     }
 
     .hero-copy {
-      margin-top: 14px;
-      width: min(62ch, 100%);
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
+      margin-top: 12px;
+      font-size: 15px;
     }
 
-    .headline-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .headline-stat {
-      padding: 16px;
-      border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(24, 33, 38, 0.07);
-    }
-
-    .headline-stat span {
-      display: block;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--muted);
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    .headline-stat strong {
-      font-size: 28px;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .status-card {
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      background:
-        linear-gradient(160deg, rgba(15, 123, 123, 0.12), transparent 40%),
-        var(--panel);
-    }
-
-    .market-pulse {
-      padding: 16px;
-      border-radius: var(--radius-lg);
-      background: #fffdf7;
-      border: 1px solid rgba(24, 33, 38, 0.08);
-    }
-
-    .market-pulse strong {
-      color: var(--accent-deep);
-    }
-
-    .metric-strip {
+    .headline-grid,
+    .metric-strip,
+    .action-grid,
+    .ghost-row,
+    .summary-metrics {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
     }
 
-    .metric-tile {
+    .headline-grid {
+      margin-top: 18px;
+    }
+
+    .headline-stat,
+    .metric-tile,
+    .summary-metric {
       padding: 14px;
       border-radius: var(--radius-md);
       background: rgba(255, 255, 255, 0.68);
-      border: 1px solid rgba(24, 33, 38, 0.07);
+      border: 1px solid rgba(23, 32, 36, 0.06);
+      min-height: 80px;
     }
 
-    .metric-tile span {
+    .headline-stat span,
+    .metric-tile span,
+    .summary-metric span {
       display: block;
+      margin-bottom: 6px;
       font-size: 12px;
+      font-weight: 700;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin-bottom: 6px;
-      font-weight: 700;
     }
 
-    .metric-tile strong {
-      font-size: 23px;
+    .headline-stat strong,
+    .metric-tile strong,
+    .summary-metric strong {
       font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
     }
 
-    .layout {
+    .status-card {
+      background:
+        linear-gradient(160deg, rgba(18, 124, 120, 0.12), transparent 40%),
+        var(--panel);
       display: grid;
-      grid-template-columns: 1.3fr 1.05fr 1fr;
-      gap: 18px;
+      gap: 12px;
     }
 
-    .panel {
-      padding: 20px;
+    .market-pulse,
+    .selection-card,
+    .combo-card,
+    .reward-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(23, 32, 36, 0.08);
+      background: rgba(255, 255, 255, 0.74);
+      padding: 14px;
+    }
+
+    .combo-card {
+      background: linear-gradient(135deg, rgba(219, 92, 52, 0.15), rgba(255, 255, 255, 0.88));
+    }
+
+    .reward-card {
+      background: linear-gradient(135deg, rgba(216, 150, 22, 0.15), rgba(255, 255, 255, 0.92));
+    }
+
+    .panel-header,
+    .product-top,
+    .channel-top,
+    .campaign-top,
+    .mission-top,
+    .summary-top,
+    .deck-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
     }
 
     .panel-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: baseline;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    .panel-header p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .stack {
+    .stack,
+    .log-feed,
+    .campaign-feed,
+    .lesson-feed,
+    .achievements-feed,
+    .concept-feed,
+    .product-carousel,
+    .channel-carousel {
       display: grid;
       gap: 12px;
+    }
+
+    .product-carousel,
+    .channel-carousel {
+      grid-auto-flow: column;
+      grid-auto-columns: 86%;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+    }
+
+    .product-carousel::-webkit-scrollbar,
+    .channel-carousel::-webkit-scrollbar {
+      display: none;
     }
 
     .product-card,
@@ -237,70 +310,41 @@
     .lesson-card,
     .mission-card,
     .log-item,
-    .tip-card {
+    .tip-card,
+    .concept-card {
       border-radius: var(--radius-md);
-      border: 1px solid rgba(24, 33, 38, 0.08);
-      background: rgba(255, 255, 255, 0.72);
-      padding: 16px;
+      border: 1px solid rgba(23, 32, 36, 0.08);
+      background: rgba(255, 255, 255, 0.74);
+      padding: 14px;
       transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .product-card,
+    .channel-card {
+      text-align: left;
+      scroll-snap-align: start;
+      min-height: 205px;
     }
 
     .product-card.is-selected,
     .channel-card.is-selected,
-    .campaign-card.is-selected {
-      border-color: rgba(219, 92, 52, 0.5);
-      box-shadow: 0 14px 28px rgba(219, 92, 52, 0.14);
+    .campaign-card.is-selected,
+    .tab-btn.is-selected {
+      border-color: rgba(219, 92, 52, 0.45);
+      box-shadow: 0 14px 30px rgba(219, 92, 52, 0.14);
       transform: translateY(-2px);
     }
 
-    .product-top,
-    .channel-top,
-    .campaign-top,
-    .mission-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .tag-row {
+    .tag-row,
+    .deck-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 10px;
     }
 
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 28px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      background: rgba(15, 123, 123, 0.12);
-      color: var(--teal);
-    }
-
-    .tag.warn {
-      background: rgba(216, 154, 29, 0.14);
-      color: #8c640f;
-    }
-
-    .tag.hot {
-      background: rgba(219, 92, 52, 0.14);
-      color: var(--accent-deep);
-    }
-
-    .small-copy {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .score-line {
+    .score-line,
+    .reward-line {
       display: flex;
       justify-content: space-between;
       gap: 10px;
@@ -314,7 +358,7 @@
       width: 100%;
       height: 10px;
       border-radius: 999px;
-      background: rgba(24, 33, 38, 0.08);
+      background: rgba(23, 32, 36, 0.08);
       overflow: hidden;
     }
 
@@ -322,167 +366,308 @@
       display: block;
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--accent), #f0b04c);
+      background: linear-gradient(90deg, var(--accent), #efb14c);
     }
 
-    .action-grid {
+    .mobile-tabs {
+      position: sticky;
+      top: 10px;
+      z-index: 25;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 0 14px;
+      padding: 8px;
+      border-radius: 18px;
+      background: rgba(255, 250, 242, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(23, 32, 36, 0.08);
+      box-shadow: 0 12px 30px rgba(104, 67, 26, 0.09);
     }
 
+    .tab-btn,
+    .mini-btn,
     .action-btn,
     .ghost-btn,
-    .mini-btn {
+    .dock-btn,
+    .summary-btn {
       border: 0;
       cursor: pointer;
-      border-radius: 16px;
       transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
     }
 
+    .tab-btn:disabled,
+    .mini-btn:disabled,
     .action-btn:disabled,
     .ghost-btn:disabled,
-    .mini-btn:disabled {
+    .dock-btn:disabled,
+    .summary-btn:disabled {
       opacity: 0.45;
       cursor: not-allowed;
       transform: none;
       box-shadow: none;
     }
 
+    .tab-btn:hover:not(:disabled),
+    .mini-btn:hover:not(:disabled),
     .action-btn:hover:not(:disabled),
     .ghost-btn:hover:not(:disabled),
-    .mini-btn:hover:not(:disabled) {
+    .dock-btn:hover:not(:disabled),
+    .summary-btn:hover:not(:disabled) {
       transform: translateY(-1px);
     }
 
-    .action-btn {
-      min-height: 72px;
-      padding: 14px;
+    .tab-btn {
+      min-height: 52px;
+      border-radius: 14px;
+      background: rgba(23, 32, 36, 0.05);
+      font-weight: 700;
+      padding: 10px;
+    }
+
+    .action-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 12px;
+    }
+
+    .action-btn,
+    .ghost-btn {
+      min-height: 84px;
       text-align: left;
-      background: linear-gradient(135deg, #fff8ea, #ffe6cb);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, #fff8eb, #ffe7cd);
       border: 1px solid rgba(219, 92, 52, 0.18);
-      box-shadow: 0 10px 22px rgba(219, 92, 52, 0.1);
+      box-shadow: 0 12px 24px rgba(219, 92, 52, 0.11);
+    }
+
+    .ghost-btn {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(23, 32, 36, 0.08);
     }
 
     .action-btn strong,
-    .ghost-btn strong {
+    .ghost-btn strong,
+    .dock-btn strong,
+    .summary-btn strong {
       display: block;
-      font-size: 16px;
       margin-bottom: 4px;
+      font-size: 15px;
       font-family: 'Space Grotesk', sans-serif;
     }
 
     .action-btn span,
-    .ghost-btn span {
+    .ghost-btn span,
+    .dock-btn span,
+    .summary-btn span {
       display: block;
-      font-size: 13px;
       color: var(--muted);
-      line-height: 1.45;
+      font-size: 13px;
+      line-height: 1.4;
     }
 
     .ghost-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .ghost-btn {
-      min-height: 58px;
-      padding: 12px 14px;
-      text-align: left;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(24, 33, 38, 0.1);
+      margin-top: 10px;
     }
 
     .mini-btn {
-      padding: 9px 12px;
-      background: var(--ink);
-      color: white;
+      min-height: 44px;
+      padding: 10px 14px;
+      border-radius: 14px;
       font-size: 13px;
       font-weight: 700;
+      background: var(--ink);
+      color: white;
     }
 
     .mini-btn.alt {
-      background: rgba(24, 33, 38, 0.07);
+      background: rgba(23, 32, 36, 0.08);
       color: var(--ink);
     }
 
-    .log-feed,
-    .campaign-feed,
-    .lesson-feed,
-    .achievements-feed,
-    .concept-feed {
+    .mobile-dock {
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      bottom: calc(10px + var(--safe-bottom));
+      z-index: 40;
+      padding: 12px;
       display: grid;
       gap: 10px;
+      background: rgba(255, 250, 242, 0.94);
     }
 
+    .dock-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .dock-focus {
+      min-width: 0;
+    }
+
+    .dock-focus strong,
+    .summary-top strong,
     .log-item strong,
     .lesson-card strong,
     .mission-card strong,
-    .tip-card strong {
+    .tip-card strong,
+    .concept-card strong,
+    .combo-card strong,
+    .reward-card strong {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       font-size: 15px;
     }
 
-    .log-item p,
-    .lesson-card p,
-    .mission-card p,
-    .tip-card p,
-    .concept-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 14px;
-    }
-
-    .lesson-card {
-      background: linear-gradient(135deg, rgba(15, 123, 123, 0.1), rgba(255, 255, 255, 0.88));
-    }
-
-    .tip-card {
-      background: linear-gradient(135deg, rgba(216, 154, 29, 0.12), rgba(255, 255, 255, 0.88));
-    }
-
-    .concept-card {
-      padding: 14px;
-      border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(24, 33, 38, 0.08);
-    }
-
-    .concept-card strong {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 14px;
-    }
-
-    .history-chart {
-      margin-top: 8px;
+    .dock-grid {
       display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 6px;
-      align-items: end;
-      min-height: 130px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
     }
 
-    .bar {
-      border-radius: 999px 999px 10px 10px;
-      background: linear-gradient(180deg, rgba(50, 104, 168, 0.9), rgba(15, 123, 123, 0.82));
-      position: relative;
-      min-height: 10px;
+    .dock-btn {
+      min-height: 76px;
+      border-radius: 18px;
+      padding: 12px 10px;
+      text-align: left;
+      background: rgba(23, 32, 36, 0.06);
+      border: 1px solid rgba(23, 32, 36, 0.06);
     }
 
-    .bar::after {
-      content: attr(data-day);
-      position: absolute;
-      left: 50%;
-      bottom: -20px;
-      transform: translateX(-50%);
-      font-size: 11px;
-      color: var(--muted);
+    .dock-btn.primary {
+      background: linear-gradient(135deg, #fff8eb, #ffd9c5);
+      border-color: rgba(219, 92, 52, 0.16);
+    }
+
+    .dock-btn.end-day {
+      background: linear-gradient(135deg, #1c2d32, #26424a);
+      color: white;
+    }
+
+    .dock-btn.end-day span {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .mobile-panel[hidden] {
+      display: none !important;
+    }
+
+    .toast-stack {
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      top: 14px;
+      z-index: 60;
+      display: grid;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast {
+      padding: 12px 14px;
+      border-radius: 16px;
+      color: white;
+      background: rgba(23, 32, 36, 0.88);
+      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.18);
+      animation: toast-in 250ms ease, toast-out 350ms ease 2.7s forwards;
+    }
+
+    .toast.good {
+      background: rgba(29, 139, 87, 0.94);
+    }
+
+    .toast.bad {
+      background: rgba(188, 77, 71, 0.94);
+    }
+
+    .toast.reward {
+      background: rgba(216, 150, 22, 0.94);
+      color: #1d1811;
+    }
+
+    @keyframes toast-in {
+      from {
+        opacity: 0;
+        transform: translateY(-12px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes toast-out {
+      to {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+      }
+    }
+
+    .summary-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      display: none;
+      place-items: end center;
+      padding: 16px;
+      background: rgba(23, 32, 36, 0.42);
+      backdrop-filter: blur(6px);
+    }
+
+    .summary-overlay.is-open {
+      display: grid;
+    }
+
+    .summary-card {
+      width: min(100%, 560px);
+      padding: 18px;
+      animation: sheet-up 260ms ease;
+    }
+
+    .summary-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .summary-btn {
+      min-height: 62px;
+      border-radius: 18px;
+      padding: 12px 14px;
+      text-align: left;
+      background: rgba(23, 32, 36, 0.07);
+    }
+
+    .summary-btn.primary {
+      background: linear-gradient(135deg, #fff8eb, #ffd9c5);
+    }
+
+    .pulse {
+      animation: pulse 340ms ease;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      45% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes sheet-up {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .highlight {
@@ -495,60 +680,71 @@
       font-weight: 700;
     }
 
-    .section-block + .section-block {
-      margin-top: 18px;
+    .desktop-only {
+      display: none;
     }
 
-    .footer-row {
-      margin-top: 18px;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    @media (max-width: 1180px) {
-      .hero,
-      .layout {
-        grid-template-columns: 1fr;
+    @media (min-width: 860px) {
+      body {
+        padding-bottom: 28px;
       }
 
-      .headline-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 720px) {
       .shell {
-        width: min(100vw - 14px, 100%);
-        margin-top: 8px;
+        width: min(1460px, calc(100vw - 28px));
+        margin-top: 18px;
+      }
+
+      .hero {
+        grid-template-columns: 1.35fr 1fr;
+        gap: 18px;
+      }
+
+      .layout {
+        grid-template-columns: 1.2fr 1.05fr 0.95fr;
+      }
+
+      .layout-secondary {
+        grid-template-columns: 1.1fr 1fr 1fr;
+        margin-top: 18px;
       }
 
       .hero-card,
-      .panel,
-      .status-card {
-        padding: 16px;
+      .panel {
+        padding: 22px;
       }
 
-      .headline-grid,
-      .metric-strip,
-      .action-grid,
-      .ghost-row {
-        grid-template-columns: 1fr;
+      .mobile-tabs,
+      .mobile-dock {
+        display: none;
+      }
+
+      .mobile-panel[hidden] {
+        display: block !important;
+      }
+
+      .product-carousel,
+      .channel-carousel {
+        grid-auto-flow: row;
+        grid-auto-columns: unset;
+        overflow: visible;
+      }
+
+      .desktop-only {
+        display: inline-flex;
       }
     }
   </style>
 </head>
 <body>
+  <div class="toast-stack" id="toastStack"></div>
+
   <div class="shell">
     <section class="hero">
       <div class="hero-card">
-        <div class="eyebrow">Affiliate simulator with strategy, compounding, and feedback</div>
-        <h1>Build a real affiliate engine, not a clicky slot machine.</h1>
+        <div class="eyebrow">Mobile-first affiliate sim with real strategy</div>
+        <h1>Build a money engine with your thumbs.</h1>
         <p class="hero-copy">
-          Pick offers, match them to the right traffic channel, compound your content portfolio, and learn why some campaigns print cash while others burn budget. Every turn gives you both outcomes and the reason behind them.
+          Pick the right offer, push it through the right channel, stack compounding campaigns, and learn why the numbers move. This version is tuned for short mobile sessions and repeat play.
         </p>
         <div class="headline-grid">
           <div class="headline-stat">
@@ -569,6 +765,7 @@
           </div>
         </div>
       </div>
+
       <aside class="hero-card status-card">
         <div>
           <div class="panel-header">
@@ -577,6 +774,7 @@
           </div>
           <div class="market-pulse" id="marketPulse"></div>
         </div>
+
         <div class="metric-strip">
           <div class="metric-tile">
             <span>Net Worth</span>
@@ -595,77 +793,109 @@
             <strong id="skillStat">20</strong>
           </div>
         </div>
+
+        <div class="combo-card">
+          <strong id="comboLabel">Momentum combo</strong>
+          <p id="comboText">Build a profitable streak to earn reward chests and extra momentum.</p>
+          <div class="progress"><span id="comboBar" style="width: 0%"></span></div>
+        </div>
+
+        <div class="reward-card" id="rewardCard"></div>
+
         <div class="tip-card" id="coachTip"></div>
       </aside>
     </section>
 
+    <nav class="mobile-tabs" aria-label="Mobile sections">
+      <button class="tab-btn is-selected" data-tab="offers" type="button">Offers</button>
+      <button class="tab-btn" data-tab="play" type="button">Play</button>
+      <button class="tab-btn" data-tab="progress" type="button">Progress</button>
+    </nav>
+
     <section class="layout">
-      <div class="panel">
+      <div class="panel mobile-panel" data-panel="offers">
         <div class="panel-header">
           <div>
             <h2>Offers</h2>
-            <p>Higher commissions are tempting. Fit and intent usually matter more.</p>
+            <p>Big commission numbers look good. Fit and intent pay better.</p>
           </div>
-          <button class="mini-btn alt" id="shuffleFocusBtn" type="button">Rotate focus</button>
+          <button class="mini-btn alt desktop-only" id="shuffleFocusBtn" type="button">Rotate focus</button>
         </div>
-        <div class="stack" id="productList"></div>
+        <div class="product-carousel" id="productList"></div>
       </div>
 
-      <div class="panel">
+      <div class="panel mobile-panel" data-panel="play">
         <div class="panel-header">
           <div>
             <h2>Execution Deck</h2>
-            <p>Selected offer and channel shape every action.</p>
+            <p>The selected offer and channel decide whether your next tap compounds or burns.</p>
           </div>
-          <button class="mini-btn alt" id="endDayBtnTop" type="button">End day</button>
+          <button class="mini-btn alt desktop-only" id="endDayBtnTop" type="button">End day</button>
         </div>
-        <div class="section-block">
-          <div class="stack" id="channelList"></div>
-        </div>
-        <div class="section-block">
-          <div class="lesson-card" id="selectionInsight"></div>
-          <div class="action-grid">
-            <button class="action-btn" id="publishBtn" type="button">
-              <strong>Publish content</strong>
-              <span>Create or strengthen a compounding campaign in the selected channel.</span>
-            </button>
-            <button class="action-btn" id="adBurstBtn" type="button">
-              <strong>Run ad burst</strong>
-              <span>Spend $120 for immediate traffic. Good for testing, bad for blind hope.</span>
-            </button>
-            <button class="action-btn" id="researchBtn" type="button">
-              <strong>Research angle</strong>
-              <span>Reveal a better channel fit and gain skill.</span>
-            </button>
-            <button class="action-btn" id="trustBtn" type="button">
-              <strong>Build trust</strong>
-              <span>Improve conversion rate, audience retention, and long-term payouts.</span>
-            </button>
+
+        <div class="selection-card">
+          <div class="deck-header">
+            <div>
+              <strong id="mobileDeckTitle">Selected combo</strong>
+              <p class="small-copy" id="mobileDeckCopy"></p>
+            </div>
+            <button class="mini-btn alt" id="shuffleFocusBtnMobile" type="button">Next focus</button>
           </div>
-          <div class="ghost-row">
-            <button class="ghost-btn" id="upgradeBtn" type="button">
-              <strong>Upgrade channel</strong>
-              <span id="upgradeCopy">Spend cash to scale this channel's reach.</span>
-            </button>
-            <button class="ghost-btn" id="resetBtn" type="button">
-              <strong>Reset run</strong>
-              <span>Start fresh if you want a new climb.</span>
-            </button>
-          </div>
+          <div class="deck-tags" id="selectionTags"></div>
         </div>
-        <div class="footer-row">
-          <span id="nextMove"></span>
-          <button class="mini-btn" id="endDayBtnBottom" type="button">End day and simulate</button>
+
+        <div class="channel-carousel" id="channelList"></div>
+
+        <div class="mission-card" id="selectionInsight"></div>
+
+        <div class="action-grid">
+          <button class="action-btn" id="publishBtn" type="button">
+            <strong>Publish</strong>
+            <span>Create or reinforce a compounding campaign asset.</span>
+          </button>
+          <button class="action-btn" id="adBurstBtn" type="button">
+            <strong>Ad burst</strong>
+            <span>Spend $120 on quick traffic to test the economics.</span>
+          </button>
+          <button class="action-btn" id="researchBtn" type="button">
+            <strong>Research</strong>
+            <span>Reveal a better fit and raise skill.</span>
+          </button>
+          <button class="action-btn" id="trustBtn" type="button">
+            <strong>Trust</strong>
+            <span>Strengthen conversion and long-term audience quality.</span>
+          </button>
+        </div>
+
+        <div class="ghost-row">
+          <button class="ghost-btn" id="upgradeBtn" type="button">
+            <strong>Upgrade channel</strong>
+            <span id="upgradeCopy">Spend cash to scale this channel.</span>
+          </button>
+          <button class="ghost-btn" id="claimChestBtn" type="button">
+            <strong>Open reward chest</strong>
+            <span id="chestCopy">No reward chest available yet.</span>
+          </button>
+        </div>
+
+        <div class="ghost-row" style="margin-top: 10px;">
+          <button class="ghost-btn" id="saveBtn" type="button">
+            <strong>Save run</strong>
+            <span>Store this local run on this device.</span>
+          </button>
+          <button class="ghost-btn" id="resetBtn" type="button">
+            <strong>Reset run</strong>
+            <span>Start over if you want a cleaner climb.</span>
+          </button>
         </div>
       </div>
 
-      <div class="panel">
+      <div class="panel mobile-panel" data-panel="progress">
         <div class="panel-header">
           <div>
             <h2>Coach Desk</h2>
-            <p>Use the numbers. Good simulators teach pattern recognition.</p>
+            <p>Good simulators teach pattern recognition. This is where the lessons live.</p>
           </div>
-          <button class="mini-btn alt" id="saveBtn" type="button">Save run</button>
         </div>
         <div class="stack">
           <div class="mission-card" id="missionCard"></div>
@@ -675,23 +905,23 @@
       </div>
     </section>
 
-    <section class="layout" style="margin-top: 18px;">
-      <div class="panel">
+    <section class="layout-secondary">
+      <div class="panel mobile-panel" data-panel="progress">
         <div class="panel-header">
           <div>
             <h2>Campaign Portfolio</h2>
-            <p>Publishing once helps. Publishing repeatedly compounds.</p>
+            <p>Publishing once helps. Repeating the right move compounds.</p>
           </div>
           <p id="portfolioLabel">0 live campaigns</p>
         </div>
         <div class="campaign-feed" id="campaignFeed"></div>
       </div>
 
-      <div class="panel">
+      <div class="panel mobile-panel" data-panel="progress">
         <div class="panel-header">
           <div>
             <h2>Performance</h2>
-            <p>Watch momentum, not just isolated hits.</p>
+            <p>Momentum matters more than one lucky hit.</p>
           </div>
           <p id="performanceLabel">CTR 0.0% | CVR 0.0%</p>
         </div>
@@ -713,14 +943,14 @@
             <strong id="audienceStat">0</strong>
           </div>
         </div>
-        <div class="history-chart" id="historyChart"></div>
+        <div class="product-carousel" id="historyChart"></div>
       </div>
 
-      <div class="panel">
+      <div class="panel mobile-panel" data-panel="progress">
         <div class="panel-header">
           <div>
             <h2>Run Log</h2>
-            <p>Recent wins, misses, and lessons.</p>
+            <p>Recent wins, misses, and unlocks.</p>
           </div>
           <p id="xpLabel">XP 0 / 100</p>
         </div>
@@ -730,149 +960,104 @@
     </section>
   </div>
 
+  <div class="mobile-dock" id="mobileDock">
+    <div class="dock-head">
+      <div class="dock-focus">
+        <strong id="dockTitle">Ready to publish</strong>
+        <p class="small-copy" id="dockCopy">Pick an offer and use your three actions wisely.</p>
+      </div>
+      <span class="chip" id="dockActions">3 actions</span>
+    </div>
+    <div class="dock-grid">
+      <button class="dock-btn primary" id="dockPublishBtn" type="button">
+        <strong>Publish</strong>
+        <span>Compound</span>
+      </button>
+      <button class="dock-btn" id="dockResearchBtn" type="button">
+        <strong>Research</strong>
+        <span>Sharpen fit</span>
+      </button>
+      <button class="dock-btn" id="dockChestBtn" type="button">
+        <strong>Chest</strong>
+        <span>Bonus</span>
+      </button>
+      <button class="dock-btn end-day" id="dockEndDayBtn" type="button">
+        <strong>End day</strong>
+        <span>Simulate</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="summary-overlay" id="summaryOverlay" aria-hidden="true">
+    <div class="summary-card">
+      <div class="summary-top">
+        <div>
+          <span class="chip" id="summaryDay">Day 1 recap</span>
+          <h2 style="margin-top: 8px;" id="summaryTitle">Good work</h2>
+        </div>
+        <button class="mini-btn alt" id="closeSummaryBtn" type="button">Close</button>
+      </div>
+      <p class="summary-copy" id="summaryCopy" style="margin-top: 10px;"></p>
+      <div class="summary-metrics" style="margin-top: 14px;">
+        <div class="summary-metric">
+          <span>Commission</span>
+          <strong id="summaryCommission">$0.00</strong>
+        </div>
+        <div class="summary-metric">
+          <span>Clicks</span>
+          <strong id="summaryClicks">0</strong>
+        </div>
+        <div class="summary-metric">
+          <span>Sales</span>
+          <strong id="summarySales">0</strong>
+        </div>
+        <div class="summary-metric">
+          <span>Net Worth</span>
+          <strong id="summaryWorth">$0.00</strong>
+        </div>
+      </div>
+      <div class="summary-actions">
+        <button class="summary-btn primary" id="summaryChestBtn" type="button">
+          <strong>Open chest</strong>
+          <span id="summaryChestCopy">No chest ready right now.</span>
+        </button>
+        <button class="summary-btn" id="summaryContinueBtn" type="button">
+          <strong>Keep climbing</strong>
+          <span>Jump back in with fresh actions.</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const STORAGE_KEY = 'affiliate-arcade-lab-save';
 
     const PRODUCTS = [
-      {
-        id: 'creator-crm',
-        name: 'Creator CRM',
-        niche: 'Productivity',
-        price: 149,
-        commissionRate: 0.32,
-        baseCv: 0.028,
-        volatility: 0.12,
-        refundRisk: 0.05,
-        description: 'A workflow tool for creators and solo operators who want fewer dropped leads.',
-        fit: { seo: 1.24, short: 0.76, email: 1.18, community: 1.08, ads: 0.94 }
-      },
-      {
-        id: 'fit-reset',
-        name: 'Fit Reset Blueprint',
-        niche: 'Wellness',
-        price: 89,
-        commissionRate: 0.52,
-        baseCv: 0.034,
-        volatility: 0.2,
-        refundRisk: 0.1,
-        description: 'A structured eight-week habit program with strong hooks and higher refund risk.',
-        fit: { seo: 1.05, short: 1.16, email: 1.02, community: 1.1, ads: 1.03 }
-      },
-      {
-        id: 'money-map',
-        name: 'Money Map Course',
-        niche: 'Finance',
-        price: 219,
-        commissionRate: 0.24,
-        baseCv: 0.021,
-        volatility: 0.1,
-        refundRisk: 0.04,
-        description: 'A premium budgeting and cash-flow course that sells with credibility and patience.',
-        fit: { seo: 1.21, short: 0.72, email: 1.2, community: 1.08, ads: 0.88 }
-      },
-      {
-        id: 'desk-aesthetic',
-        name: 'Desk Aesthetic Bundle',
-        niche: 'Lifestyle',
-        price: 64,
-        commissionRate: 0.4,
-        baseCv: 0.041,
-        volatility: 0.26,
-        refundRisk: 0.08,
-        description: 'Impulse-friendly digital bundle with strong visual appeal and plenty of copy angles.',
-        fit: { seo: 0.92, short: 1.3, email: 0.97, community: 1.04, ads: 1.06 }
-      },
-      {
-        id: 'ai-toolkit',
-        name: 'AI Workflow Toolkit',
-        niche: 'Tech',
-        price: 129,
-        commissionRate: 0.34,
-        baseCv: 0.026,
-        volatility: 0.18,
-        refundRisk: 0.06,
-        description: 'Templates, prompts, and automations for teams trying to move faster with AI.',
-        fit: { seo: 1.18, short: 0.95, email: 1.14, community: 1.15, ads: 1.02 }
-      },
-      {
-        id: 'home-gym',
-        name: 'Compact Home Gym',
-        niche: 'Wellness',
-        price: 279,
-        commissionRate: 0.14,
-        baseCv: 0.017,
-        volatility: 0.14,
-        refundRisk: 0.03,
-        description: 'A higher-ticket physical product that rewards trust and punishes weak intent.',
-        fit: { seo: 1.08, short: 0.9, email: 1.12, community: 1.06, ads: 0.85 }
-      }
+      { id: 'creator-crm', name: 'Creator CRM', niche: 'Productivity', price: 149, commissionRate: 0.32, baseCv: 0.028, volatility: 0.12, refundRisk: 0.05, description: 'A workflow tool for creators and solo operators who want fewer dropped leads.', fit: { seo: 1.24, short: 0.76, email: 1.18, community: 1.08, ads: 0.94 } },
+      { id: 'fit-reset', name: 'Fit Reset Blueprint', niche: 'Wellness', price: 89, commissionRate: 0.52, baseCv: 0.034, volatility: 0.2, refundRisk: 0.1, description: 'A structured habit program with strong hooks and higher refund risk.', fit: { seo: 1.05, short: 1.16, email: 1.02, community: 1.1, ads: 1.03 } },
+      { id: 'money-map', name: 'Money Map Course', niche: 'Finance', price: 219, commissionRate: 0.24, baseCv: 0.021, volatility: 0.1, refundRisk: 0.04, description: 'A premium budgeting course that sells with credibility and patience.', fit: { seo: 1.21, short: 0.72, email: 1.2, community: 1.08, ads: 0.88 } },
+      { id: 'desk-aesthetic', name: 'Desk Aesthetic Bundle', niche: 'Lifestyle', price: 64, commissionRate: 0.4, baseCv: 0.041, volatility: 0.26, refundRisk: 0.08, description: 'An impulse-friendly digital bundle with strong visual appeal.', fit: { seo: 0.92, short: 1.3, email: 0.97, community: 1.04, ads: 1.06 } },
+      { id: 'ai-toolkit', name: 'AI Workflow Toolkit', niche: 'Tech', price: 129, commissionRate: 0.34, baseCv: 0.026, volatility: 0.18, refundRisk: 0.06, description: 'Templates and automations for teams trying to move faster with AI.', fit: { seo: 1.18, short: 0.95, email: 1.14, community: 1.15, ads: 1.02 } },
+      { id: 'home-gym', name: 'Compact Home Gym', niche: 'Wellness', price: 279, commissionRate: 0.14, baseCv: 0.017, volatility: 0.14, refundRisk: 0.03, description: 'A higher-ticket physical product that rewards trust and punishes weak intent.', fit: { seo: 1.08, short: 0.9, email: 1.12, community: 1.06, ads: 0.85 } }
     ];
 
     const CHANNELS = [
-      {
-        id: 'seo',
-        name: 'Search Content',
-        blurb: 'Slower start, durable traffic, high intent.',
-        baseReach: 115,
-        ctrBase: 0.06,
-        intent: 1.16,
-        growth: 0.08,
-        upgradeBase: 90
-      },
-      {
-        id: 'short',
-        name: 'Short Video',
-        blurb: 'Fast reach, volatile clicks, weaker intent unless the hook is sharp.',
-        baseReach: 180,
-        ctrBase: 0.04,
-        intent: 0.86,
-        growth: 0.18,
-        upgradeBase: 85
-      },
-      {
-        id: 'email',
-        name: 'Email List',
-        blurb: 'Requires an audience first, but your best converter when trust is high.',
-        baseReach: 72,
-        ctrBase: 0.11,
-        intent: 1.28,
-        growth: 0.12,
-        upgradeBase: 110
-      },
-      {
-        id: 'community',
-        name: 'Community',
-        blurb: 'Comments, trust, and useful discussions. Stable but not explosive.',
-        baseReach: 92,
-        ctrBase: 0.055,
-        intent: 1.08,
-        growth: 0.14,
-        upgradeBase: 100
-      }
+      { id: 'seo', name: 'Search Content', blurb: 'Slower start, durable traffic, high intent.', baseReach: 115, ctrBase: 0.06, intent: 1.16, growth: 0.08, upgradeBase: 90 },
+      { id: 'short', name: 'Short Video', blurb: 'Fast reach, volatile clicks, weaker intent unless the hook is sharp.', baseReach: 180, ctrBase: 0.04, intent: 0.86, growth: 0.18, upgradeBase: 85 },
+      { id: 'email', name: 'Email List', blurb: 'Requires an audience first, but your best converter when trust is high.', baseReach: 72, ctrBase: 0.11, intent: 1.28, growth: 0.12, upgradeBase: 110 },
+      { id: 'community', name: 'Community', blurb: 'Steady discussion, stable intent, less explosive reach.', baseReach: 92, ctrBase: 0.055, intent: 1.08, growth: 0.14, upgradeBase: 100 }
     ];
 
     const CONCEPTS = [
-      {
-        title: 'EPC',
-        text: 'Earnings per click helps compare offers fast. If one product makes more per visitor, you can often afford higher traffic costs.'
-      },
-      {
-        title: 'Intent beats vanity reach',
-        text: 'A smaller audience with buying intent will often outperform a huge audience that is only curious.'
-      },
-      {
-        title: 'Compounding content',
-        text: 'SEO and community assets can keep producing after the day you publish them. That is what makes them simulator-worthy.'
-      },
-      {
-        title: 'Trust raises conversion',
-        text: 'People buy more readily from sources that feel consistent, useful, and specific. Trust turns similar traffic into better revenue.'
-      }
+      { title: 'EPC', text: 'Earnings per click lets you compare offers fast. Higher EPC means you can usually buy or earn traffic more aggressively.' },
+      { title: 'Intent beats vanity reach', text: 'A smaller audience with buying intent usually beats a giant audience that is only curious.' },
+      { title: 'Compounding content', text: 'Search and community assets can keep producing after the day you publish them. That is what makes them simulator-worthy.' },
+      { title: 'Trust raises conversion', text: 'Useful, specific content raises trust, which turns similar traffic into better revenue.' }
     ];
 
     const TRENDS = [
       { niche: 'Tech', label: 'AI operators and automation workflows are peaking.', boost: 1.22 },
-      { niche: 'Wellness', label: 'Habit resets and home training are flooding feeds.', boost: 1.24 },
+      { niche: 'Wellness', label: 'Home training and habit resets are flooding feeds.', boost: 1.24 },
       { niche: 'Finance', label: 'Budgeting and savings content is gaining search volume.', boost: 1.2 },
       { niche: 'Lifestyle', label: 'Aesthetic organization content is trending visually.', boost: 1.26 },
       { niche: 'Productivity', label: 'Small business systems are hot with creators.', boost: 1.23 }
@@ -880,10 +1065,10 @@
 
     const LESSON_LIBRARY = {
       publish: 'Publishing into the right channel builds an asset. Search and community pieces can keep paying because the traffic source sticks around.',
-      ads: 'Paid traffic is a testing tool. Compare your cost per acquisition against your commission, or you are just renting dopamine.',
+      ads: 'Paid traffic is for testing. Compare your cost per acquisition against commission or you are renting dopamine.',
       research: 'Research is leverage. Knowing the strongest angle lets you spend actions where the offer-channel fit is actually favorable.',
-      trust: 'Trust lifts conversion rate across every campaign. It is boring, which is why it compounds harder than hype.',
-      payout: 'Commission timing matters. Profit on paper is not the same thing as cash you can deploy today.'
+      trust: 'Trust lifts conversion rate across every campaign. It is less flashy than hype and more durable.',
+      payout: 'Commission timing matters. Profit on paper is not the same as spendable cash.'
     };
 
     function baseState() {
@@ -902,6 +1087,8 @@
         totalSales: 0,
         totalRevenue: 0,
         streak: 0,
+        rewardChests: 0,
+        mobileTab: 'offers',
         selectedProductId: PRODUCTS[0].id,
         selectedChannelId: CHANNELS[0].id,
         log: [],
@@ -917,9 +1104,12 @@
         history: [],
         turnStats: { published: 0, clicks: 0, sales: 0, trustGain: 0 },
         marketTrend: TRENDS[0],
-        coachTip: 'Start by matching a product to the channel where intent is strongest. A simulator should reward judgment, not random tapping.',
+        coachTip: 'Start by matching a product to the channel where intent is strongest. This simulator rewards judgment, not random tapping.',
         mission: null,
-        gameFocusIndex: 0
+        gameFocusIndex: 0,
+        combo: 0,
+        lastActionText: 'Pick an offer and spend your three actions wisely.',
+        lastSummary: null
       };
     }
 
@@ -995,8 +1185,7 @@
 
     function upgradeCost(channelId) {
       const channel = getChannel(channelId);
-      const currentLevel = state.channels[channelId].level;
-      return channel.upgradeBase + currentLevel * 70;
+      return channel.upgradeBase + state.channels[channelId].level * 70;
     }
 
     function trendMultiplier(product) {
@@ -1013,23 +1202,13 @@
     }
 
     function missionProgress() {
-      const mission = state.mission;
-      if (!mission) {
+      if (!state.mission) {
         return 0;
       }
-
-      if (mission.type === 'sales') {
-        return state.turnStats.sales;
-      }
-      if (mission.type === 'clicks') {
-        return state.turnStats.clicks;
-      }
-      if (mission.type === 'publish') {
-        return state.turnStats.published;
-      }
-      if (mission.type === 'trust') {
-        return state.turnStats.trustGain;
-      }
+      if (state.mission.type === 'sales') return state.turnStats.sales;
+      if (state.mission.type === 'clicks') return state.turnStats.clicks;
+      if (state.mission.type === 'publish') return state.turnStats.published;
+      if (state.mission.type === 'trust') return state.turnStats.trustGain;
       return 0;
     }
 
@@ -1040,14 +1219,30 @@
         { type: 'sales', goal: 3, rewardCash: 120, rewardXp: 30, text: 'Close 3 sales in one day.' },
         { type: 'trust', goal: 6, rewardCash: 55, rewardXp: 18, text: 'Increase trust by 6 in one day.' }
       ];
-
-      if (currentState.day < 4) {
-        return options[0];
-      }
-      if (currentState.day < 8) {
-        return pick(options.slice(0, 3));
-      }
+      if (currentState.day < 4) return options[0];
+      if (currentState.day < 8) return pick(options.slice(0, 3));
       return pick(options);
+    }
+
+    function vibrate(pattern) {
+      if (navigator.vibrate) navigator.vibrate(pattern);
+    }
+
+    function pulse(id) {
+      const element = document.getElementById(id);
+      if (!element) return;
+      element.classList.remove('pulse');
+      void element.offsetWidth;
+      element.classList.add('pulse');
+    }
+
+    function showToast(text, tone) {
+      const stack = document.getElementById('toastStack');
+      const toast = document.createElement('div');
+      toast.className = 'toast ' + (tone || 'neutral');
+      toast.textContent = text;
+      stack.appendChild(toast);
+      window.setTimeout(() => toast.remove(), 3200);
     }
 
     function addLog(title, text, tone) {
@@ -1061,13 +1256,12 @@
     }
 
     function addAchievement(title, text) {
-      const exists = state.achievements.some((item) => item.title === title);
-      if (exists) {
-        return;
-      }
+      if (state.achievements.some((item) => item.title === title)) return;
       state.achievements.unshift({ title, text });
       state.achievements = state.achievements.slice(0, 5);
       addLog('Achievement unlocked', title + ': ' + text, 'good');
+      showToast(title + ' unlocked', 'reward');
+      vibrate([20, 30, 20]);
     }
 
     function addXp(amount) {
@@ -1078,18 +1272,11 @@
         state.xpNext = Math.round(state.xpNext * 1.15);
         state.trust += 2;
         state.skill += 2;
-        addLog('Level up', 'Your reputation as an operator is growing. Trust and skill both increased.', 'good');
+        state.rewardChests += 1;
+        addLog('Level up', 'Your operator level increased. Trust and skill both rose, and you earned a reward chest.', 'good');
+        showToast('Level up and reward chest earned', 'reward');
+        vibrate([30, 25, 30]);
       }
-    }
-
-    function useAction() {
-      if (state.actions <= 0) {
-        addLog('No actions left', 'End the day to process your campaigns and reset your action points.', 'bad');
-        return false;
-      }
-
-      state.actions -= 1;
-      return true;
     }
 
     function currentAudience() {
@@ -1109,30 +1296,72 @@
       return impressions ? state.totalClicks / impressions : 0;
     }
 
-    function evaluateMission() {
-      if (!state.mission) {
-        return;
+    function useAction() {
+      if (state.actions <= 0) {
+        addLog('No actions left', 'End the day to process your campaigns and reset your action points.', 'bad');
+        showToast('No actions left. End the day.', 'bad');
+        vibrate(25);
+        return false;
       }
+      state.actions -= 1;
+      pulse('actionsStat');
+      pulse('dockActions');
+      return true;
+    }
 
+    function evaluateMission() {
+      const mission = state.mission;
+      if (!mission) return;
       const progress = missionProgress();
-      if (progress >= state.mission.goal) {
-        state.cash += state.mission.rewardCash;
-        addXp(state.mission.rewardXp);
-        addLog(
-          'Mission cleared',
-          state.mission.text + ' Reward: ' + currency(state.mission.rewardCash) + ' and ' + state.mission.rewardXp + ' XP.',
-          'good'
-        );
+      if (progress >= mission.goal) {
+        state.cash += mission.rewardCash;
+        addXp(mission.rewardXp);
+        state.combo += 1;
+        addLog('Mission cleared', mission.text + ' Reward: ' + currency(mission.rewardCash) + ' and ' + mission.rewardXp + ' XP.', 'good');
         state.coachTip = 'You hit the mission by focusing on a measurable lever. That is the habit to keep.';
+        state.rewardChests += 1;
         state.mission = createMission(state);
+        showToast('Mission cleared and reward chest earned', 'reward');
+        vibrate([18, 22, 18]);
+        pulse('cashStat');
       }
     }
 
-    function publishContent() {
-      if (!useAction()) {
+    function recordAction(label, tone) {
+      state.lastActionText = label;
+      state.combo = clamp(state.combo + (tone === 'good' ? 1 : 0), 0, 9);
+      if (tone === 'bad') state.combo = Math.max(0, state.combo - 1);
+    }
+
+    function claimRewardChest() {
+      if (state.rewardChests <= 0) {
+        showToast('No reward chest ready yet', 'bad');
+        vibrate(20);
         render();
         return;
       }
+
+      state.rewardChests -= 1;
+      const rewards = [
+        { label: 'Cash drop', apply() { const amount = 90 + Math.round(Math.random() * 90); state.cash += amount; return currency(amount) + ' cash'; } },
+        { label: 'Trust boost', apply() { const amount = 6 + Math.round(Math.random() * 4); state.trust += amount; return amount + ' trust'; } },
+        { label: 'Skill boost', apply() { const amount = 6 + Math.round(Math.random() * 4); state.skill += amount; return amount + ' skill'; } },
+        { label: 'Bonus action', apply() { state.actions += 1; return '1 extra action'; } }
+      ];
+      const reward = pick(rewards);
+      const text = reward.apply();
+      addLog('Reward chest opened', reward.label + ' granted ' + text + '.', 'good');
+      state.coachTip = 'Short-session rewards help mobile retention, but the real gains still come from strong economics.';
+      showToast('Reward chest: ' + text, 'reward');
+      vibrate([25, 35, 25]);
+      pulse('cashStat');
+      pulse('trustStat');
+      pulse('skillStat');
+      render();
+    }
+
+    function publishContent() {
+      if (!useAction()) return render();
 
       const product = getSelectedProduct();
       const channel = getSelectedChannel();
@@ -1148,14 +1377,7 @@
         existing.freshness = clamp(existing.freshness + freshnessGain, 0.6, 1.7);
         existing.notes = 'Reinforced';
       } else {
-        state.campaigns.push({
-          id: product.id + '-' + channel.id,
-          productId: product.id,
-          channelId: channel.id,
-          strength: 1 + strengthGain,
-          freshness: 1.05 + research * 0.06,
-          notes: 'New'
-        });
+        state.campaigns.push({ id: product.id + '-' + channel.id, productId: product.id, channelId: channel.id, strength: 1 + strengthGain, freshness: 1.05 + research * 0.06, notes: 'New' });
       }
 
       const audienceGain = Math.round(channel.baseReach * channel.growth * (1 + channelState.level * 0.25) * fit * 0.22);
@@ -1164,59 +1386,39 @@
       addXp(12);
       state.coachTip = 'Publishing compounds because that asset keeps producing during future day simulations.';
       addLesson('Publishing compounds', LESSON_LIBRARY.publish);
-      addLog(
-        'Asset published',
-        product.name + ' on ' + channel.name + '. Better fit means stronger compounding traffic tomorrow.',
-        'good'
-      );
-
-      if (fit >= 1.2) {
-        addAchievement('Sharp positioning', 'You matched an offer with a channel where it naturally sells better.');
-      }
-
+      addLog('Asset published', product.name + ' on ' + channel.name + '. Better fit means stronger compounding traffic tomorrow.', 'good');
+      recordAction('Published ' + product.name + ' through ' + channel.name + '.', 'good');
+      if (fit >= 1.2) addAchievement('Sharp positioning', 'You matched an offer with a channel where it naturally sells better.');
+      showToast('Asset published', 'good');
+      vibrate(18);
       evaluateMission();
       render();
     }
 
     function researchAngle() {
-      if (!useAction()) {
-        render();
-        return;
-      }
-
+      if (!useAction()) return render();
       const product = getSelectedProduct();
-      const ranked = CHANNELS
-        .map((channel) => ({ channel, score: product.fit[channel.id] * channel.intent }))
-        .sort((left, right) => right.score - left.score);
-
+      const ranked = CHANNELS.map((channel) => ({ channel, score: product.fit[channel.id] * channel.intent })).sort((left, right) => right.score - left.score);
       const best = ranked[0];
       const nextBest = ranked[1];
       const researchState = state.research[product.id] || {};
       researchState[best.channel.id] = clamp((researchState[best.channel.id] || 0) + 1, 0, 3);
-      if (nextBest) {
-        researchState[nextBest.channel.id] = clamp((researchState[nextBest.channel.id] || 0) + 0.5, 0, 2);
-      }
+      if (nextBest) researchState[nextBest.channel.id] = clamp((researchState[nextBest.channel.id] || 0) + 0.5, 0, 2);
       state.research[product.id] = researchState;
       state.skill += 3;
       addXp(10);
       state.coachTip = best.channel.name + ' currently has the strongest expected fit for ' + product.name + '. Use research to remove guesswork.';
       addLesson('Research is leverage', LESSON_LIBRARY.research);
-      addLog(
-        'Angle discovered',
-        product.name + ' looks strongest in ' + best.channel.name + '. The runner-up is ' + nextBest.channel.name + '.',
-        'good'
-      );
-
+      addLog('Angle discovered', product.name + ' looks strongest in ' + best.channel.name + '. Runner-up: ' + nextBest.channel.name + '.', 'good');
+      recordAction('Researched ' + product.name + ' and found a better angle.', 'good');
+      showToast('Best angle: ' + best.channel.name, 'good');
+      vibrate(16);
       evaluateMission();
       render();
     }
 
     function buildTrust() {
-      if (!useAction()) {
-        render();
-        return;
-      }
-
+      if (!useAction()) return render();
       const trustGain = 4 + Math.floor(state.level / 2);
       state.trust += trustGain;
       state.turnStats.trustGain += trustGain;
@@ -1225,26 +1427,23 @@
       addXp(9);
       state.coachTip = 'Trust pays twice: your list grows and your conversion rate improves across every active campaign.';
       addLesson('Trust lifts conversion', LESSON_LIBRARY.trust);
-      addLog('Trust action', 'You published useful proof and follow-up content. Audience trust moved up by ' + trustGain + '.', 'good');
-
-      if (state.trust >= 40) {
-        addAchievement('Credible voice', 'Trust reached 40. Your traffic is starting to monetize more reliably.');
-      }
-
+      addLog('Trust action', 'You published useful proof and follow-up content. Trust moved up by ' + trustGain + '.', 'good');
+      recordAction('Built trust with useful content.', 'good');
+      if (state.trust >= 40) addAchievement('Credible voice', 'Trust reached 40. Your traffic is starting to monetize more reliably.');
+      showToast('Trust +' + trustGain, 'good');
+      vibrate(16);
       evaluateMission();
       render();
     }
 
     function runAdBurst() {
-      if (!useAction()) {
-        render();
-        return;
-      }
+      if (!useAction()) return render();
       if (state.cash < 120) {
         state.actions += 1;
         addLog('Budget too low', 'You need at least $120 cash to run this ad test.', 'bad');
-        render();
-        return;
+        showToast('Need $120 for an ad burst', 'bad');
+        vibrate(25);
+        return render();
       }
 
       const product = getSelectedProduct();
@@ -1259,6 +1458,7 @@
       const commission = sales * product.price * product.commissionRate;
       const cac = sales ? budget / sales : budget;
       const epcValue = clicks ? commission / clicks : 0;
+      const profitable = commission >= budget;
 
       state.cash -= budget;
       state.pending += commission;
@@ -1270,19 +1470,12 @@
       state.turnStats.sales += sales;
       addXp(14);
       addLesson('Ads are for testing', LESSON_LIBRARY.ads);
-
-      const verdict = commission >= budget ? 'profitable' : 'under water';
-      state.coachTip = 'This ad burst was ' + verdict + ' because CAC landed at ' + currency(cac) + ' while commission per sale was ' + currency(product.price * product.commissionRate) + '.';
-      addLog(
-        'Ad burst result',
-        product.name + ': ' + clicks + ' clicks, ' + sales + ' sales, ' + currency(commission) + ' commission. CAC ' + currency(cac) + ', EPC ' + currency(epcValue) + '.',
-        commission >= budget ? 'good' : 'bad'
-      );
-
-      if (commission >= budget * 1.4) {
-        addAchievement('Paid traffic discipline', 'You ran a clearly profitable ad test instead of blind spending.');
-      }
-
+      state.coachTip = 'This burst was ' + (profitable ? 'profitable' : 'under water') + ' because CAC landed at ' + currency(cac) + ' while commission per sale was ' + currency(product.price * product.commissionRate) + '.';
+      addLog('Ad burst result', product.name + ': ' + clicks + ' clicks, ' + sales + ' sales, ' + currency(commission) + ' commission. CAC ' + currency(cac) + ', EPC ' + currency(epcValue) + '.', profitable ? 'good' : 'bad');
+      recordAction('Ran an ad burst on ' + product.name + '.', profitable ? 'good' : 'bad');
+      if (commission >= budget * 1.4) addAchievement('Paid traffic discipline', 'You ran a clearly profitable ad test instead of blind spending.');
+      showToast(profitable ? 'Profitable ad test' : 'Ad test came in weak', profitable ? 'good' : 'bad');
+      vibrate(profitable ? [16, 24, 16] : 24);
       evaluateMission();
       render();
     }
@@ -1290,29 +1483,24 @@
     function upgradeChannel() {
       const channel = getSelectedChannel();
       const cost = upgradeCost(channel.id);
-
-      if (!useAction()) {
-        render();
-        return;
-      }
+      if (!useAction()) return render();
       if (state.cash < cost) {
         state.actions += 1;
         addLog('Not enough cash', 'You need ' + currency(cost) + ' to upgrade ' + channel.name + '.', 'bad');
-        render();
-        return;
+        showToast('Need ' + currency(cost) + ' to upgrade', 'bad');
+        vibrate(24);
+        return render();
       }
-
       state.cash -= cost;
       state.channels[channel.id].level += 1;
       state.channels[channel.id].audience += Math.round(channel.baseReach * 0.35);
       addXp(10);
+      state.coachTip = 'Scaling is strongest after you know the fit. Bigger reach only helps if the economics already work.';
       addLog('Channel upgraded', channel.name + ' advanced to level ' + state.channels[channel.id].level + '.', 'good');
-      state.coachTip = 'Scaling a channel is strongest after you know the offer-channel fit. Bigger reach only helps if the economics already work.';
-
-      if (state.channels[channel.id].level >= 3) {
-        addAchievement('Distribution builder', 'You pushed a channel to level 3 or higher.');
-      }
-
+      recordAction('Upgraded ' + channel.name + '.', 'good');
+      if (state.channels[channel.id].level >= 3) addAchievement('Distribution builder', 'You pushed a channel to level 3 or higher.');
+      showToast(channel.name + ' upgraded', 'good');
+      vibrate(18);
       render();
     }
 
@@ -1326,7 +1514,6 @@
           remaining.push(payout);
         }
       }
-
       state.payoutQueue = remaining;
       if (released > 0) {
         state.cash += released;
@@ -1359,7 +1546,6 @@
       channelState.audience += audienceGrowth;
       campaign.freshness = clamp(campaign.freshness * 0.93, 0.55, 1.8);
       campaign.strength = clamp(campaign.strength * 0.992, 0.9, 5.5);
-
       state.totalClicks += clicks;
       state.totalSales += sales;
       state.totalRevenue += commission;
@@ -1375,7 +1561,6 @@
         clicks,
         sales,
         commission,
-        audienceGrowth,
         bestReason: product.fit[channel.id] >= 1.12 ? 'strong fit' : channel.intent >= 1.15 ? 'high intent' : 'steady compounding'
       };
     }
@@ -1383,6 +1568,25 @@
     function rotateTrend() {
       state.gameFocusIndex = (state.gameFocusIndex + 1) % TRENDS.length;
       state.marketTrend = TRENDS[state.gameFocusIndex];
+    }
+
+    function openSummary(summary) {
+      state.lastSummary = summary;
+      document.getElementById('summaryDay').textContent = 'Day ' + summary.day + ' recap';
+      document.getElementById('summaryTitle').textContent = summary.commission > 0 ? 'Momentum gained' : 'Time to tighten the funnel';
+      document.getElementById('summaryCopy').textContent = summary.copy;
+      document.getElementById('summaryCommission').textContent = currency(summary.commission);
+      document.getElementById('summaryClicks').textContent = summary.clicks;
+      document.getElementById('summarySales').textContent = summary.sales;
+      document.getElementById('summaryWorth').textContent = currency(summary.worth);
+      document.getElementById('summaryChestCopy').textContent = state.rewardChests > 0 ? state.rewardChests + ' chest ready to open.' : 'No chest ready right now.';
+      document.getElementById('summaryOverlay').classList.add('is-open');
+      document.getElementById('summaryOverlay').setAttribute('aria-hidden', 'false');
+    }
+
+    function closeSummary() {
+      document.getElementById('summaryOverlay').classList.remove('is-open');
+      document.getElementById('summaryOverlay').setAttribute('aria-hidden', 'true');
     }
 
     function endDay() {
@@ -1401,13 +1605,8 @@
         dailyClicks += result.clicks;
         dailyImpressions += result.impressions;
         dailySales += result.sales;
-
         if (result.clicks > 0) {
-          addLog(
-            'Campaign tick',
-            result.product.name + ' via ' + result.channel.name + ': ' + result.clicks + ' clicks, ' + result.sales + ' sales, ' + currency(result.commission) + ' pending from ' + result.bestReason + '.',
-            result.commission > 0 ? 'good' : 'neutral'
-          );
+          addLog('Campaign tick', result.product.name + ' via ' + result.channel.name + ': ' + result.clicks + ' clicks, ' + result.sales + ' sales, ' + currency(result.commission) + ' pending from ' + result.bestReason + '.', result.commission > 0 ? 'good' : 'neutral');
         }
       }
 
@@ -1420,6 +1619,7 @@
       if (eventRoll > 0.9) {
         const bonus = 40 + Math.round(Math.random() * 80);
         state.cash += bonus;
+        dailyCommission += bonus;
         addLog('Bonus spike', 'An unexpected mention pushed extra referral interest. Immediate cash bonus: ' + currency(bonus) + '.', 'good');
       } else if (eventRoll < 0.1) {
         const hit = 30 + Math.round(Math.random() * 45);
@@ -1430,55 +1630,60 @@
       state.netWorth = state.cash + state.pending;
       const afterWorth = state.netWorth;
       state.streak = afterWorth > beforeWorth ? state.streak + 1 : 0;
+      if (afterWorth > beforeWorth) state.combo = clamp(state.combo + 2, 0, 9);
+      else state.combo = Math.max(0, state.combo - 2);
 
-      if (state.streak >= 3) {
-        addAchievement('Operator momentum', 'You improved net worth for three days in a row.');
-      }
-      if (state.totalSales >= 20) {
-        addAchievement('Closer', 'Your campaigns have passed 20 total sales.');
-      }
-      if (state.netWorth >= 2500) {
-        addAchievement('Scaled past survival', 'Net worth passed $2,500. The engine is becoming real.');
-      }
-      if (state.netWorth >= 6000) {
-        addAchievement('Affiliate machine', 'You built a portfolio with serious compounding power.');
+      if (state.streak > 0 && state.streak % 3 === 0) {
+        state.rewardChests += 1;
+        addLog('Streak chest earned', 'Three positive net-worth days in a row earned a reward chest.', 'good');
+        showToast('Streak chest earned', 'reward');
       }
 
-      state.history.push({
-        day: state.day,
-        commission: dailyCommission,
-        clicks: dailyClicks,
-        impressions: dailyImpressions,
-        sales: dailySales,
-        worth: state.netWorth
-      });
+      if (state.streak >= 3) addAchievement('Operator momentum', 'You improved net worth for three days in a row.');
+      if (state.totalSales >= 20) addAchievement('Closer', 'Your campaigns have passed 20 total sales.');
+      if (state.netWorth >= 2500) addAchievement('Scaled past survival', 'Net worth passed $2,500. The engine is becoming real.');
+      if (state.netWorth >= 6000) addAchievement('Affiliate machine', 'You built a portfolio with serious compounding power.');
+
+      state.history.push({ day: state.day, commission: dailyCommission, clicks: dailyClicks, impressions: dailyImpressions, sales: dailySales, worth: state.netWorth });
       state.history = state.history.slice(-12);
-
       addXp(16 + Math.min(24, dailySales * 2));
       state.actions = 3;
       state.turnStats = { published: 0, clicks: 0, sales: 0, trustGain: 0 };
       state.mission = createMission(state);
-      state.coachTip = dailyCommission > 0
-        ? 'The day rolled because your existing assets kept working. That is the core simulator loop: publish, learn, compound, reinvest.'
-        : 'No commission today means the funnel still has a weak link. Improve fit, trust, or channel level before scaling.';
+      state.coachTip = dailyCommission > 0 ? 'The day rolled because your existing assets kept working. That is the core loop: publish, learn, compound, reinvest.' : 'No commission today means the funnel still has a weak link. Improve fit, trust, or channel level before scaling.';
+      state.lastActionText = dailyCommission > 0 ? 'Fresh actions ready. Double down on what just worked.' : 'Fresh actions ready. Tighten the funnel before scaling.';
 
+      const summary = {
+        day: state.day,
+        commission: dailyCommission,
+        clicks: dailyClicks,
+        sales: dailySales,
+        worth: state.netWorth,
+        copy: dailyCommission > 0 ? 'Your assets generated ' + currency(dailyCommission) + ' today. That is the compounding loop paying off.' : 'The machine stayed quiet today. That usually means weak fit, weak trust, or weak distribution.'
+      };
+
+      showToast(dailyCommission > 0 ? 'Day closed in profit' : 'Day ended flat', dailyCommission > 0 ? 'good' : 'bad');
+      vibrate(dailyCommission > 0 ? [18, 28, 18] : 22);
       render();
+      openSummary(summary);
     }
 
     function bestMoveText() {
       const product = getSelectedProduct();
-      const ranked = CHANNELS
-        .map((channel) => {
-          const projected = product.fit[channel.id] * channel.intent * (1 + researchBonus(product.id, channel.id) * 0.08);
-          return { channel, projected };
-        })
-        .sort((left, right) => right.projected - left.projected);
+      const ranked = CHANNELS.map((channel) => {
+        return { channel, projected: product.fit[channel.id] * channel.intent * (1 + researchBonus(product.id, channel.id) * 0.08) };
+      }).sort((left, right) => right.projected - left.projected);
       return 'Best current angle for ' + product.name + ': ' + ranked[0].channel.name + ' first, ' + ranked[1].channel.name + ' second.';
+    }
+
+    function switchMobileTab(tab) {
+      state.mobileTab = tab;
+      render();
     }
 
     function productCard(product) {
       const selected = product.id === state.selectedProductId ? ' is-selected' : '';
-      const trendTag = state.marketTrend.niche === product.niche ? '<span class="tag hot">Trending niche</span>' : '';
+      const trendTag = state.marketTrend.niche === product.niche ? '<span class="tag hot">Trending</span>' : '';
       const expected = Math.round(product.fit[state.selectedChannelId] * 100);
       return [
         '<button class="product-card' + selected + '" type="button" data-product="' + product.id + '">',
@@ -1515,18 +1720,21 @@
     }
 
     function renderProducts() {
-      document.getElementById('productList').innerHTML = PRODUCTS.map(productCard).join('');
-      document.querySelectorAll('[data-product]').forEach((button) => {
+      const list = document.getElementById('productList');
+      list.innerHTML = PRODUCTS.map(productCard).join('');
+      list.querySelectorAll('[data-product]').forEach((button) => {
         button.addEventListener('click', () => {
           state.selectedProductId = button.getAttribute('data-product');
+          state.mobileTab = 'play';
           render();
         });
       });
     }
 
     function renderChannels() {
-      document.getElementById('channelList').innerHTML = CHANNELS.map(channelCard).join('');
-      document.querySelectorAll('[data-channel]').forEach((button) => {
+      const list = document.getElementById('channelList');
+      list.innerHTML = CHANNELS.map(channelCard).join('');
+      list.querySelectorAll('[data-channel]').forEach((button) => {
         button.addEventListener('click', () => {
           state.selectedChannelId = button.getAttribute('data-channel');
           render();
@@ -1541,15 +1749,15 @@
       const channelPower = Math.round(fit * channel.intent * trendMultiplier(product) * 100);
       const research = researchBonus(product.id, channel.id);
       const researchText = research > 0 ? 'Research bonus +' + research.toFixed(1) + ' tiers.' : 'No research bonus yet.';
-
-      document.getElementById('selectionInsight').innerHTML =
-        '<strong>' + product.name + ' x ' + channel.name + '</strong>' +
-        '<p>Projected strength score: <span class="highlight">' + channelPower + '</span>. ' + researchText + ' Trending niches and trusted channels outperform random reach.</p>';
-
-      document.getElementById('upgradeCopy').textContent =
-        'Spend ' + currency(upgradeCost(channel.id)) + ' to push ' + channel.name + ' to level ' + (state.channels[channel.id].level + 1) + '.';
-
-      document.getElementById('nextMove').textContent = bestMoveText();
+      document.getElementById('selectionInsight').innerHTML = '<strong>' + product.name + ' x ' + channel.name + '</strong><p>Projected strength score: <span class="highlight">' + channelPower + '</span>. ' + researchText + ' Trending niches and trusted channels outperform random reach.</p>';
+      document.getElementById('upgradeCopy').textContent = 'Spend ' + currency(upgradeCost(channel.id)) + ' to push ' + channel.name + ' to level ' + (state.channels[channel.id].level + 1) + '.';
+      document.getElementById('mobileDeckTitle').textContent = product.name + ' x ' + channel.name;
+      document.getElementById('mobileDeckCopy').textContent = bestMoveText();
+      document.getElementById('selectionTags').innerHTML = [
+        '<span class="tag">Fit ' + Math.round(product.fit[channel.id] * 100) + '</span>',
+        '<span class="tag">Intent ' + Math.round(channel.intent * 100) + '</span>',
+        '<span class="tag hot">Trend x' + trendMultiplier(product).toFixed(2) + '</span>'
+      ].join('');
     }
 
     function renderStats() {
@@ -1566,104 +1774,95 @@
       document.getElementById('salesStat').textContent = state.totalSales;
       document.getElementById('epcStat').textContent = currency(epc());
       document.getElementById('audienceStat').textContent = currentAudience();
-      document.getElementById('performanceLabel').textContent =
-        'CTR ' + (ctrApprox() * 100).toFixed(1) + '% | CVR ' + (conversionRate() * 100).toFixed(1) + '%';
+      document.getElementById('performanceLabel').textContent = 'CTR ' + (ctrApprox() * 100).toFixed(1) + '% | CVR ' + (conversionRate() * 100).toFixed(1) + '%';
       document.getElementById('xpLabel').textContent = 'XP ' + state.xp + ' / ' + state.xpNext;
+      document.getElementById('dockActions').textContent = state.actions + (state.actions === 1 ? ' action' : ' actions');
     }
 
     function renderMarket() {
-      document.getElementById('marketPulse').innerHTML =
-        '<strong>' + state.marketTrend.niche + '</strong> is getting a temporary demand boost. ' + state.marketTrend.label;
-      document.getElementById('coachTip').innerHTML =
-        '<strong>Coach note</strong><p>' + state.coachTip + '</p>';
+      document.getElementById('marketPulse').innerHTML = '<strong>' + state.marketTrend.niche + '</strong> is getting a temporary demand boost. ' + state.marketTrend.label;
+      document.getElementById('coachTip').innerHTML = '<strong>Coach note</strong><p>' + state.coachTip + '</p>';
+      document.getElementById('comboLabel').textContent = 'Momentum combo x' + state.combo;
+      document.getElementById('comboText').textContent = state.combo >= 6 ? 'You are stacking good decisions. Keep the run clean and your streak will pay out.' : 'Build a profitable streak to earn reward chests and extra momentum.';
+      document.getElementById('comboBar').style.width = clamp((state.combo / 9) * 100, 0, 100) + '%';
+      document.getElementById('rewardCard').innerHTML = '<div class="reward-line"><strong>Reward chests</strong><strong>' + state.rewardChests + '</strong></div><p class="small-copy">Earned from level-ups, missions, and positive streaks. Open them for short-session bonuses.</p>';
     }
 
     function renderMission() {
       const mission = state.mission;
       const progress = missionProgress();
       const percent = clamp((progress / mission.goal) * 100, 0, 100);
-      document.getElementById('missionCard').innerHTML =
-        '<div class="mission-top"><div><strong>Daily mission</strong><p>' + mission.text + '</p></div><strong>' + progress + '/' + mission.goal + '</strong></div>' +
-        '<div class="progress"><span style="width:' + percent + '%"></span></div>' +
-        '<p class="small-copy">Reward: ' + currency(mission.rewardCash) + ' and ' + mission.rewardXp + ' XP.</p>';
+      document.getElementById('missionCard').innerHTML = '<div class="mission-top"><div><strong>Daily mission</strong><p>' + mission.text + '</p></div><strong>' + progress + '/' + mission.goal + '</strong></div><div class="progress"><span style="width:' + percent + '%"></span></div><p class="small-copy">Reward: ' + currency(mission.rewardCash) + ' and ' + mission.rewardXp + ' XP, plus a reward chest.</p>';
     }
 
     function renderLessons() {
-      const lessonMarkup = state.lessons.length
-        ? state.lessons.map((lesson) => '<div class="lesson-card"><strong>' + lesson.title + '</strong><p>' + lesson.text + '</p></div>').join('')
-        : '<div class="lesson-card"><strong>Lesson queue</strong><p>Your choices will populate this panel with why your results happened.</p></div>';
-      document.getElementById('lessonFeed').innerHTML = lessonMarkup;
-
-      document.getElementById('conceptFeed').innerHTML = CONCEPTS.map((concept) => {
-        return '<div class="concept-card"><strong>' + concept.title + '</strong><p>' + concept.text + '</p></div>';
-      }).join('');
+      document.getElementById('lessonFeed').innerHTML = state.lessons.length ? state.lessons.map((lesson) => '<div class="lesson-card"><strong>' + lesson.title + '</strong><p>' + lesson.text + '</p></div>').join('') : '<div class="lesson-card"><strong>Lesson queue</strong><p>Your choices will fill this panel with why the results happened.</p></div>';
+      document.getElementById('conceptFeed').innerHTML = CONCEPTS.map((concept) => '<div class="concept-card"><strong>' + concept.title + '</strong><p>' + concept.text + '</p></div>').join('');
     }
 
     function renderCampaigns() {
       const feed = document.getElementById('campaignFeed');
       document.getElementById('portfolioLabel').textContent = state.campaigns.length + ' live campaigns';
-
       if (!state.campaigns.length) {
         feed.innerHTML = '<div class="campaign-card"><strong>No live campaigns yet</strong><p>Publish content to create assets that keep earning during each end-of-day simulation.</p></div>';
         return;
       }
-
       feed.innerHTML = state.campaigns.map((campaign) => {
         const product = getProduct(campaign.productId);
         const channel = getChannel(campaign.channelId);
         const freshness = clamp(campaign.freshness * 100, 0, 170);
-        return [
-          '<div class="campaign-card' + (campaign.productId === state.selectedProductId && campaign.channelId === state.selectedChannelId ? ' is-selected' : '') + '">',
-          '  <div class="campaign-top">',
-          '    <div>',
-          '      <strong>' + product.name + '</strong>',
-          '      <p>' + channel.name + ' | Strength ' + campaign.strength.toFixed(2) + '</p>',
-          '    </div>',
-          '    <span class="tag">' + campaign.notes + '</span>',
-          '  </div>',
-          '  <div class="score-line"><span>Freshness</span><strong>' + Math.round(freshness) + '%</strong></div>',
-          '  <div class="progress"><span style="width:' + clamp(freshness, 10, 100) + '%"></span></div>',
-          '</div>'
-        ].join('');
+        return '<div class="campaign-card' + (campaign.productId === state.selectedProductId && campaign.channelId === state.selectedChannelId ? ' is-selected' : '') + '"><div class="campaign-top"><div><strong>' + product.name + '</strong><p>' + channel.name + ' | Strength ' + campaign.strength.toFixed(2) + '</p></div><span class="tag">' + campaign.notes + '</span></div><div class="score-line"><span>Freshness</span><strong>' + Math.round(freshness) + '%</strong></div><div class="progress"><span style="width:' + clamp(freshness, 10, 100) + '%"></span></div></div>';
       }).join('');
     }
 
     function renderHistory() {
       const chart = document.getElementById('historyChart');
       if (!state.history.length) {
-        chart.innerHTML = '<div class="tip-card" style="grid-column: 1 / -1;"><strong>Nothing to graph yet</strong><p>End a few days and the chart will show how your commissions are trending.</p></div>';
+        chart.innerHTML = '<div class="tip-card"><strong>Nothing to graph yet</strong><p>End a few days and your commission bars will show here.</p></div>';
         return;
       }
-
       const max = Math.max(...state.history.map((entry) => entry.commission || 1), 1);
-      chart.innerHTML = state.history.map((entry) => {
-        const height = Math.max(12, Math.round((entry.commission / max) * 118));
-        return '<div class="bar" data-day="D' + entry.day + '" style="height:' + height + 'px"></div>';
-      }).join('');
+      chart.innerHTML = state.history.map((entry) => '<div class="campaign-card" style="min-height: auto;"><strong>Day ' + entry.day + '</strong><div class="progress" style="height: 14px;"><span style="width:' + clamp((entry.commission / max) * 100, 8, 100) + '%"></span></div><div class="score-line"><span>Commission</span><strong>' + currency(entry.commission) + '</strong></div><div class="score-line"><span>Clicks</span><strong>' + entry.clicks + '</strong></div></div>').join('');
     }
 
     function renderAchievementsAndLog() {
-      const achievementFeed = document.getElementById('achievementFeed');
-      achievementFeed.innerHTML = state.achievements.length
-        ? state.achievements.map((item) => '<div class="tip-card"><strong>' + item.title + '</strong><p>' + item.text + '</p></div>').join('')
-        : '<div class="tip-card"><strong>Milestones will appear here</strong><p>Hit streaks, profitable tests, trust thresholds, and scale markers to unlock them.</p></div>';
-
-      const logFeed = document.getElementById('logFeed');
-      logFeed.innerHTML = state.log.length
-        ? state.log.map((entry) => {
-          const toneClass = entry.tone === 'good' ? 'highlight' : entry.tone === 'bad' ? 'danger' : '';
-          return '<div class="log-item"><strong class="' + toneClass + '">' + entry.title + '</strong><p>' + entry.text + '</p></div>';
-        }).join('')
-        : '<div class="log-item"><strong>Run log is empty</strong><p>Your choices and end-of-day outcomes will show up here.</p></div>';
+      document.getElementById('achievementFeed').innerHTML = state.achievements.length ? state.achievements.map((item) => '<div class="tip-card"><strong>' + item.title + '</strong><p>' + item.text + '</p></div>').join('') : '<div class="tip-card"><strong>Milestones will appear here</strong><p>Hit streaks, profitable tests, trust thresholds, and scale markers to unlock them.</p></div>';
+      document.getElementById('logFeed').innerHTML = state.log.length ? state.log.map((entry) => {
+        const toneClass = entry.tone === 'good' ? 'highlight' : entry.tone === 'bad' ? 'danger' : '';
+        return '<div class="log-item"><strong class="' + toneClass + '">' + entry.title + '</strong><p>' + entry.text + '</p></div>';
+      }).join('') : '<div class="log-item"><strong>Run log is empty</strong><p>Your taps and daily outcomes will show up here.</p></div>';
     }
 
-    function syncActionButtons() {
+    function renderDock() {
+      const product = getSelectedProduct();
+      const channel = getSelectedChannel();
+      document.getElementById('dockTitle').textContent = product.name + ' x ' + channel.name;
+      document.getElementById('dockCopy').textContent = state.lastActionText;
+      document.getElementById('chestCopy').textContent = state.rewardChests > 0 ? state.rewardChests + ' chest ready to open.' : 'No reward chest available yet.';
+      document.getElementById('dockChestBtn').querySelector('span').textContent = state.rewardChests > 0 ? state.rewardChests + ' ready' : 'Bonus';
+    }
+
+    function syncMobilePanels() {
+      document.querySelectorAll('.mobile-panel').forEach((panel) => {
+        panel.hidden = panel.getAttribute('data-panel') !== state.mobileTab && window.innerWidth < 860;
+      });
+      document.querySelectorAll('.tab-btn').forEach((button) => {
+        button.classList.toggle('is-selected', button.getAttribute('data-tab') === state.mobileTab);
+      });
+    }
+
+    function syncButtons() {
       const disabled = state.actions <= 0;
       document.getElementById('publishBtn').disabled = disabled;
       document.getElementById('adBurstBtn').disabled = disabled;
       document.getElementById('researchBtn').disabled = disabled;
       document.getElementById('trustBtn').disabled = disabled;
       document.getElementById('upgradeBtn').disabled = disabled;
+      document.getElementById('dockPublishBtn').disabled = disabled;
+      document.getElementById('dockResearchBtn').disabled = disabled;
+      document.getElementById('claimChestBtn').disabled = state.rewardChests <= 0;
+      document.getElementById('dockChestBtn').disabled = state.rewardChests <= 0;
+      document.getElementById('summaryChestBtn').disabled = state.rewardChests <= 0;
     }
 
     function render() {
@@ -1678,35 +1877,65 @@
       renderCampaigns();
       renderHistory();
       renderAchievementsAndLog();
-      syncActionButtons();
+      renderDock();
+      syncMobilePanels();
+      syncButtons();
       saveState();
     }
 
+    function bindAction(id, handler) {
+      document.getElementById(id).addEventListener('click', handler);
+    }
+
     function wireControls() {
-      document.getElementById('publishBtn').addEventListener('click', publishContent);
-      document.getElementById('adBurstBtn').addEventListener('click', runAdBurst);
-      document.getElementById('researchBtn').addEventListener('click', researchAngle);
-      document.getElementById('trustBtn').addEventListener('click', buildTrust);
-      document.getElementById('upgradeBtn').addEventListener('click', upgradeChannel);
-      document.getElementById('endDayBtnTop').addEventListener('click', endDay);
-      document.getElementById('endDayBtnBottom').addEventListener('click', endDay);
-      document.getElementById('saveBtn').addEventListener('click', () => {
+      bindAction('publishBtn', publishContent);
+      bindAction('adBurstBtn', runAdBurst);
+      bindAction('researchBtn', researchAngle);
+      bindAction('trustBtn', buildTrust);
+      bindAction('upgradeBtn', upgradeChannel);
+      bindAction('claimChestBtn', claimRewardChest);
+      bindAction('saveBtn', () => {
         saveState();
-        addLog('Run saved', 'Local progress saved in your browser on this machine.', 'neutral');
+        addLog('Run saved', 'Local progress saved in your browser on this device.', 'neutral');
+        showToast('Run saved locally', 'good');
         render();
       });
-      document.getElementById('resetBtn').addEventListener('click', () => {
+      bindAction('resetBtn', () => {
         localStorage.removeItem(STORAGE_KEY);
         state = baseState();
         state.mission = createMission(state);
         addLog('New run', 'Fresh state loaded. Rebuild the engine from zero assumptions.', 'neutral');
+        closeSummary();
         render();
       });
-      document.getElementById('shuffleFocusBtn').addEventListener('click', () => {
+      bindAction('endDayBtnTop', endDay);
+      bindAction('shuffleFocusBtn', () => {
         state.gameFocusIndex = (state.gameFocusIndex + 1) % PRODUCTS.length;
         state.selectedProductId = PRODUCTS[state.gameFocusIndex].id;
         render();
       });
+      bindAction('shuffleFocusBtnMobile', () => {
+        state.gameFocusIndex = (state.gameFocusIndex + 1) % PRODUCTS.length;
+        state.selectedProductId = PRODUCTS[state.gameFocusIndex].id;
+        render();
+      });
+      bindAction('dockPublishBtn', publishContent);
+      bindAction('dockResearchBtn', researchAngle);
+      bindAction('dockChestBtn', claimRewardChest);
+      bindAction('dockEndDayBtn', endDay);
+      bindAction('closeSummaryBtn', closeSummary);
+      bindAction('summaryContinueBtn', closeSummary);
+      bindAction('summaryChestBtn', () => {
+        claimRewardChest();
+        closeSummary();
+      });
+      document.querySelectorAll('.tab-btn').forEach((button) => {
+        button.addEventListener('click', () => switchMobileTab(button.getAttribute('data-tab')));
+      });
+      document.getElementById('summaryOverlay').addEventListener('click', (event) => {
+        if (event.target.id === 'summaryOverlay') closeSummary();
+      });
+      window.addEventListener('resize', syncMobilePanels);
     }
 
     wireControls();
