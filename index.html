@@ -2,14 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
   <meta name="theme-color" content="#db5c34">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Affiliate Hub Pro">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
   <title>Affiliate Marketing Simulator for Beginners | Affiliate Hub Pro</title>
   <meta name="description" content="Practice affiliate marketing strategy in a free browser-based simulator. Test offers, SEO, email, community, and paid traffic decisions to learn what drives clicks, EPC, and commissions.">
+  <meta name="keywords" content="affiliate marketing simulator, learn affiliate marketing, affiliate marketing game, affiliate marketing for beginners, free affiliate marketing tool, practice affiliate marketing, EPC calculator, affiliate marketing training">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="https://affiliatehub.pro/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
   <link rel="mask-icon" href="assets/icon.svg" color="#db5c34">
+  <link rel="manifest" href="manifest.json">
   <link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="assets/game-hero.svg" as="image" type="image/svg+xml">
   <link rel="image_src" href="https://affiliatehub.pro/assets/social-share-card.svg">
@@ -741,6 +749,108 @@
       color: #1d1811;
     }
 
+    .confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      animation: confetti-fall 3s ease-out forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        opacity: 1;
+        transform: translateY(-100px) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg);
+      }
+    }
+
+    .daily-bonus-card {
+      background: linear-gradient(135deg, rgba(216, 150, 22, 0.2), rgba(219, 92, 52, 0.15));
+      border: 2px solid rgba(216, 150, 22, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 14px;
+      animation: glow-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(216, 150, 22, 0.2); }
+      50% { box-shadow: 0 0 30px rgba(216, 150, 22, 0.4); }
+    }
+
+    .streak-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff6b35, #db5c34);
+      color: white;
+      font-weight: 700;
+      font-size: 13px;
+      animation: streak-glow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes streak-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(255, 107, 53, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.6); }
+    }
+
+    .achievement-unlock {
+      animation: achievement-pop 0.5s ease-out;
+    }
+
+    @keyframes achievement-pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .number-pop {
+      animation: number-pop 0.3s ease-out;
+    }
+
+    @keyframes number-pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); color: var(--success); }
+      100% { transform: scale(1); }
+    }
+
+    .swipe-hint {
+      display: none;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+      animation: swipe-fade 2s ease-in-out infinite;
+    }
+
+    @keyframes swipe-fade {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    @media (max-width: 859px) {
+      .swipe-hint {
+        display: block;
+      }
+    }
+
     @keyframes toast-in {
       from {
         opacity: 0;
@@ -964,6 +1074,7 @@
 <body>
   <a class="skip-link" href="#mainContent">Skip to content</a>
   <div class="toast-stack" id="toastStack"></div>
+  <div class="confetti-container" id="confettiContainer"></div>
 
   <main class="shell" id="mainContent">
     <section class="hero">
@@ -973,6 +1084,9 @@
           <span class="chip">SEO + Trust + EPC</span>
         </div>
         <div class="eyebrow">Free affiliate marketing simulator for beginners</div>
+        <div id="streakBadge" style="margin-top: 10px; display: none;">
+          <span class="streak-badge">🔥 <span id="streakCount">0</span> day streak</span>
+        </div>
         <h1>Learn affiliate marketing with a browser-based simulator.</h1>
         <p class="hero-copy">
           Practice affiliate marketing strategy without risking real ad spend. Test offers, search content, email, community, and paid traffic decisions to see how intent, trust, EPC, and conversions shape revenue.
@@ -997,6 +1111,11 @@
             <span>Moves Left</span>
             <strong id="actionsStat">3</strong>
           </div>
+        </div>
+        <div id="dailyBonusCard" class="daily-bonus-card" style="display: none; margin-top: 16px;">
+          <strong>🎁 Daily Login Bonus!</strong>
+          <p class="small-copy" id="dailyBonusText">Claim your bonus to get started.</p>
+          <button class="mini-btn" id="claimDailyBonusBtn" type="button" style="margin-top: 10px;">Claim Bonus</button>
         </div>
       </div>
 
@@ -1056,6 +1175,7 @@
           <button class="mini-btn alt desktop-only" id="shuffleFocusBtn" type="button">Rotate focus</button>
         </div>
         <div class="product-carousel" id="productList"></div>
+        <p class="swipe-hint">← Swipe to see more offers →</p>
       </div>
 
       <div class="panel mobile-panel" data-panel="play">
@@ -1079,6 +1199,7 @@
         </div>
 
         <div class="channel-carousel" id="channelList"></div>
+        <p class="swipe-hint">← Swipe to see more channels →</p>
 
         <div class="mission-card" id="selectionInsight"></div>
 
@@ -1274,6 +1395,50 @@
             <summary>What metrics should beginners watch first?</summary>
             <p class="small-copy">Start with click-through rate, conversion rate, EPC, refund risk, and payout timing. Those numbers reveal whether an affiliate campaign is improving or just looks busy.</p>
           </details>
+          <details class="faq-item">
+            <summary>Is this affiliate marketing simulator free to use?</summary>
+            <p class="small-copy">Yes, Affiliate Hub Pro is completely free. There are no hidden fees, subscriptions, or in-app purchases. It runs entirely in your browser with no downloads required.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How does the affiliate marketing game work?</summary>
+            <p class="small-copy">Select an affiliate offer, choose a traffic channel like SEO content, email, or short video, then use your daily actions to publish, research, or build trust. End the day to simulate results and watch your campaigns compound over time.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I play this affiliate simulator on mobile?</summary>
+            <p class="small-copy">Absolutely. The simulator is fully optimized for mobile devices with touch-friendly controls, swipeable carousels, and a bottom action dock for easy one-handed play. Add it to your home screen for an app-like experience.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is EPC in affiliate marketing?</summary>
+            <p class="small-copy">EPC stands for Earnings Per Click. It measures how much revenue you earn for each click sent to an offer. Higher EPC means you can afford to spend more on traffic while staying profitable.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I get better at affiliate marketing using this simulator?</summary>
+            <p class="small-copy">Practice daily. The simulator rewards consistency with login bonuses and streak rewards. Focus on matching offers to the right channels, building trust over time, and reinvesting profits into scaling what works.</p>
+          </details>
+        </div>
+      </article>
+      
+      <article class="panel seo-card">
+        <div class="panel-header">
+          <div>
+            <h2>Why practice affiliate marketing with a simulator?</h2>
+            <p>Real affiliate marketing costs time and money. This simulator removes the risk.</p>
+          </div>
+        </div>
+        <p class="hero-copy">Most beginners lose money testing affiliate offers with paid ads before understanding the fundamentals. This simulator lets you practice offer selection, channel matching, trust building, and cash flow management in a risk-free environment. You learn the patterns that separate profitable affiliates from those who burn through budget chasing vanity metrics.</p>
+        <div class="seo-columns">
+          <div class="seo-mini-card">
+            <h3>Risk-free learning</h3>
+            <p class="small-copy">Test strategies without spending real money on ads or tools. Make mistakes here, not with your wallet.</p>
+          </div>
+          <div class="seo-mini-card">
+            <h3>Pattern recognition</h3>
+            <p class="small-copy">Build intuition for which offers work with which channels. Recognize profitable combinations faster.</p>
+          </div>
+          <div class="seo-mini-card">
+            <h3>Daily practice loop</h3>
+            <p class="small-copy">Short sessions with daily bonuses keep you engaged. Consistency builds real affiliate marketing skills.</p>
+          </div>
         </div>
       </article>
     </section>
@@ -1428,7 +1593,13 @@
         gameFocusIndex: 0,
         combo: 0,
         lastActionText: 'Pick an offer and spend your three actions wisely.',
-        lastSummary: null
+        lastSummary: null,
+        dailyBonusClaimed: false,
+        lastLoginDate: null,
+        loginStreak: 0,
+        totalSessions: 0,
+        bestDayCommission: 0,
+        fastestLevelUp: null
       };
     }
 
@@ -1564,6 +1735,77 @@
       window.setTimeout(() => toast.remove(), 3200);
     }
 
+    function spawnConfetti(count = 30) {
+      const container = document.getElementById('confettiContainer');
+      const colors = ['#db5c34', '#d89616', '#127c78', '#1d8b57', '#efb14c', '#ff6b35'];
+      for (let i = 0; i < count; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        confetti.style.width = (6 + Math.random() * 8) + 'px';
+        confetti.style.height = (6 + Math.random() * 8) + 'px';
+        container.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 4000);
+      }
+    }
+
+    function checkDailyBonus() {
+      const today = new Date().toDateString();
+      const yesterday = new Date(Date.now() - 86400000).toDateString();
+      
+      if (state.lastLoginDate === today) {
+        state.dailyBonusClaimed = true;
+        return;
+      }
+      
+      if (state.lastLoginDate === yesterday) {
+        state.loginStreak += 1;
+      } else if (state.lastLoginDate !== today) {
+        state.loginStreak = 1;
+      }
+      
+      state.lastLoginDate = today;
+      state.dailyBonusClaimed = false;
+      state.totalSessions += 1;
+      
+      const bonusCard = document.getElementById('dailyBonusCard');
+      const bonusText = document.getElementById('dailyBonusText');
+      const streakBadge = document.getElementById('streakBadge');
+      const streakCount = document.getElementById('streakCount');
+      
+      if (state.loginStreak > 1) {
+        streakBadge.style.display = 'inline-block';
+        streakCount.textContent = state.loginStreak;
+      }
+      
+      const bonusAmount = 50 + (state.loginStreak * 25);
+      bonusText.textContent = `Day ${state.loginStreak} bonus: $${bonusAmount} + ${Math.min(state.loginStreak, 3)} extra actions!`;
+      bonusCard.style.display = 'block';
+    }
+
+    function claimDailyBonus() {
+      if (state.dailyBonusClaimed) return;
+      
+      const bonusAmount = 50 + (state.loginStreak * 25);
+      const extraActions = Math.min(state.loginStreak, 3);
+      
+      state.cash += bonusAmount;
+      state.actions += extraActions;
+      state.dailyBonusClaimed = true;
+      
+      addLog('Daily bonus claimed', `Day ${state.loginStreak} login bonus: $${bonusAmount} cash + ${extraActions} extra actions!`, 'good');
+      showToast(`🎁 Day ${state.loginStreak} bonus claimed!`, 'reward');
+      spawnConfetti(20);
+      vibrate([30, 20, 30]);
+      
+      document.getElementById('dailyBonusCard').style.display = 'none';
+      render();
+    }
+
     function addLog(title, text, tone) {
       state.log.unshift({ title, text, tone: tone || 'neutral' });
       state.log = state.log.slice(0, 12);
@@ -1581,6 +1823,7 @@
       addLog('Achievement unlocked', title + ': ' + text, 'good');
       showToast(title + ' unlocked', 'reward');
       vibrate([20, 30, 20]);
+      spawnConfetti(15);
     }
 
     function addXp(amount) {
@@ -1595,6 +1838,7 @@
         addLog('Level up', 'Your operator level increased. Trust and skill both rose, and you earned a reward chest.', 'good');
         showToast('Level up and reward chest earned', 'reward');
         vibrate([30, 25, 30]);
+        spawnConfetti(25);
       }
     }
 
@@ -1962,6 +2206,16 @@
       if (state.totalSales >= 20) addAchievement('Closer', 'Your campaigns have passed 20 total sales.');
       if (state.netWorth >= 2500) addAchievement('Scaled past survival', 'Net worth passed $2,500. The engine is becoming real.');
       if (state.netWorth >= 6000) addAchievement('Affiliate machine', 'You built a portfolio with serious compounding power.');
+      if (state.loginStreak >= 3) addAchievement('Consistent operator', 'Logged in for 3 days in a row. Consistency wins.');
+      if (state.loginStreak >= 7) addAchievement('Weekly warrior', '7-day login streak. You are building a habit.');
+      if (state.loginStreak >= 30) addAchievement('Monthly master', '30-day login streak. Incredible dedication.');
+      if (state.totalSessions >= 10) addAchievement('Returning player', '10 sessions played. You are getting serious.');
+      if (state.totalSessions >= 50) addAchievement('Dedicated marketer', '50 sessions played. This is your playground now.');
+      if (state.bestDayCommission >= 500) addAchievement('Big day', 'Single-day commission passed $500. That is a great day.');
+      if (state.bestDayCommission >= 1000) addAchievement('Thousand-dollar day', 'Single-day commission passed $1,000. Elite operator status.');
+      if (state.level >= 10) addAchievement('Experienced operator', 'Reached level 10. Your instincts are sharp.');
+      if (state.level >= 25) addAchievement('Veteran marketer', 'Reached level 25. You know this game inside out.');
+      if (state.combo >= 9) addAchievement('Unstoppable', 'Maximum combo reached. Nothing can stop you now.');
 
       state.history.push({ day: state.day, commission: dailyCommission, clicks: dailyClicks, impressions: dailyImpressions, sales: dailySales, worth: state.netWorth });
       state.history = state.history.slice(-12);
@@ -1971,6 +2225,16 @@
       state.mission = createMission(state);
       state.coachTip = dailyCommission > 0 ? 'The day rolled because your existing assets kept working. That is the core loop: publish, learn, compound, reinvest.' : 'No commission today means the funnel still has a weak link. Improve fit, trust, or channel level before scaling.';
       state.lastActionText = dailyCommission > 0 ? 'Fresh actions ready. Double down on what just worked.' : 'Fresh actions ready. Tighten the funnel before scaling.';
+      
+      if (dailyCommission > state.bestDayCommission) {
+        state.bestDayCommission = dailyCommission;
+      }
+      
+      if (dailyCommission > 200) {
+        spawnConfetti(40);
+      } else if (dailyCommission > 100) {
+        spawnConfetti(20);
+      }
 
       const summary = {
         day: state.day,
@@ -2248,6 +2512,7 @@
         claimRewardChest();
         closeSummary();
       });
+      bindAction('claimDailyBonusBtn', claimDailyBonus);
       document.querySelectorAll('.tab-btn').forEach((button) => {
         button.addEventListener('click', () => switchMobileTab(button.getAttribute('data-tab')));
       });
@@ -2258,7 +2523,16 @@
     }
 
     wireControls();
+    checkDailyBonus();
     render();
+    
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((reg) => console.log('SW registered'))
+          .catch((err) => console.log('SW registration failed'));
+      });
+    }
   </script>
 </body>
 </html>
