@@ -18,22 +18,22 @@
   <link rel="apple-touch-icon" href="assets/icon-192.png">
   <link rel="mask-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23db5c34'/%3E%3C/svg%3E" color="#db5c34">
   <link rel="manifest" href="manifest.json">
-  <link rel="image_src" href="https://affiliatehub.pro/assets/social-share-card.svg">
+  <link rel="image_src" href="https://affiliatehub.pro/assets/social-card.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://affiliatehub.pro/">
   <meta property="og:title" content="Affiliate Marketing Simulator for Beginners | Affiliate Hub Pro">
   <meta property="og:description" content="Learn affiliate marketing with a free interactive simulator that lets you test offers, channels, and monetization strategy without real ad spend.">
   <meta property="og:site_name" content="Affiliate Hub Pro">
-  <meta property="og:image" content="https://affiliatehub.pro/assets/og-image.svg">
-  <meta property="og:image:secure_url" content="https://affiliatehub.pro/assets/og-image.svg">
-  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image" content="https://affiliatehub.pro/assets/social-card.png">
+  <meta property="og:image:secure_url" content="https://affiliatehub.pro/assets/social-card.png">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Affiliate Hub Pro affiliate marketing simulator dashboard artwork">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Affiliate Marketing Simulator for Beginners | Affiliate Hub Pro">
   <meta name="twitter:description" content="Learn affiliate marketing with a free interactive simulator that lets you test offers, channels, and monetization strategy without real ad spend.">
-  <meta name="twitter:image" content="https://affiliatehub.pro/assets/twitter-card.svg">
+  <meta name="twitter:image" content="https://affiliatehub.pro/assets/social-card.png">
   <meta name="twitter:image:alt" content="Affiliate Hub Pro free affiliate marketing simulator social card">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VSSCMG1WN"></script>
   <script>
@@ -52,8 +52,8 @@
           "name": "Affiliate Hub Pro",
           "url": "https://affiliatehub.pro/",
           "description": "Affiliate Hub Pro is a free browser-based affiliate marketing simulator for beginners.",
-          "image": "https://affiliatehub.pro/assets/og-image.svg",
-          "thumbnailUrl": "https://affiliatehub.pro/assets/og-image.svg",
+          "image": "https://affiliatehub.pro/assets/social-card.png",
+          "thumbnailUrl": "https://affiliatehub.pro/assets/social-card.png",
           "inLanguage": "en"
         },
         {
@@ -64,7 +64,7 @@
           "isAccessibleForFree": true,
           "url": "https://affiliatehub.pro/",
           "description": "A free affiliate marketing simulator and training tool that helps beginners practice offer selection, SEO, email, community, and paid traffic strategy.",
-          "image": "https://affiliatehub.pro/assets/og-image.svg",
+          "image": "https://affiliatehub.pro/assets/social-card.png",
           "screenshot": "https://affiliatehub.pro/assets/game-hero.svg",
           "offers": {
             "@type": "Offer",
@@ -112,6 +112,7 @@
       ]
     }
   </script>
+  <link rel="stylesheet" href="assets/growth.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
 
@@ -1484,10 +1485,27 @@
         <div id="streakBadge" style="margin-top: 10px; display: none;">
           <span class="streak-badge">🔥 <span id="streakCount">0</span> day streak</span>
         </div>
-        <h1>Learn affiliate marketing with a browser-based simulator.</h1>
+        <h1>Build your empire.<br>Not your ad bill.</h1>
         <p class="hero-copy">
-          Practice affiliate marketing strategy without risking real ad spend. Test offers, search content, email, community, and paid traffic decisions to see how intent, trust, EPC, and conversions shape revenue.
+          Start with $750 in virtual cash. Pick an offer, build an audience, and turn smart decisions into simulated commissions. How big can you grow? No signup. No real money at risk.
         </p>
+        <div class="growth-panel" aria-labelledby="growthTitle">
+          <div class="eyebrow">YOUR NEXT MILESTONE</div>
+          <h2 id="growthTitle">Your first $100 commission day</h2>
+          <p id="growthHint">Match an offer to a channel, publish, then end the day.</p>
+          <progress id="growthProgress" max="100" value="0" aria-label="Best commission day toward next milestone"></progress>
+          <div class="growth-caption"><span id="growthValue">$0 earned in your best day</span><span>Simulated earnings</span></div>
+          <div class="growth-actions">
+            <button class="growth-primary" id="jumpToGame" type="button">Build my first campaign →</button>
+            <button class="growth-secondary" id="shareRun" type="button">Share my score</button>
+          </div>
+          <div id="friendChallenge" class="friend-challenge" hidden>
+            <strong>A friend set you a challenge.</strong>
+            <p id="friendTarget"></p>
+            <small>Friendly, self-reported scores. Outcomes vary; this is not a verified leaderboard.</small>
+            <button class="growth-secondary" id="dismissChallenge" type="button">Dismiss challenge</button>
+          </div>
+        </div>
         <div class="hero-art-wrap">
           <svg class="hero-art" viewBox="0 0 960 720" width="960" height="720" aria-labelledby="heroTitle heroDesc" role="img">
             <title id="heroTitle">Affiliate Hub Pro game illustration</title>
@@ -2091,6 +2109,7 @@
           <strong>Open chest</strong>
           <span id="summaryChestCopy">No chest ready right now.</span>
         </button>
+        <button class="summary-btn" id="summaryShareBtn" type="button"><strong>Challenge a friend</strong><span>Share your best commission day.</span></button>
         <button class="summary-btn" id="summaryContinueBtn" type="button">
           <strong>Keep climbing</strong>
           <span>Jump back in with fresh actions.</span>
@@ -3172,6 +3191,7 @@
       syncButtons();
       renderMobileGameFlow();
       saveState();
+      if (window.growthReady) renderGrowth();
     }
 
     function bindAction(id, handler) {
@@ -3192,6 +3212,7 @@
         render();
       });
       bindAction('resetBtn', () => {
+        if (!window.confirm('Start a new run? This will erase your saved game on this device.')) return;
         localStorage.removeItem(STORAGE_KEY);
         state = baseState();
         state.mission = createMission(state);
@@ -3254,5 +3275,22 @@
       });
     }
   </script>
+  <dialog id="shareDialog" aria-labelledby="shareTitle">
+    <form method="dialog"><button class="growth-secondary share-close" aria-label="Close share dialog">✕</button></form>
+    <div class="eyebrow">GOOD STRATEGY IS WORTH SHARING</div>
+    <h2 id="shareTitle">Can your friends beat this?</h2>
+    <p>Your best commission day. Virtual money, real bragging rights.</p>
+    <canvas id="scoreCanvas" width="1200" height="630" role="img" aria-label="Your simulator scorecard"></canvas>
+    <div class="growth-actions">
+      <button class="growth-primary" id="nativeShare" type="button">Share challenge</button>
+      <button class="growth-secondary" id="copyChallenge" type="button">Copy link</button>
+      <button class="growth-secondary" id="downloadScore" type="button">Download card</button>
+    </div>
+    <label for="challengeLink">Your challenge link</label>
+    <input id="challengeLink" readonly type="url">
+    <p id="shareStatus" role="status" aria-live="polite"></p>
+    <small>Only your score and day count are shared, never your saved game.</small>
+  </dialog>
+  <script src="assets/growth.js"></script>
 </body>
 </html>

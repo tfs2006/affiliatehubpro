@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#102d2b"/>
+  <circle cx="1120" cy="50" r="320" fill="#17413d"/>
+  <g font-family="DejaVu Sans, sans-serif">
+    <text x="64" y="86" fill="#f4b964" font-size="27" font-weight="700">AFFILIATE HUB PRO</text>
+    <text x="60" y="220" fill="#edf5ee" font-size="74" font-weight="700">Build your empire.</text>
+    <text x="60" y="315" fill="#edf5ee" font-size="74" font-weight="700">Not your ad bill.</text>
+    <text x="64" y="389" fill="#a8cdc3" font-size="28">$750 virtual cash. Your strategy. How far can you go?</text>
+    <rect x="64" y="449" width="337" height="64" rx="16" fill="#f4b964"/>
+    <text x="89" y="491" fill="#102d2b" font-size="26" font-weight="700">Play free. Beat a friend.</text>
+    <text x="64" y="574" fill="#a8cdc3" font-size="22">affiliatehub.pro · Simulated earnings. No real money at risk.</text>
+  </g>
+</svg>
