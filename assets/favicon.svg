@@ -1,22 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">Affiliate Hub Pro favicon</title>
-  <desc id="desc">Compact chart badge with an upward growth path.</desc>
+  <desc id="desc">Orange rounded tile with a rising white growth arrow and a gold coin.</desc>
   <defs>
-    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fff8ee"/>
-      <stop offset="1" stop-color="#efdfc8"/>
+    <linearGradient id="fTile" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF8A3D"/>
+      <stop offset="1" stop-color="#D9481F"/>
     </linearGradient>
-    <linearGradient id="line" x1="16" y1="17" x2="49" y2="38" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#e16036"/>
-      <stop offset="1" stop-color="#f2b24c"/>
+    <linearGradient id="fCoin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD97A"/>
+      <stop offset="1" stop-color="#F0A118"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="#172024" stroke-opacity="0.08"/>
-  <circle cx="48" cy="15" r="10" fill="#127c78" fill-opacity="0.11"/>
-  <rect x="13" y="34" width="7" height="13" rx="3.5" fill="#172024" fill-opacity="0.15"/>
-  <rect x="25" y="27" width="7" height="20" rx="3.5" fill="#127c78"/>
-  <rect x="37" y="21" width="7" height="26" rx="3.5" fill="#172024" fill-opacity="0.22"/>
-  <path d="M15 28 C21 24 25 24 30 22 C35 20 38 16 45 15" fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round"/>
-  <path d="M40 11 H49 V20" fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect width="64" height="64" rx="16" fill="url(#fTile)"/>
+  <rect x="13" y="30" width="8" height="18" rx="4" fill="#ffffff" opacity="0.75"/>
+  <rect x="25" y="24" width="8" height="24" rx="4" fill="#ffffff" opacity="0.9"/>
+  <rect x="37" y="30" width="8" height="18" rx="4" fill="#0B6E6B"/>
+  <path d="M14 30 C 22 26, 28 26, 34 22 C 40 18, 44 14, 50 13" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+  <path d="M43 9 H53 V19" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 30 C 22 26, 28 26, 34 22 C 40 18, 44 14, 50 13" fill="none" stroke="#F7B32B" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M43 9 H53 V19" fill="none" stroke="#F7B32B" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="50" cy="50" r="11" fill="url(#fCoin)" stroke="#ffffff" stroke-width="3"/>
 </svg>

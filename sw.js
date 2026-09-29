@@ -1,4 +1,4 @@
-const CACHE_NAME = 'affiliate-hub-pro-v2';
+const CACHE_NAME = 'affiliate-hub-pro-v3';
 const ASSETS_TO_CACHE = [
   '/', '/index.html', '/manifest.json', '/assets/logo.svg',
   '/assets/game-hero.svg', '/assets/favicon.svg', '/assets/icon.svg',

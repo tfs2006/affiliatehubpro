@@ -1,41 +1,97 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
   <title id="title">Affiliate Hub Pro icon</title>
-  <desc id="desc">Brand app icon showing a dashboard frame, metrics bars, and a growth trajectory.</desc>
+  <desc id="desc">Gamified app icon: a white game card with rising bars, a gold growth arrow, a coin, and an XP bar on an orange gradient tile.</desc>
   <defs>
-    <linearGradient id="bg" x1="66" y1="44" x2="444" y2="468" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fff9ef"/>
-      <stop offset="1" stop-color="#efdfc9"/>
+    <linearGradient id="tile" x1="64" y1="40" x2="448" y2="472" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF8A3D"/>
+      <stop offset="0.55" stop-color="#F2682A"/>
+      <stop offset="1" stop-color="#D9481F"/>
     </linearGradient>
-    <linearGradient id="card" x1="120" y1="92" x2="378" y2="392" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fffefb"/>
-      <stop offset="1" stop-color="#fff7eb"/>
+    <linearGradient id="tileGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="accent" x1="128" y1="150" x2="382" y2="236" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#de6238"/>
-      <stop offset="1" stop-color="#f3b34b"/>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#FFF4E6"/>
     </linearGradient>
-    <linearGradient id="teal" x1="204" y1="218" x2="294" y2="388" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#17918d"/>
-      <stop offset="1" stop-color="#0f6f6b"/>
+    <linearGradient id="barTeal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1FC2BB"/>
+      <stop offset="1" stop-color="#0B6E6B"/>
     </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#8a3026" flood-opacity="0.18"/>
+    <linearGradient id="arrow" x1="120" y1="300" x2="380" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F2682A"/>
+      <stop offset="1" stop-color="#F7B32B"/>
+    </linearGradient>
+    <linearGradient id="coin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD97A"/>
+      <stop offset="1" stop-color="#F0A118"/>
+    </linearGradient>
+    <linearGradient id="xp" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1FC2BB"/>
+      <stop offset="1" stop-color="#7CF0D4"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#7A1F0E" flood-opacity="0.35"/>
+    </filter>
+    <filter id="coinShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#7A1F0E" flood-opacity="0.4"/>
     </filter>
   </defs>
-  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
-  <circle cx="402" cy="116" r="72" fill="#127c78" fill-opacity="0.1"/>
-  <circle cx="114" cy="414" r="84" fill="#db5c34" fill-opacity="0.08"/>
-  <g filter="url(#shadow)">
-    <rect x="72" y="72" width="368" height="368" rx="88" fill="url(#card)" stroke="#172024" stroke-opacity="0.08"/>
-    <rect x="112" y="120" width="288" height="36" rx="18" fill="#172024" fill-opacity="0.06"/>
-    <rect x="112" y="188" width="48" height="152" rx="24" fill="#172024" fill-opacity="0.12"/>
-    <rect x="188" y="236" width="48" height="104" rx="24" fill="#172024" fill-opacity="0.18"/>
-    <rect x="264" y="208" width="48" height="132" rx="24" fill="url(#teal)"/>
-    <rect x="340" y="164" width="48" height="176" rx="24" fill="#172024" fill-opacity="0.22"/>
-    <rect x="112" y="368" width="120" height="20" rx="10" fill="#172024" fill-opacity="0.08"/>
-    <rect x="248" y="368" width="152" height="20" rx="10" fill="#172024" fill-opacity="0.08"/>
+
+  <rect width="512" height="512" rx="116" fill="url(#tile)"/>
+  <rect width="512" height="512" rx="116" fill="url(#tileGlow)"/>
+  <g fill="#ffffff" opacity="0.16">
+    <circle cx="70" cy="392" r="10"/>
+    <circle cx="104" cy="392" r="10"/>
+    <circle cx="138" cy="392" r="10"/>
+    <circle cx="70" cy="424" r="10"/>
+    <circle cx="104" cy="424" r="10"/>
+    <circle cx="70" cy="110" r="8"/>
+    <circle cx="100" cy="110" r="8"/>
+    <circle cx="70" cy="140" r="8"/>
   </g>
-  <path d="M132 228 C178 191 217 203 256 180 C296 157 326 121 382 118" fill="none" stroke="url(#accent)" stroke-width="34" stroke-linecap="round"/>
-  <path d="M336 102 H392 V158" fill="none" stroke="url(#accent)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="358" cy="125" r="18" fill="#172024"/>
+
+  <!-- Game card -->
+  <g filter="url(#soft)">
+    <rect x="88" y="88" width="336" height="312" rx="72" fill="url(#card)"/>
+  </g>
+  <rect x="88" y="88" width="336" height="312" rx="72" fill="none" stroke="#ffffff" stroke-opacity="0.7" stroke-width="3"/>
+  <!-- Score dots -->
+  <circle cx="152" cy="140" r="10" fill="#F2682A"/>
+  <circle cx="182" cy="140" r="10" fill="#F7B32B"/>
+  <circle cx="212" cy="140" r="10" fill="#12A5A0"/>
+  <rect x="232" y="126" width="80" height="28" rx="14" fill="#0B6E6B"/>
+  <text x="272" y="147" text-anchor="middle" font-family="'Space Grotesk','IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="19" font-weight="700" fill="#ffffff">LVL 5</text>
+
+  <!-- Bars -->
+  <rect x="132" y="252" width="52" height="104" rx="26" fill="#E9DFD2"/>
+  <rect x="200" y="224" width="52" height="132" rx="26" fill="#D8CCC0"/>
+  <rect x="268" y="190" width="52" height="166" rx="26" fill="url(#barTeal)"/>
+  <rect x="336" y="238" width="52" height="118" rx="26" fill="#E9DFD2"/>
+
+  <!-- Growth arrow with white outline for pop -->
+  <path d="M138 268 C 190 244, 226 248, 268 224 C 300 205, 314 190, 348 184"
+        fill="none" stroke="#ffffff" stroke-width="46" stroke-linecap="round"/>
+  <path d="M314 162 H350 V198" fill="none" stroke="#ffffff" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M138 268 C 190 244, 226 248, 268 224 C 300 205, 314 190, 348 184"
+        fill="none" stroke="url(#arrow)" stroke-width="30" stroke-linecap="round"/>
+  <path d="M314 162 H350 V198" fill="none" stroke="url(#arrow)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Gold coin -->
+  <g filter="url(#coinShadow)">
+    <circle cx="404" cy="106" r="54" fill="url(#coin)" stroke="#ffffff" stroke-width="8"/>
+    <circle cx="404" cy="106" r="36" fill="none" stroke="#B97A0B" stroke-width="4" stroke-opacity="0.55"/>
+    <text x="404" y="126" text-anchor="middle" font-family="'Space Grotesk','IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="50" font-weight="700" fill="#7A4A00">$</text>
+  </g>
+
+  <!-- XP bar -->
+  <rect x="120" y="424" width="272" height="40" rx="20" fill="#7A1F0E" fill-opacity="0.35"/>
+  <rect x="128" y="432" width="188" height="24" rx="12" fill="url(#xp)"/>
+  <circle cx="316" cy="444" r="16" fill="#ffffff"/>
+  <path d="M316 436 l2.5 5 5.5 0.8 -4 3.9 0.9 5.5 -4.9 -2.6 -4.9 2.6 0.9 -5.5 -4 -3.9 5.5 -0.8 z" fill="#F2682A"/>
+
+  <!-- Sparkles -->
+  <path d="M452 300 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 z" fill="#FFE3A8"/>
+  <path d="M56 220 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z" fill="#ffffff" opacity="0.85"/>
 </svg>

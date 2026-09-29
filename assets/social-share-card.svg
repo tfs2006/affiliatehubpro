@@ -1,59 +1,122 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Affiliate Hub Pro social share card</title>
-  <desc id="desc">Dark social share card for Affiliate Hub Pro with a short promise and compact metrics panel.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="scTitle scDesc">
+  <title id="scTitle">Affiliate Hub Pro — Build your empire. Not your ad bill.</title>
+  <desc id="scDesc">Dark gamified social card with headline, play-free call to action, and a floating game dashboard showing earnings, level, and streak.</desc>
   <defs>
-    <linearGradient id="bg" x1="44" y1="34" x2="1144" y2="608" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#152126"/>
-      <stop offset="1" stop-color="#2b474e"/>
+    <linearGradient id="scBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A2226"/>
+      <stop offset="0.6" stop-color="#0D3233"/>
+      <stop offset="1" stop-color="#104644"/>
     </linearGradient>
-    <linearGradient id="accent" x1="84" y1="88" x2="1084" y2="360" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#de6238"/>
-      <stop offset="1" stop-color="#f2b24c"/>
+    <radialGradient id="scGlowGold" cx="0.88" cy="0.12" r="0.55">
+      <stop offset="0" stop-color="#F7B32B" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#F7B32B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="scGlowTeal" cx="0.08" cy="0.95" r="0.5">
+      <stop offset="0" stop-color="#1FC2BB" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#1FC2BB" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="scGold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFC95C"/>
+      <stop offset="1" stop-color="#F0A118"/>
     </linearGradient>
-    <linearGradient id="teal" x1="772" y1="344" x2="860" y2="490" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#17908c"/>
-      <stop offset="1" stop-color="#0f6f6a"/>
+    <linearGradient id="scOrange" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F2682A"/>
+      <stop offset="1" stop-color="#F7B32B"/>
     </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#081013" flood-opacity="0.26"/>
+    <linearGradient id="scTeal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1FC2BB"/>
+      <stop offset="1" stop-color="#0B6E6B"/>
+    </linearGradient>
+    <pattern id="scGrid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0 H0 V44" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1.5"/>
+    </pattern>
+    <filter id="scCard" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="scBtn" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#F0A118" flood-opacity="0.45"/>
     </filter>
   </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="1044" cy="96" r="112" fill="#db5c34" fill-opacity="0.18"/>
-  <circle cx="120" cy="538" r="140" fill="#127c78" fill-opacity="0.16"/>
-  <g transform="translate(86 82)">
-    <rect width="112" height="112" rx="28" fill="#fffef9" fill-opacity="0.96"/>
-    <rect x="1" y="1" width="110" height="110" rx="27" fill="none" stroke="#172024" stroke-opacity="0.08"/>
-    <rect x="24" y="72" width="14" height="20" rx="7" fill="#172024" fill-opacity="0.14"/>
-    <rect x="46" y="54" width="14" height="38" rx="7" fill="#172024" fill-opacity="0.18"/>
-    <rect x="68" y="34" width="14" height="58" rx="7" fill="#127c78"/>
-    <path d="M28 58 C40 50 51 45 61 42 C72 39 83 30 94 20" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
-    <path d="M82 20 H96 V34" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect width="1200" height="630" fill="url(#scBg)"/>
+  <rect width="1200" height="630" fill="url(#scGlowGold)"/>
+  <rect width="1200" height="630" fill="url(#scGlowTeal)"/>
+  <rect width="1200" height="630" fill="url(#scGrid)"/>
+  <circle cx="1120" cy="40" r="220" fill="#17413D"/>
+  <g fill="#F7B32B" opacity="0.5">
+    <circle cx="60" cy="596" r="5"/><circle cx="88" cy="596" r="5"/><circle cx="116" cy="596" r="5"/>
   </g>
-  <g transform="translate(232 110)">
-    <text x="0" y="0" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="2" fill="#82d2cb">AFFILIATE HUB PRO</text>
-    <text x="0" y="84" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="62" font-weight="700" letter-spacing="-1.8" fill="#ffffff">Train affiliate skills</text>
-    <text x="0" y="146" font-family="Trebuchet MS, Verdana, Arial, sans-serif" font-size="62" font-weight="700" letter-spacing="-1.8" fill="#ffffff">before spending cash</text>
-    <text x="0" y="206" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#d8e6e8">Free simulator for offers, trust, traffic, and EPC.</text>
+
+  <!-- Eyebrow -->
+  <rect x="64" y="58" width="500" height="46" rx="23" fill="none" stroke="#F7B32B" stroke-opacity="0.65" stroke-width="2.5"/>
+  <circle cx="96" cy="81" r="8" fill="#F7B32B"/>
+  <text x="114" y="89" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="21" font-weight="700" letter-spacing="2" fill="#F7B32B">FREE SIMULATOR · NO SIGNUP</text>
+
+  <!-- Headline -->
+  <g font-family="'Space Grotesk','Trebuchet MS',Arial,'DejaVu Sans',sans-serif" font-weight="700" fill="#F2F7F5">
+    <text x="60" y="206" font-size="62">Build your empire.</text>
+    <text x="60" y="282" font-size="62">Not your ad bill.</text>
   </g>
-  <g transform="translate(84 420)">
-    <rect width="420" height="86" rx="22" fill="#fff" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.08"/>
-    <text x="28" y="38" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Practice:</text>
-    <text x="28" y="68" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#d8e6e8">offer fit, traffic mix, trust, EPC</text>
+  <text x="64" y="340" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="26" fill="#A8CDC3">$750 virtual cash. Your strategy.</text>
+  <text x="64" y="376" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="26" fill="#A8CDC3">How far can you go?</text>
+
+  <!-- CTA -->
+  <g filter="url(#scBtn)">
+    <rect x="64" y="412" width="440" height="68" rx="20" fill="url(#scGold)"/>
   </g>
-  <g transform="translate(670 286)" filter="url(#shadow)">
-    <rect width="446" height="256" rx="32" fill="#fffdf8"/>
-    <rect x="28" y="28" width="390" height="24" rx="12" fill="#172024" fill-opacity="0.08"/>
-    <rect x="28" y="80" width="122" height="90" rx="20" fill="#fff1e7"/>
-    <rect x="162" y="80" width="122" height="90" rx="20" fill="#eef9f7"/>
-    <rect x="296" y="80" width="122" height="90" rx="20" fill="#fff7ed"/>
-    <rect x="28" y="196" width="332" height="24" rx="12" fill="#172024" fill-opacity="0.08"/>
-    <rect x="28" y="196" width="246" height="24" rx="12" fill="url(#accent)"/>
-    <text x="44" y="114" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#172024">Offer</text>
-    <text x="44" y="146" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#172024">124</text>
-    <text x="178" y="114" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#172024">Trust</text>
-    <text x="178" y="146" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#172024">68</text>
-    <text x="312" y="114" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#172024">EPC</text>
-    <text x="312" y="146" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#172024">$3.42</text>
+  <path d="M100 433 L124 446 L100 459 Z" fill="#102d2b"/>
+  <text x="138" y="456" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="24" font-weight="700" fill="#102d2b">Play free. Beat a friend.</text>
+
+  <text x="64" y="548" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="20" fill="#7FA8A0">affiliatehub.pro · Simulated earnings. No real money at risk.</text>
+
+  <!-- ===== Floating game card ===== -->
+  <rect x="800" y="92" width="320" height="440" rx="32" fill="#14514E" opacity="0.75"/>
+  <g filter="url(#scCard)">
+    <rect x="762" y="72" width="320" height="470" rx="32" fill="#FFFFFF"/>
   </g>
+  <circle cx="800" cy="112" r="7" fill="#F2682A"/>
+  <circle cx="822" cy="112" r="7" fill="#F0A118"/>
+  <circle cx="844" cy="112" r="7" fill="#0B6E6B"/>
+  <rect x="972" y="96" width="86" height="32" rx="16" fill="#0B2E2D"/>
+  <text x="1015" y="118" text-anchor="middle" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="17" font-weight="700" fill="#7CF0D4">DAY 12</text>
+
+  <text x="794" y="200" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="62" font-weight="700" fill="#16232A">$1,248</text>
+  <text x="796" y="226" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="18" font-weight="700" letter-spacing="1.5" fill="#0B6E6B">BEST DAY · +$248</text>
+
+  <!-- Mini bars + arrow -->
+  <rect x="794" y="312" width="52" height="58" rx="14" fill="#E9DFD2"/>
+  <rect x="856" y="284" width="52" height="86" rx="14" fill="url(#scTeal)"/>
+  <rect x="918" y="304" width="52" height="66" rx="14" fill="#E9DFD2"/>
+  <rect x="980" y="260" width="52" height="110" rx="14" fill="#0B2E2D"/>
+  <path d="M800 314 C 850 296, 890 302, 930 280 C 960 262, 980 254, 1010 250" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round"/>
+  <path d="M986 236 H1014 V264" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M800 314 C 850 296, 890 302, 930 280 C 960 262, 980 254, 1010 250" fill="none" stroke="url(#scOrange)" stroke-width="11" stroke-linecap="round"/>
+  <path d="M986 236 H1014 V264" fill="none" stroke="url(#scOrange)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- XP -->
+  <text x="794" y="410" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="18" font-weight="700" letter-spacing="1.5" fill="#16232A">LEVEL 5</text>
+  <text x="1032" y="410" text-anchor="end" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="16" font-weight="700" fill="#7A8791">72%</text>
+  <rect x="794" y="422" width="238" height="22" rx="11" fill="#EFE6D4"/>
+  <rect x="794" y="422" width="167" height="22" rx="11" fill="url(#scOrange)"/>
+  <circle cx="961" cy="433" r="14" fill="#ffffff" stroke="#F0A118" stroke-width="4"/>
+  <path d="M961 426 l2 4 4.5 0.6 -3.2 3.2 0.7 4.5 -4 -2.1 -4 2.1 0.7 -4.5 -3.2 -3.2 4.5 -0.6 z" fill="#F2682A"/>
+
+  <!-- Streak + coins footer -->
+  <g transform="translate(812 486)">
+    <path d="M0 -18 C 8 -8, 13 -3, 13 5 A13 13 0 1 1 -13 5 C-13 -3 -7 -6 -4 -12 C-2 -8 0 -7 0 -3 C1 -7 -2 -12 0 -18 Z" fill="#F2682A"/>
+    <path d="M0 -6 C 4 -1, 6 1, 6 5 A6 6 0 1 1 -6 5 C-6 1 -3 0 -2 -3 C-1 -1 0 -1 0 1 C1 -1 -1 -3 0 -6 Z" fill="#FFD97A"/>
+  </g>
+  <text x="834" y="494" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="19" font-weight="700" fill="#16232A">3-day streak</text>
+  <circle cx="1000" cy="486" r="14" fill="url(#scGold)" stroke="#C77F0A" stroke-width="2"/>
+  <text x="1000" y="493" text-anchor="middle" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="15" font-weight="700" fill="#7A4A00">$</text>
+
+  <!-- Floating coin -->
+  <circle cx="1106" cy="120" r="46" fill="url(#scGold)" stroke="#ffffff" stroke-width="6"/>
+  <circle cx="1106" cy="120" r="30" fill="none" stroke="#B97A0B" stroke-width="3" stroke-opacity="0.55"/>
+  <text x="1106" y="137" text-anchor="middle" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="42" font-weight="700" fill="#7A4A00">$</text>
+
+  <!-- Sparkles -->
+  <path d="M720 560 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5 z" fill="#F7B32B"/>
+  <path d="M1130 560 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 z" fill="#7CF0D4"/>
+  <path d="M700 60 l3.5 9 9 3.5 -9 3.5 -3.5 9 -3.5 -9 -9 -3.5 9 -3.5 z" fill="#F7B32B" opacity="0.8"/>
 </svg>
