@@ -1,13 +1,122 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#102d2b"/>
-  <circle cx="1120" cy="50" r="320" fill="#17413d"/>
-  <g font-family="DejaVu Sans, sans-serif">
-    <text x="64" y="86" fill="#f4b964" font-size="27" font-weight="700">AFFILIATE HUB PRO</text>
-    <text x="60" y="220" fill="#edf5ee" font-size="74" font-weight="700">Build your empire.</text>
-    <text x="60" y="315" fill="#edf5ee" font-size="74" font-weight="700">Not your ad bill.</text>
-    <text x="64" y="389" fill="#a8cdc3" font-size="28">$750 virtual cash. Your strategy. How far can you go?</text>
-    <rect x="64" y="449" width="404" height="64" rx="16" fill="#f4b964"/>
-    <text x="89" y="491" fill="#102d2b" font-size="26" font-weight="700">Play free. Beat a friend.</text>
-    <text x="64" y="574" fill="#a8cdc3" font-size="22">affiliatehub.pro · Simulated earnings. No real money at risk.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="scTitle scDesc">
+  <title id="scTitle">Affiliate Hub Pro — Build your empire. Not your ad bill.</title>
+  <desc id="scDesc">Dark gamified social card with headline, play-free call to action, and a floating game dashboard showing earnings, level, and streak.</desc>
+  <defs>
+    <linearGradient id="scBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A2226"/>
+      <stop offset="0.6" stop-color="#0D3233"/>
+      <stop offset="1" stop-color="#104644"/>
+    </linearGradient>
+    <radialGradient id="scGlowGold" cx="0.88" cy="0.12" r="0.55">
+      <stop offset="0" stop-color="#F7B32B" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#F7B32B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="scGlowTeal" cx="0.08" cy="0.95" r="0.5">
+      <stop offset="0" stop-color="#1FC2BB" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#1FC2BB" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="scGold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFC95C"/>
+      <stop offset="1" stop-color="#F0A118"/>
+    </linearGradient>
+    <linearGradient id="scOrange" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F2682A"/>
+      <stop offset="1" stop-color="#F7B32B"/>
+    </linearGradient>
+    <linearGradient id="scTeal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1FC2BB"/>
+      <stop offset="1" stop-color="#0B6E6B"/>
+    </linearGradient>
+    <pattern id="scGrid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0 H0 V44" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1.5"/>
+    </pattern>
+    <filter id="scCard" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="scBtn" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#F0A118" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#scBg)"/>
+  <rect width="1200" height="630" fill="url(#scGlowGold)"/>
+  <rect width="1200" height="630" fill="url(#scGlowTeal)"/>
+  <rect width="1200" height="630" fill="url(#scGrid)"/>
+  <circle cx="1120" cy="40" r="220" fill="#17413D"/>
+  <g fill="#F7B32B" opacity="0.5">
+    <circle cx="60" cy="596" r="5"/><circle cx="88" cy="596" r="5"/><circle cx="116" cy="596" r="5"/>
   </g>
+
+  <!-- Eyebrow -->
+  <rect x="64" y="58" width="500" height="46" rx="23" fill="none" stroke="#F7B32B" stroke-opacity="0.65" stroke-width="2.5"/>
+  <circle cx="96" cy="81" r="8" fill="#F7B32B"/>
+  <text x="114" y="89" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="21" font-weight="700" letter-spacing="2" fill="#F7B32B">FREE SIMULATOR · NO SIGNUP</text>
+
+  <!-- Headline -->
+  <g font-family="'Space Grotesk','Trebuchet MS',Arial,'DejaVu Sans',sans-serif" font-weight="700" fill="#F2F7F5">
+    <text x="60" y="206" font-size="62">Build your empire.</text>
+    <text x="60" y="282" font-size="62">Not your ad bill.</text>
+  </g>
+  <text x="64" y="340" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="26" fill="#A8CDC3">$750 virtual cash. Your strategy.</text>
+  <text x="64" y="376" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="26" fill="#A8CDC3">How far can you go?</text>
+
+  <!-- CTA -->
+  <g filter="url(#scBtn)">
+    <rect x="64" y="412" width="440" height="68" rx="20" fill="url(#scGold)"/>
+  </g>
+  <path d="M100 433 L124 446 L100 459 Z" fill="#102d2b"/>
+  <text x="138" y="456" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="24" font-weight="700" fill="#102d2b">Play free. Beat a friend.</text>
+
+  <text x="64" y="548" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="20" fill="#7FA8A0">affiliatehub.pro · Simulated earnings. No real money at risk.</text>
+
+  <!-- ===== Floating game card ===== -->
+  <rect x="800" y="92" width="320" height="440" rx="32" fill="#14514E" opacity="0.75"/>
+  <g filter="url(#scCard)">
+    <rect x="762" y="72" width="320" height="470" rx="32" fill="#FFFFFF"/>
+  </g>
+  <circle cx="800" cy="112" r="7" fill="#F2682A"/>
+  <circle cx="822" cy="112" r="7" fill="#F0A118"/>
+  <circle cx="844" cy="112" r="7" fill="#0B6E6B"/>
+  <rect x="972" y="96" width="86" height="32" rx="16" fill="#0B2E2D"/>
+  <text x="1015" y="118" text-anchor="middle" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="17" font-weight="700" fill="#7CF0D4">DAY 12</text>
+
+  <text x="794" y="200" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="62" font-weight="700" fill="#16232A">$1,248</text>
+  <text x="796" y="226" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="18" font-weight="700" letter-spacing="1.5" fill="#0B6E6B">BEST DAY · +$248</text>
+
+  <!-- Mini bars + arrow -->
+  <rect x="794" y="312" width="52" height="58" rx="14" fill="#E9DFD2"/>
+  <rect x="856" y="284" width="52" height="86" rx="14" fill="url(#scTeal)"/>
+  <rect x="918" y="304" width="52" height="66" rx="14" fill="#E9DFD2"/>
+  <rect x="980" y="260" width="52" height="110" rx="14" fill="#0B2E2D"/>
+  <path d="M800 314 C 850 296, 890 302, 930 280 C 960 262, 980 254, 1010 250" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round"/>
+  <path d="M986 236 H1014 V264" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M800 314 C 850 296, 890 302, 930 280 C 960 262, 980 254, 1010 250" fill="none" stroke="url(#scOrange)" stroke-width="11" stroke-linecap="round"/>
+  <path d="M986 236 H1014 V264" fill="none" stroke="url(#scOrange)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- XP -->
+  <text x="794" y="410" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="18" font-weight="700" letter-spacing="1.5" fill="#16232A">LEVEL 5</text>
+  <text x="1032" y="410" text-anchor="end" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="16" font-weight="700" fill="#7A8791">72%</text>
+  <rect x="794" y="422" width="238" height="22" rx="11" fill="#EFE6D4"/>
+  <rect x="794" y="422" width="167" height="22" rx="11" fill="url(#scOrange)"/>
+  <circle cx="961" cy="433" r="14" fill="#ffffff" stroke="#F0A118" stroke-width="4"/>
+  <path d="M961 426 l2 4 4.5 0.6 -3.2 3.2 0.7 4.5 -4 -2.1 -4 2.1 0.7 -4.5 -3.2 -3.2 4.5 -0.6 z" fill="#F2682A"/>
+
+  <!-- Streak + coins footer -->
+  <g transform="translate(812 486)">
+    <path d="M0 -18 C 8 -8, 13 -3, 13 5 A13 13 0 1 1 -13 5 C-13 -3 -7 -6 -4 -12 C-2 -8 0 -7 0 -3 C1 -7 -2 -12 0 -18 Z" fill="#F2682A"/>
+    <path d="M0 -6 C 4 -1, 6 1, 6 5 A6 6 0 1 1 -6 5 C-6 1 -3 0 -2 -3 C-1 -1 0 -1 0 1 C1 -1 -1 -3 0 -6 Z" fill="#FFD97A"/>
+  </g>
+  <text x="834" y="494" font-family="'IBM Plex Sans',Arial,'DejaVu Sans',sans-serif" font-size="19" font-weight="700" fill="#16232A">3-day streak</text>
+  <circle cx="1000" cy="486" r="14" fill="url(#scGold)" stroke="#C77F0A" stroke-width="2"/>
+  <text x="1000" y="493" text-anchor="middle" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="15" font-weight="700" fill="#7A4A00">$</text>
+
+  <!-- Floating coin -->
+  <circle cx="1106" cy="120" r="46" fill="url(#scGold)" stroke="#ffffff" stroke-width="6"/>
+  <circle cx="1106" cy="120" r="30" fill="none" stroke="#B97A0B" stroke-width="3" stroke-opacity="0.55"/>
+  <text x="1106" y="137" text-anchor="middle" font-family="'Space Grotesk',Arial,'DejaVu Sans',sans-serif" font-size="42" font-weight="700" fill="#7A4A00">$</text>
+
+  <!-- Sparkles -->
+  <path d="M720 560 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5 z" fill="#F7B32B"/>
+  <path d="M1130 560 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 z" fill="#7CF0D4"/>
+  <path d="M700 60 l3.5 9 9 3.5 -9 3.5 -3.5 9 -3.5 -9 -9 -3.5 9 -3.5 z" fill="#F7B32B" opacity="0.8"/>
 </svg>
